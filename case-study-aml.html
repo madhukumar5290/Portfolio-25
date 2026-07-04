@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Case Study: Anti-Money Laundering | Madhu Kumar Sikilammetla</title>
+<link rel="stylesheet" href="style.css?v=6">
+</head>
+<body>
+<div class="progress-bar"></div>
+<button class="btt" aria-label="Back to top">↑</button>
+<nav>
+  <button class="nav-ham" aria-label="Open menu"><span></span><span></span><span></span></button>
+  <a class="nav-logo" href="index.html"><span class="logo-pulse"></span>MK.</a>
+  <div class="nav-spacer"></div>
+  <ul class="nav-links">
+    <li>
+      <button>Work <span class="nav-chevron">▾</span></button>
+      <div class="nav-dd">
+        <a href="work.html"><span class="dd-icon">🗂️</span>All Projects</a>
+        <a href="case-study-aml.html"><span class="dd-icon">📋</span>Case Study: AML</a>
+        <a href="case-study-bees.html"><span class="dd-icon">🐝</span>Case Study: Bees</a>
+      </div>
+    </li>
+    <li>
+      <button>About <span class="nav-chevron">▾</span></button>
+      <div class="nav-dd">
+        <a href="about.html"><span class="dd-icon">👤</span>About Me</a>
+        <a href="buzz.html"><span class="dd-icon">💬</span>Buzz &amp; Testimonials</a>
+        <a href="certifications.html"><span class="dd-icon">🎓</span>Certifications</a>
+      </div>
+    </li>
+    <li><a href="process.html">Process</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li>
+      <button>Knowledge <span class="nav-chevron">▾</span></button>
+      <div class="nav-dd">
+        <a href="articles.html"><span class="dd-icon">✍️</span>Articles</a>
+        <a href="id-frameworks.html"><span class="dd-icon">🧭</span>ID Cheat Sheet</a>
+        <a href="resources.html"><span class="dd-icon">📦</span>Free Resources</a>
+        <a href="glossary.html"><span class="dd-icon">📖</span>Glossary</a>
+        <a href="sitemap.html"><span class="dd-icon">🗺️</span>Sitemap</a>
+      </div>
+    </li>
+    <li>
+      <button>Tools <span class="nav-chevron">▾</span></button>
+      <div class="nav-mega">
+        <div class="nav-mega-col">
+          <span class="nav-mega-title">AI &amp; Demos</span>
+          <a href="ai-analyzer.html"><span class="dd-icon">🤖</span>AI Course Analyzer<span class="dd-new">New</span></a>
+          <a href="lms-demo.html"><span class="dd-icon">🎓</span>LMS Demo</a>
+          <a href="demo-xapi.html"><span class="dd-icon">📡</span>xAPI Demo</a>
+          <a href="demo-storyboard.html"><span class="dd-icon">🗂️</span>Storyboard Gen</a>
+          <a href="demo-template.html"><span class="dd-icon">🔧</span>Patterns</a>
+        </div>
+        <div class="nav-mega-col">
+          <span class="nav-mega-title">Reference Tools</span>
+          <a href="sl-snippets.html"><span class="dd-icon">⚡</span>JS Snippets</a>
+          <a href="accessibility-guide.html"><span class="dd-icon">♿</span>A11y Guide</a>
+          <a href="effort-estimator.html"><span class="dd-icon">📊</span>Effort Estimator</a>
+          <a href="spot-the-bug.html"><span class="dd-icon">🐛</span>Spot the Bug</a>
+          <a href="id-model-selector.html"><span class="dd-icon">🧭</span>ID Selector</a>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">☀️</button>
+  <a href="contact.html" class="nav-cta">Let's Talk</a>
+</nav>
+<div class="mobile-menu">
+  <span class="mob-section-title">Portfolio</span>
+  <a href="index.html"><span class="dd-icon">🏠</span>Home</a>
+  <a href="work.html"><span class="dd-icon">🗂️</span>All Projects</a>
+  <a href="case-study-aml.html"><span class="dd-icon">📋</span>Case Study: AML</a>
+  <a href="case-study-bees.html"><span class="dd-icon">🐝</span>Case Study: Bees</a>
+  <span class="mob-section-title">About</span>
+  <a href="about.html"><span class="dd-icon">👤</span>About Me</a>
+  <a href="buzz.html"><span class="dd-icon">💬</span>Buzz &amp; Testimonials</a>
+  <a href="certifications.html"><span class="dd-icon">🎓</span>Certifications</a>
+  <span class="mob-section-title">Services</span>
+  <a href="process.html"><span class="dd-icon">⚙️</span>Process</a>
+  <a href="services.html"><span class="dd-icon">📋</span>Services</a>
+  <span class="mob-section-title">Knowledge</span>
+  <a href="articles.html"><span class="dd-icon">✍️</span>Articles</a>
+  <a href="id-frameworks.html"><span class="dd-icon">🧭</span>ID Cheat Sheet</a>
+  <a href="resources.html"><span class="dd-icon">📦</span>Free Resources</a>
+  <a href="glossary.html"><span class="dd-icon">📖</span>Glossary</a>
+  <span class="mob-section-title">Tools &amp; Demos</span>
+  <a href="ai-analyzer.html"><span class="dd-icon">🤖</span>AI Course Analyzer</a>
+  <a href="sl-snippets.html"><span class="dd-icon">⚡</span>JS Snippets</a>
+  <a href="lms-demo.html"><span class="dd-icon">🎓</span>LMS Demo</a>
+  <a href="accessibility-guide.html"><span class="dd-icon">♿</span>A11y Guide</a>
+  <a href="effort-estimator.html"><span class="dd-icon">📊</span>Effort Estimator</a>
+  <a href="spot-the-bug.html"><span class="dd-icon">🐛</span>Spot the Bug</a>
+  <a href="demo-xapi.html"><span class="dd-icon">📡</span>xAPI Demo</a>
+  <a href="demo-storyboard.html"><span class="dd-icon">🗂️</span>Storyboard Gen</a>
+  <a href="id-model-selector.html"><span class="dd-icon">🧭</span>ID Selector</a>
+  <a href="demo-template.html"><span class="dd-icon">🔧</span>Patterns</a>
+  <span class="mob-section-title">Contact</span>
+  <a href="faq.html"><span class="dd-icon">❓</span>FAQ</a>
+  <a href="sitemap.html"><span class="dd-icon">🗺️</span>Sitemap</a>
+  <a href="contact.html"><span class="dd-icon">✉️</span>Let's Talk</a>
+</div>
+
+<!-- HERO -->
+<div class="cs-hero">
+  <img class="cs-hero-bg" src="https://lh3.googleusercontent.com/sitesv/AA5AbUBwf5RZgw4q7TVGbgROkHXCiXDArm4QPVqMN92V1uKb7IDdcCHuPisz_OgOljHTvl5laslAXr4sRnAln2B760Ldz4aVqHeCFMIh0XcbCaS8_H903BWIimQ1JWa1VpWZ-ed1kolHz5eMFbiEuTIehENWLz-OArZOR9Vc8-sv8POPVY1hsmbYkYOSqwosnhUt7GBoSCG3uOB3wZvj4WJ2YJVX003xBoW6rWiMPCo=w1280" alt="" onerror="this.style.display='none'">
+  <div class="cs-hero-overlay"></div>
+  <div class="cs-hero-content">
+    <div class="cs-category">Case Study · Compliance · Banking</div>
+    <h1 class="cs-title">Anti-Money<br>Laundering</h1>
+    <p class="cs-subtitle">How scenario-based design reduced violations by 34% — and why the original 45-slide course was the wrong solution to the right problem.</p>
+    <div class="cs-meta-bar">
+      <div class="cs-meta-item"><div class="cs-meta-label">Industry</div><div class="cs-meta-val">Banking &amp; Finance</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Duration</div><div class="cs-meta-val">22 minutes</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">ID Model</div><div class="cs-meta-val">ADDIE + Action Mapping</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Tool</div><div class="cs-meta-val">Storyline 360</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Format</div><div class="cs-meta-val">SCORM 1.2</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Languages</div><div class="cs-meta-val">English, Hindi, Arabic</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- RESULTS FIRST -->
+<div style="background:var(--bg3);border-bottom:1px solid var(--border)">
+  <div class="cs-results" style="margin:0;max-width:none">
+    <div class="cs-result"><span class="cs-result-n">34%</span><span class="cs-result-l">Reduction in AML violations (6 months post-launch)</span></div>
+    <div class="cs-result"><span class="cs-result-n">89%</span><span class="cs-result-l">First-attempt pass rate (up from 61% on previous course)</span></div>
+    <div class="cs-result"><span class="cs-result-n">82%</span><span class="cs-result-l">Content cut from client's original brief</span></div>
+  </div>
+</div>
+
+<div class="cs-section">
+  <div class="eyebrow g">The Problem</div>
+  <h2 class="cs-section-title">The client had a course. They had a compliance problem.<br>These were not the same thing.</h2>
+  <div class="cs-body">
+    <p>A retail banking client approached me with a request to "update their AML training." What they handed over was a 45-slide course that systematically walked employees through the three stages of money laundering, with definitions, regulatory references, and a 10-question multiple choice quiz at the end. Completion rates were 94%. Compliance violations were still occurring.</p>
+    <p>The violation data told a different story than the completion data. Employees were completing the course and passing the quiz — because the quiz tested whether they'd read the slides, not whether they could make the right decision in a real situation. The actual violations weren't happening because employees didn't know what money laundering was. They were happening because employees were approving high-risk transactions without escalating — either because the urgency pressure felt justified, or because they weren't confident they'd correctly identified the red flags.</p>
+    <div class="cs-highlight">The course was answering the wrong question. "What is AML?" was already answered. The question that needed answering was: <strong>"When I'm under pressure from a client to approve this transaction, what do I actually do?"</strong></div>
+    <p>This is the single most common design failure in compliance training. The training addresses awareness. The problem requires application.</p>
+  </div>
+
+  <div class="eyebrow g" style="margin-top:3rem">The Approach</div>
+  <h2 class="cs-section-title">Action Mapping first. Content second.</h2>
+  <div class="cs-body">
+    <p>The first step was to reframe the brief entirely. Instead of "update the AML course," the project became: "eliminate the specific decision failures that are generating compliance violations." This required a conversation with the compliance team that uncovered the actual violation patterns — not a generic AML overview, but specific scenario types where staff were making wrong calls.</p>
+    <p>The action mapping process identified three decision types that accounted for 84% of violations:</p>
+    <h3>1. Unusual transaction pattern under client pressure</h3>
+    <p>A longstanding client requests an unusual transaction and implies the relationship is at risk if it's delayed. The employee approves without triggering the escalation protocol — because the social pressure feels more immediate than the regulatory obligation.</p>
+    <h3>2. Incomplete Customer Due Diligence under time pressure</h3>
+    <p>A new account opening with minor documentation gaps. The employee approves with a mental note to "follow up later" — because the queue is long and the gap seems minor. The follow-up never happens.</p>
+    <h3>3. Change of account instruction without verification</h3>
+    <p>A customer contacts the branch to change their registered account number, citing an emergency. The employee processes the change using the new contact details provided by the caller — which is the classic Authorised Push Payment fraud pattern.</p>
+    <div class="cs-highlight">Each of these failures isn't a knowledge gap. Every employee who made these errors knew the AML policy. The failures happened under conditions of pressure, ambiguity, and time constraints — exactly the conditions that classroom-style training doesn't prepare people for. <strong>The solution had to put learners inside those conditions.</strong></div>
+  </div>
+
+  <div class="eyebrow g" style="margin-top:3rem">The Design</div>
+  <h2 class="cs-section-title">22 minutes. 3 scenarios. No policy slides.</h2>
+  <div class="cs-body">
+    <p>The redesigned course contained no policy information slides. None. Everything the learner needed to know was embedded in the scenarios themselves — delivered at the point of need, not front-loaded as abstract content they'd forget before ever encountering a real transaction.</p>
+    <h3>Course architecture</h3>
+    <p>The course opened directly with a scenario — no welcome slide, no objectives list, no "by the end of this course you will be able to..." The opening scene placed the learner inside a real conversation with a frustrated client. No context provided. Just the situation.</p>
+    <p>Each of the three core scenarios followed a deliberate structure:</p>
+    <ul style="font-family:var(--sans);font-size:.9rem;line-height:1.8;color:var(--text2);margin:.75rem 0 1.25rem 1.5rem">
+      <li style="margin-bottom:.5rem"><strong style="color:var(--text)">Hook:</strong> Immersive scene-setting with character dialogue, establishing the pressure or ambiguity the learner would face</li>
+      <li style="margin-bottom:.5rem"><strong style="color:var(--text)">Decision point:</strong> Three realistic choices — each a decision real employees have made, with genuine rationale behind each wrong answer</li>
+      <li style="margin-bottom:.5rem"><strong style="color:var(--text)">Consequence branch:</strong> Wrong choices led to realistic outcomes — a compliance audit, a client complaint, a reputational incident — not a cartoon "Wrong! Try again"</li>
+      <li style="margin-bottom:.5rem"><strong style="color:var(--text)">Corrective guidance:</strong> After every choice (correct or incorrect), the course explained the regulatory principle at play — information the learner now needed because they'd just encountered the situation that made it relevant</li>
+      <li><strong style="color:var(--text)">Minimum necessary information:</strong> Regulatory references, policy text, and supplementary detail available via expandable "Need to know" panels — accessible but not compulsory</li>
+    </ul>
+    <h3>JavaScript interactions</h3>
+    <p>Custom JavaScript handled the branching logic — Storyline's built-in branching would have required duplicating slides for each path. The JS implementation used a decision-tree data structure that tracked the learner's choices and accumulated a risk score, which drove the final outcome screen and personalised the debriefing content based on which specific errors (if any) the learner had made.</p>
+    <h3>Accessibility implementation</h3>
+    <p>All three scenarios required keyboard navigation throughout — choice selection, consequence viewing, and information panel expansion. Tab order was explicitly set on every interactive slide. Character dialogue was provided both as audio narration and on-screen text. All images used descriptive alt text and were excluded from tab order. The course was tested with NVDA screen reader before delivery.</p>
+  </div>
+
+  <div class="eyebrow g" style="margin-top:3rem">The Results</div>
+  <h2 class="cs-section-title">Behaviour change, not completion data.</h2>
+  <div class="cs-body">
+    <p>The compliance team ran a 6-month post-launch analysis comparing violation rates with the same period in the previous year. The three violation types targeted by the course dropped by 34% in aggregate. The first-attempt pass rate on the assessment rose from 61% (previous course) to 89% — and more importantly, the assessment was now testing application (scenario-based decisions) rather than recall (multiple choice definitions).</p>
+    <p>Learner feedback surveys showed a significant shift in perceived relevance: 87% of learners rated the new course as "directly relevant to my daily work" compared to 34% for the previous version. The most frequent open-text response: "This is the first compliance course I've done that actually showed me a situation I've been in."</p>
+    <div class="cs-highlight">The content cut was the most significant design decision in the project. The original brief contained 42 information points the client wanted to include. After action mapping, 8 remained — delivered contextually within scenarios rather than as slides. <strong>The other 34 were genuinely unnecessary to support the decisions the course was designed to improve.</strong></div>
+    <p>The localised versions (Hindi and Arabic) were produced using the same storyboard structure, with the Arabic version requiring full RTL layout adaptation and a separate audio recording session. Both passed regional compliance review on first submission.</p>
+  </div>
+
+  <div class="eyebrow g" style="margin-top:3rem">What I Would Do Differently</div>
+  <h2 class="cs-section-title">Honest reflection.</h2>
+  <div class="cs-body">
+    <p>The course would have benefited from a fourth scenario focusing on digital transaction channels — the original three scenarios were all branch-based, but a significant proportion of AML risk in this organisation sits in online banking operations. This was identified during the discovery phase but cut for timeline reasons. A module two covering digital channels was scoped and delivered in the following quarter.</p>
+    <p>The Kirkpatrick Level 3 evaluation (behaviour observation) was self-reported by managers rather than directly observed, which introduces reporting bias. A more rigorous evaluation would have used a standardised observation checklist completed by trained observers — something worth building into the project scope from the start rather than designing retrospectively.</p>
+  </div>
+
+  <!-- TECH STACK -->
+  <div style="background:var(--bg2);border:1px solid var(--border);padding:2rem;margin-top:3rem">
+    <div style="font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--blue2);margin-bottom:1.1rem">Technical Stack</div>
+    <div class="tags">
+      <span class="tag tag-b">Articulate Storyline 360</span>
+      <span class="tag">SCORM 1.2</span>
+      <span class="tag tag-g">Action Mapping</span>
+      <span class="tag tag-g">ADDIE</span>
+      <span class="tag tag-t">WCAG 2.1 AA</span>
+      <span class="tag tag-b">Custom JavaScript</span>
+      <span class="tag">Branching scenarios</span>
+      <span class="tag">Arabic RTL</span>
+      <span class="tag">Hindi localisation</span>
+      <span class="tag">NVDA screen reader tested</span>
+      <span class="tag">Kirkpatrick L1–L3</span>
+    </div>
+  </div>
+</div>
+
+<!-- NEXT/PREV -->
+<div class="cs-nav">
+  <a href="work.html" class="cs-nav-link">← All Projects</a>
+  <a href="case-study-bees.html" class="cs-nav-link">Next Case Study: Bees &amp; Beehives →</a>
+</div>
+
+<div class="cta-band">
+  <div class="eyebrow">Want results like these?</div>
+  <div class="cta-band-title">Let's talk about<br><em>your compliance training.</em></div>
+  <a href="contact.html" class="btn-cta-dark">Start a Project →</a>
+  <a href="services.html" class="btn-cta-dark">View Services →</a>
+  <a href="work.html" class="btn-cta-outline">See All Projects</a>
+</div>
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-brand"><span class="logo-pulse"></span>MK. Madhu Kumar Sikilammetla</div><div class="footer-desc">Instructional Designer &amp; eLearning Developer. 7+ years building accessible, multilingual, SCORM/xAPI-compliant learning experiences.</div></div>
+    <div class="footer-col"><div class="footer-col-title">Portfolio</div><a href="work.html">All Projects</a><a href="case-study-aml.html">Case Study: AML</a><a href="case-study-bees.html">Case Study: Bees</a><a href="certifications.html">Certifications</a></div>
+    <div class="footer-col"><div class="footer-col-title">Knowledge</div><a href="articles.html">Articles</a><a href="resources.html">Free Templates</a><a href="id-frameworks.html">ID Cheat Sheet</a><a href="sl-snippets.html">JS Snippets</a></div>
+    <div class="footer-col"><div class="footer-col-title">Contact</div><a href="contact.html">Let's Talk</a><a href="process.html">Process</a><a href="services.html">Services</a><a href="https://www.linkedin.com/in/madhu-kumar-sikilammetla-22694598" target="_blank">LinkedIn</a><a href="faq.html">FAQ</a><a href="sitemap.html">Sitemap</a></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2026 Madhu Kumar Sikilammetla</div><div class="footer-social"><a href="https://www.linkedin.com/in/madhu-kumar-sikilammetla-22694598" target="_blank">LinkedIn</a><a href="https://drive.google.com/file/d/1wsBtUEBdSjdLwK7CxFID6ttaW6afTxf6/view" target="_blank">CV</a><a href="mailto:madhukumar5290@gmail.com">Email</a></div></div>
+</footer>
+<script src="main.js?v=6"></script>
+</body>
+</html>

@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Interaction Patterns | Madhu Kumar Sikilammetla</title>
+<link rel="stylesheet" href="style.css?v=6">
+<style>
+.demo-wrap{max-width:1000px;margin:0 auto;padding:5rem var(--ph)}
+.pattern-tabs{display:flex;border-bottom:1px solid var(--border);margin-top:3rem;overflow-x:auto}
+.pt-btn{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:none;border:none;border-bottom:2px solid transparent;padding:.9rem 1.4rem;cursor:pointer;white-space:nowrap;transition:all .2s;flex-shrink:0}
+.pt-btn:hover{color:var(--text)}.pt-btn.on{color:var(--gold);border-bottom-color:var(--gold)}
+.pattern-panel{display:none;padding:3rem 0;animation:pfade .3s ease}.pattern-panel.on{display:block}
+@keyframes pfade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.p-header{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-bottom:3rem;align-items:start}
+.p-title{font-family:var(--serif);font-size:2rem;font-weight:400;color:var(--text);line-height:1.2;margin-bottom:.6rem}
+.p-title em{font-style:italic;color:var(--gold)}
+.p-desc{font-family:var(--sans);font-size:.9rem;line-height:1.75;color:var(--text2)}
+.p-meta-label{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:.35rem;margin-top:1.1rem}
+.p-meta-val{font-family:var(--sans);font-size:.85rem;color:var(--text);line-height:1.5}
+.p-demo-label{font-family:var(--mono);font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:1.25rem;display:flex;align-items:center;gap:.6rem}
+.p-demo-label::before{content:'▶';color:var(--gold);font-size:.5rem}
+
+/* TABS interaction */
+.tabs-bar{display:flex;border-bottom:1px solid var(--border);margin-bottom:0}
+.tab-item{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;padding:.85rem 1.25rem;cursor:pointer;border-bottom:2px solid transparent;color:var(--muted);transition:all .2s;user-select:none}
+.tab-item:hover{color:var(--text)}.tab-item.on{color:var(--gold);border-bottom-color:var(--gold)}
+.tab-content-item{display:none;background:var(--bg2);border:1px solid var(--border);border-top:none;padding:2rem;animation:pfade .2s ease}
+.tab-content-item.on{display:block}
+.tab-title{font-family:var(--sans);font-size:.95rem;font-weight:600;color:var(--text);margin-bottom:.6rem}
+.tab-body{font-family:var(--sans);font-size:.87rem;line-height:1.7;color:var(--text2)}
+
+/* ACCORDION interaction */
+.accordion-item{border:1px solid var(--border);margin-bottom:2px}
+.accordion-header{padding:1.1rem 1.4rem;font-family:var(--sans);font-size:.9rem;color:var(--text);display:flex;justify-content:space-between;align-items:center;cursor:pointer;background:var(--surface);transition:background .2s;user-select:none}
+.accordion-header:hover{background:var(--surface2)}
+.accordion-icon{color:var(--muted);transition:transform .3s;font-size:.8rem}
+.accordion-item.open .accordion-icon{transform:rotate(45deg)}
+.accordion-body{padding:0 1.4rem;font-family:var(--sans);font-size:.87rem;color:var(--text2);max-height:0;overflow:hidden;transition:max-height .35s,padding .35s;line-height:1.7}
+.accordion-item.open .accordion-body{max-height:200px;padding:.85rem 1.4rem}
+
+/* SCENARIO interaction */
+.scenario-card{background:var(--bg2);border:1px solid var(--border);padding:2rem}
+.scenario-q{font-family:var(--sans);font-size:.95rem;color:var(--text);margin-bottom:1.25rem;line-height:1.5}
+.scenario-opts{display:flex;flex-direction:column;gap:.5rem}
+.s-opt{background:var(--surface);border:1px solid var(--border);padding:.9rem 1.25rem;cursor:pointer;display:flex;align-items:flex-start;gap:.85rem;transition:all .2s;font-family:var(--sans);font-size:.85rem;color:var(--text);text-align:left;width:100%}
+.s-opt:hover{border-color:var(--border2);background:var(--surface2)}
+.s-opt.selected{border-color:var(--blue);background:rgba(123,147,240,.07)}
+.s-opt.correct{border-color:var(--teal);background:rgba(47,204,163,.07)}
+.s-opt.wrong{border-color:var(--red);background:rgba(232,99,111,.07)}
+.s-opt-key{font-family:var(--mono);font-size:.62rem;color:var(--blue);flex-shrink:0;margin-top:.1rem}
+.s-fb{padding:.9rem 1.25rem;margin-top:.75rem;font-family:var(--sans);font-size:.85rem;line-height:1.6;display:none}
+.s-fb.show{display:block}
+.s-fb.ok{background:rgba(47,204,163,.08);border:1px solid rgba(47,204,163,.2);color:var(--teal)}
+.s-fb.bad{background:rgba(232,99,111,.08);border:1px solid rgba(232,99,111,.2);color:var(--red)}
+.s-retry{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);background:none;border:1px solid rgba(232,169,74,.3);padding:.4rem .85rem;cursor:pointer;margin-top:.75rem;display:none;transition:all .2s}
+.s-retry:hover{background:var(--gold-dim)}
+.s-retry.show{display:inline-block}
+
+/* DRAG AND DROP interaction */
+.dnd-wrap{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.dnd-source{background:var(--bg2);border:1px solid var(--border);padding:1.25rem;min-height:160px}
+.dnd-target{background:var(--bg2);border:2px dashed var(--border);padding:1.25rem;min-height:160px;transition:border-color .2s}
+.dnd-target.drag-over{border-color:var(--gold);background:var(--gold-dim)}
+.dnd-target.correct{border-color:var(--teal);border-style:solid}
+.dnd-target.wrong{border-color:var(--red);border-style:solid}
+.dnd-area-label{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.85rem}
+.dnd-chip{background:var(--surface);border:1px solid var(--border2);padding:.55rem 1rem;font-family:var(--sans);font-size:.82rem;color:var(--text);cursor:grab;margin-bottom:.5rem;transition:all .2s;user-select:none;display:flex;align-items:center;gap:.5rem}
+.dnd-chip:hover{border-color:var(--gold);background:var(--surface2)}
+.dnd-chip.dragging{opacity:.5;cursor:grabbing}
+.dnd-chip.dropped{cursor:default}
+.dnd-chip .dnd-icon{font-size:.85rem;flex-shrink:0}
+.dnd-result{font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;color:var(--muted);margin-top:.75rem;text-align:center}
+.dnd-check-btn{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--bg);background:var(--gold);border:none;padding:.65rem 1.25rem;cursor:pointer;margin-top:1rem;display:block;width:100%;transition:opacity .2s}
+.dnd-check-btn:hover{opacity:.88}
+.dnd-check-btn:disabled{opacity:.4;cursor:not-allowed}
+
+/* CODE PANEL */
+.code-panel{background:var(--bg);border:1px solid var(--border);margin-top:2.5rem}
+.code-panel-header{background:var(--surface);border-bottom:1px solid var(--border);padding:.65rem 1.1rem;display:flex;align-items:center;justify-content:space-between}
+.code-lang{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.code-copy{font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);background:none;border:1px solid rgba(232,169,74,.3);padding:.2rem .6rem;cursor:pointer;transition:all .2s}
+.code-copy:hover{background:var(--gold-dim)}
+.code-copy.done{color:var(--teal);border-color:rgba(47,204,163,.3)}
+pre.code-block{padding:1.25rem;overflow-x:auto;font-family:var(--mono);font-size:.76rem;line-height:1.75;color:var(--text);margin:0}
+.kw{color:#c792ea}.fn{color:#82aaff}.str{color:#c3e88d}.cmm{color:#546e7a;font-style:italic}.num{color:#f78c6c}.var{color:#ffcb6b}
+
+.hs-frame{background:var(--bg2);border:1px solid var(--border);padding:1.25rem}
+.hs-diagram{border-radius:4px;overflow:hidden}
+.hs-diagram{position:relative;aspect-ratio:16/10;background:linear-gradient(135deg,#171C28,#0f131c);border-bottom:1px solid var(--border2)}
+.hs-diagram::before{content:'';position:absolute;inset:12%;border:2px solid rgba(123,147,240,.35);border-radius:10px;pointer-events:none}
+.hs-diagram::after{content:'';position:absolute;top:20%;left:20%;right:20%;bottom:55%;background:rgba(47,204,163,.12);border:1px solid rgba(47,204,163,.4);border-radius:4px;pointer-events:none}
+.hs-dot{position:absolute;width:26px;height:26px;border-radius:50%;background:var(--gold);border:3px solid rgba(232,169,74,.3);color:#171006;font-family:var(--mono);font-size:.7rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transform:translate(-50%,-50%);transition:all .2s;animation:hspulse 2s ease infinite;padding:0}
+.hs-dot:hover,.hs-dot.seen{animation:none;background:var(--teal);border-color:rgba(47,204,163,.3)}
+@keyframes hspulse{0%,100%{box-shadow:0 0 0 0 rgba(232,169,74,.4)}50%{box-shadow:0 0 0 8px rgba(232,169,74,0)}}
+.hs-panel{padding:1.25rem;min-height:90px;font-family:var(--sans);font-size:.83rem;line-height:1.6;color:var(--text2)}
+.hs-panel-empty{color:var(--muted);font-style:italic}
+.hs-panel-title{font-family:var(--sans);font-weight:600;color:var(--gold);margin-bottom:.4rem;display:block}
+.hs-progress{font-family:var(--mono);font-size:.55rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:.75rem;text-align:right}
+.sort-frame{background:var(--bg2);border:1px solid var(--border);padding:1.5rem}
+.sort-list{list-style:none;display:flex;flex-direction:column;gap:.5rem;margin:0}
+.sort-item{display:flex;align-items:center;gap:.75rem;background:var(--surface);border:1px solid var(--border2);padding:.85rem 1rem;cursor:grab;transition:all .2s}
+.sort-item.dragging{opacity:.4}
+.sort-item.correct{border-color:var(--teal);background:rgba(47,204,163,.08)}
+.sort-item.incorrect{border-color:#E8636F;background:rgba(232,99,111,.1)}
+.sort-handle{color:var(--muted);font-size:.9rem;flex-shrink:0}
+.sort-text{flex:1;font-family:var(--sans);font-size:.85rem;color:var(--text)}
+.sort-arrows{display:flex;gap:.3rem;flex-shrink:0}
+.sort-arrows button{width:26px;height:26px;border:1px solid var(--border2);background:var(--bg2);color:var(--text2);cursor:pointer;border-radius:4px;font-size:.7rem;font-family:var(--sans)}
+.sort-arrows button:hover{border-color:var(--gold);color:var(--gold)}
+@media(max-width:700px){.p-header{grid-template-columns:1fr}.dnd-wrap{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="progress-bar"></div>
+<button class="btt" aria-label="Back to top">↑</button>
+<nav>
+  <button class="nav-ham" aria-label="Open menu"><span></span><span></span><span></span></button>
+  <a class="nav-logo" href="index.html"><span class="logo-pulse"></span>MK.</a>
+  <div class="nav-spacer"></div>
+  <ul class="nav-links">
+    <li>
+      <button>Work <span class="nav-chevron">▾</span></button>
+      <div class="nav-dd">
+        <a href="work.html"><span class="dd-icon">🗂️</span>All Projects</a>
+        <a href="case-study-aml.html"><span class="dd-icon">📋</span>Case Study: AML</a>
+        <a href="case-study-bees.html"><span class="dd-icon">🐝</span>Case Study: Bees</a>
+      </div>
+    </li>
+    <li>
+      <button>About <span class="nav-chevron">▾</span></button>
+      <div class="nav-dd">
+        <a href="about.html"><span class="dd-icon">👤</span>About Me</a>
+        <a href="buzz.html"><span class="dd-icon">💬</span>Buzz &amp; Testimonials</a>
+        <a href="certifications.html"><span class="dd-icon">🎓</span>Certifications</a>
+      </div>
+    </li>
+    <li><a href="process.html">Process</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li>
+      <button>Knowledge <span class="nav-chevron">▾</span></button>
+      <div class="nav-dd">
+        <a href="articles.html"><span class="dd-icon">✍️</span>Articles</a>
+        <a href="id-frameworks.html"><span class="dd-icon">🧭</span>ID Cheat Sheet</a>
+        <a href="resources.html"><span class="dd-icon">📦</span>Free Resources</a>
+        <a href="glossary.html"><span class="dd-icon">📖</span>Glossary</a>
+        <a href="sitemap.html"><span class="dd-icon">🗺️</span>Sitemap</a>
+      </div>
+    </li>
+    <li>
+      <button>Tools <span class="nav-chevron">▾</span></button>
+      <div class="nav-mega">
+        <div class="nav-mega-col">
+          <span class="nav-mega-title">AI &amp; Demos</span>
+          <a href="ai-analyzer.html"><span class="dd-icon">🤖</span>AI Course Analyzer<span class="dd-new">New</span></a>
+          <a href="lms-demo.html"><span class="dd-icon">🎓</span>LMS Demo</a>
+          <a href="demo-xapi.html"><span class="dd-icon">📡</span>xAPI Demo</a>
+          <a href="demo-storyboard.html"><span class="dd-icon">🗂️</span>Storyboard Gen</a>
+          <a href="demo-template.html"><span class="dd-icon">🔧</span>Patterns</a>
+        </div>
+        <div class="nav-mega-col">
+          <span class="nav-mega-title">Reference Tools</span>
+          <a href="sl-snippets.html"><span class="dd-icon">⚡</span>JS Snippets</a>
+          <a href="accessibility-guide.html"><span class="dd-icon">♿</span>A11y Guide</a>
+          <a href="effort-estimator.html"><span class="dd-icon">📊</span>Effort Estimator</a>
+          <a href="spot-the-bug.html"><span class="dd-icon">🐛</span>Spot the Bug</a>
+          <a href="id-model-selector.html"><span class="dd-icon">🧭</span>ID Selector</a>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">☀️</button>
+  <a href="contact.html" class="nav-cta">Let's Talk</a>
+</nav>
+<div class="mobile-menu">
+  <span class="mob-section-title">Portfolio</span>
+  <a href="index.html"><span class="dd-icon">🏠</span>Home</a>
+  <a href="work.html"><span class="dd-icon">🗂️</span>All Projects</a>
+  <a href="case-study-aml.html"><span class="dd-icon">📋</span>Case Study: AML</a>
+  <a href="case-study-bees.html"><span class="dd-icon">🐝</span>Case Study: Bees</a>
+  <span class="mob-section-title">About</span>
+  <a href="about.html"><span class="dd-icon">👤</span>About Me</a>
+  <a href="buzz.html"><span class="dd-icon">💬</span>Buzz &amp; Testimonials</a>
+  <a href="certifications.html"><span class="dd-icon">🎓</span>Certifications</a>
+  <span class="mob-section-title">Services</span>
+  <a href="process.html"><span class="dd-icon">⚙️</span>Process</a>
+  <a href="services.html"><span class="dd-icon">📋</span>Services</a>
+  <span class="mob-section-title">Knowledge</span>
+  <a href="articles.html"><span class="dd-icon">✍️</span>Articles</a>
+  <a href="id-frameworks.html"><span class="dd-icon">🧭</span>ID Cheat Sheet</a>
+  <a href="resources.html"><span class="dd-icon">📦</span>Free Resources</a>
+  <a href="glossary.html"><span class="dd-icon">📖</span>Glossary</a>
+  <span class="mob-section-title">Tools &amp; Demos</span>
+  <a href="ai-analyzer.html"><span class="dd-icon">🤖</span>AI Course Analyzer</a>
+  <a href="sl-snippets.html"><span class="dd-icon">⚡</span>JS Snippets</a>
+  <a href="lms-demo.html"><span class="dd-icon">🎓</span>LMS Demo</a>
+  <a href="accessibility-guide.html"><span class="dd-icon">♿</span>A11y Guide</a>
+  <a href="effort-estimator.html"><span class="dd-icon">📊</span>Effort Estimator</a>
+  <a href="spot-the-bug.html"><span class="dd-icon">🐛</span>Spot the Bug</a>
+  <a href="demo-xapi.html"><span class="dd-icon">📡</span>xAPI Demo</a>
+  <a href="demo-storyboard.html"><span class="dd-icon">🗂️</span>Storyboard Gen</a>
+  <a href="id-model-selector.html"><span class="dd-icon">🧭</span>ID Selector</a>
+  <a href="demo-template.html"><span class="dd-icon">🔧</span>Patterns</a>
+  <span class="mob-section-title">Contact</span>
+  <a href="faq.html"><span class="dd-icon">❓</span>FAQ</a>
+  <a href="sitemap.html"><span class="dd-icon">🗺️</span>Sitemap</a>
+  <a href="contact.html"><span class="dd-icon">✉️</span>Let's Talk</a>
+</div>
+
+<div class="page-hero">
+  <div class="hero-bg-dots"></div>
+  <div class="eyebrow reveal">Interactive Demo</div>
+  <h1 class="display reveal d1">Interaction <em>Patterns</em></h1>
+  <p style="font-family:var(--sans);font-size:1rem;color:var(--text2);max-width:580px;margin-top:.85rem;line-height:1.75" class="reveal d2">Six live eLearning interaction patterns — fully functional, built in plain HTML/CSS/JS. Each includes the Storyline implementation notes and the JavaScript logic explained. Click a tab to try it.</p>
+</div>
+
+<div class="demo-wrap">
+  <div class="pattern-tabs reveal">
+    <button class="pt-btn on" data-p="tabs" onclick="switchPattern(this)">🗂 Tabs</button>
+    <button class="pt-btn" data-p="accordion" onclick="switchPattern(this)">📋 Accordion</button>
+    <button class="pt-btn" data-p="scenario" onclick="switchPattern(this)">🎭 Branching Scenario</button>
+    <button class="pt-btn" data-p="dnd" onclick="switchPattern(this)">🖐 Drag &amp; Drop</button>
+    <button class="pt-btn" data-p="hotspot" onclick="switchPattern(this)">📍 Click-Reveal Hotspots</button>
+    <button class="pt-btn" data-p="sort" onclick="switchPattern(this)">🔢 Sequence Sorting</button>
+  </div>
+
+  <!-- TABS PATTERN -->
+  <div class="pattern-panel on" id="p-tabs">
+    <div class="p-header">
+      <div>
+        <h2 class="p-title">Tabbed <em>Navigation</em></h2>
+        <p class="p-desc">Tabs let learners explore related content at their own pace without overwhelming them with everything at once. Best for categorised content where order doesn't matter — tools, departments, product features.</p>
+        <div class="p-meta-label">Best for</div><div class="p-meta-val">Categorised content, reference material, comparing options</div>
+        <div class="p-meta-label">Bloom's Level</div><div class="p-meta-val">L1–L2 · Remember / Understand</div>
+        <div class="p-meta-label">Storyline Setup</div><div class="p-meta-val">One base layer + separate content layers. Variables control which layer is visible. JavaScript fires SetVar on click.</div>
+      </div>
+      <div>
+        <div class="p-demo-label">Live Demo — Click the tabs</div>
+        <div class="tabs-bar">
+          <div class="tab-item on" onclick="switchTab(this,'t1')">GDPR</div>
+          <div class="tab-item" onclick="switchTab(this,'t2')">AML</div>
+          <div class="tab-item" onclick="switchTab(this,'t3')">Data Security</div>
+          <div class="tab-item" onclick="switchTab(this,'t4')">Code of Conduct</div>
+        </div>
+        <div class="tab-content-item on" id="t1">
+          <div class="tab-title">GDPR — General Data Protection Regulation</div>
+          <div class="tab-body">GDPR governs how personal data about EU citizens is collected, stored, processed, and deleted. Every employee who handles customer data has direct compliance obligations under GDPR — not just the data protection team. Key obligations: lawful basis for processing, data minimisation, right to erasure, breach notification within 72 hours.</div>
+        </div>
+        <div class="tab-content-item" id="t2">
+          <div class="tab-title">AML — Anti-Money Laundering</div>
+          <div class="tab-body">AML regulations require financial institutions to detect, report, and prevent money laundering. Key requirements include Customer Due Diligence (CDD), Suspicious Activity Reports (SAR) filed within 30 days, and transaction monitoring. Every employee in a client-facing role must understand the red flags and escalation process.</div>
+        </div>
+        <div class="tab-content-item" id="t3">
+          <div class="tab-title">Data Security</div>
+          <div class="tab-body">Data security policies govern how digital information is protected against unauthorised access, disclosure, modification, or destruction. For employees, this means: using approved devices, not sharing credentials, encrypting sensitive data in transit, and reporting suspicious activity within 24 hours. The biggest risk is human error — not sophisticated attacks.</div>
+        </div>
+        <div class="tab-content-item" id="t4">
+          <div class="tab-title">Code of Conduct</div>
+          <div class="tab-body">The Code of Conduct defines the behavioural and ethical standards expected of every employee. It covers conflicts of interest, gifts and entertainment limits, workplace behaviour, social media use, and whistleblowing. When in doubt: if you wouldn't be comfortable seeing it on the front page of a newspaper, don't do it.</div>
+        </div>
+      </div>
+    </div>
+    <div class="code-panel">
+      <div class="code-panel-header"><span class="code-lang">JavaScript — Storyline Tab Logic</span><button class="code-copy" onclick="copyCode(this,'tabs-code')">📋 Copy</button></div>
+      <pre class="code-block" id="tabs-code"><span class="cmm">// Tab switching in Storyline — runs on each tab button click</span>
+<span class="kw">var</span> player = GetPlayer();
+
+<span class="cmm">// Set which tab is active (1–4)</span>
+<span class="kw">function</span> <span class="fn">activateTab</span>(tabNumber) {
+  player.<span class="fn">SetVar</span>(<span class="str">"ActiveTab"</span>, tabNumber);
+  
+  <span class="cmm">// Hide all layers, show the selected one</span>
+  [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">4</span>].<span class="fn">forEach</span>(<span class="kw">function</span>(n) {
+    player.<span class="fn">SetVar</span>(<span class="str">"ShowTab"</span> + n, n === tabNumber);
+  });
+}
+
+<span class="cmm">// Call from each tab button's Execute JavaScript trigger:</span>
+<span class="fn">activateTab</span>(<span class="num">1</span>); <span class="cmm">// Tab 1 button</span>
+<span class="fn">activateTab</span>(<span class="num">2</span>); <span class="cmm">// Tab 2 button</span></pre>
+    </div>
+  </div>
+
+  <!-- ACCORDION PATTERN -->
+  <div class="pattern-panel" id="p-accordion">
+    <div class="p-header">
+      <div>
+        <h2 class="p-title">Expandable <em>Accordion</em></h2>
+        <p class="p-desc">Accordions let learners choose what to explore without scrolling through walls of text. Perfect for FAQ sections, step-by-step procedures, or glossaries where not everything needs to be read.</p>
+        <div class="p-meta-label">Best for</div><div class="p-meta-val">Procedures, FAQs, reference content, optional detail</div>
+        <div class="p-meta-label">Bloom's Level</div><div class="p-meta-val">L1–L3 · Remember to Apply</div>
+        <div class="p-meta-label">Accessibility Note</div><div class="p-meta-val">Headers must have role="button", tabIndex=0, and respond to Enter/Space. See Accessibility Guide for full implementation.</div>
+      </div>
+      <div>
+        <div class="p-demo-label">Live Demo — Click to expand</div>
+        <div>
+          <div class="accordion-item" onclick="toggleAccordion(this)">
+            <div class="accordion-header" tabindex="0" role="button" aria-expanded="false">What triggers a Suspicious Activity Report (SAR)?<span class="accordion-icon">+</span></div>
+            <div class="accordion-body">A SAR must be filed when you have reasonable grounds to suspect that funds are proceeds of criminal activity or that a transaction may be connected to money laundering or terrorist financing. This includes unusual transaction patterns, inconsistent customer behaviour, or transactions with no apparent business purpose. You must file within 30 days of suspicion arising.</div>
+          </div>
+          <div class="accordion-item" onclick="toggleAccordion(this)">
+            <div class="accordion-header" tabindex="0" role="button" aria-expanded="false">What is the difference between CDD and EDD?<span class="accordion-icon">+</span></div>
+            <div class="accordion-body">Customer Due Diligence (CDD) is the standard verification process applied to all customers — identity verification, understanding the business relationship, and ongoing monitoring. Enhanced Due Diligence (EDD) applies additional scrutiny to high-risk customers: Politically Exposed Persons (PEPs), customers in high-risk jurisdictions, or relationships with complex structures. EDD requires more evidence and senior management approval.</div>
+          </div>
+          <div class="accordion-item" onclick="toggleAccordion(this)">
+            <div class="accordion-header" tabindex="0" role="button" aria-expanded="false">Can I tell a customer they are being investigated?<span class="accordion-icon">+</span></div>
+            <div class="accordion-body">No. This is known as "tipping off" and is a criminal offence under AML legislation. If you suspect money laundering and have filed or are considering filing a SAR, you must not disclose this to the subject of the investigation or any third party. Continue acting normally with the customer until directed otherwise by your compliance team.</div>
+          </div>
+          <div class="accordion-item" onclick="toggleAccordion(this)">
+            <div class="accordion-header" tabindex="0" role="button" aria-expanded="false">What are the penalties for non-compliance?<span class="accordion-icon">+</span></div>
+            <div class="accordion-body">Penalties for AML non-compliance range from regulatory fines (into the billions for major institutions) to criminal prosecution of individual employees. Regulators can also impose business restrictions, licence suspension, or require remediation programmes costing far more than the original fine. Personal liability for compliance officers is increasing year-on-year.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="code-panel">
+      <div class="code-panel-header"><span class="code-lang">JavaScript — Accordion Toggle</span><button class="code-copy" onclick="copyCode(this,'acc-code')">📋 Copy</button></div>
+      <pre class="code-block" id="acc-code"><span class="cmm">// Accessible accordion toggle for Storyline</span>
+<span class="kw">function</span> <span class="fn">toggleAccordion</span>(headerEl) {
+  <span class="kw">var</span> player = GetPlayer();
+  <span class="kw">var</span> body = headerEl.<span class="var">nextElementSibling</span>;
+  <span class="kw">var</span> isOpen = headerEl.<span class="var">classList</span>.<span class="fn">contains</span>(<span class="str">"open"</span>);
+  
+  <span class="cmm">// Close all, open clicked one</span>
+  document.<span class="fn">querySelectorAll</span>(<span class="str">".accordion-header"</span>).<span class="fn">forEach</span>(<span class="kw">function</span>(h) {
+    h.<span class="var">classList</span>.<span class="fn">remove</span>(<span class="str">"open"</span>);
+    h.<span class="fn">setAttribute</span>(<span class="str">"aria-expanded"</span>, <span class="str">"false"</span>);
+    h.<span class="var">nextElementSibling</span>.<span class="var">style</span>.<span class="var">maxHeight</span> = <span class="str">"0"</span>;
+  });
+  
+  <span class="kw">if</span> (!isOpen) {
+    headerEl.<span class="var">classList</span>.<span class="fn">add</span>(<span class="str">"open"</span>);
+    headerEl.<span class="fn">setAttribute</span>(<span class="str">"aria-expanded"</span>, <span class="str">"true"</span>);
+    body.<span class="var">style</span>.<span class="var">maxHeight</span> = body.<span class="var">scrollHeight</span> + <span class="str">"px"</span>;
+    player.<span class="fn">SetVar</span>(<span class="str">"OpenSection"</span>, headerEl.<span class="var">textContent</span>);
+  }
+}
+
+<span class="cmm">// Add keyboard support</span>
+document.<span class="fn">querySelectorAll</span>(<span class="str">".accordion-header"</span>).<span class="fn">forEach</span>(<span class="kw">function</span>(h) {
+  h.<span class="fn">addEventListener</span>(<span class="str">"keydown"</span>, <span class="kw">function</span>(e) {
+    <span class="kw">if</span> (e.<span class="var">key</span> === <span class="str">"Enter"</span> || e.<span class="var">key</span> === <span class="str">" "</span>) {
+      e.<span class="fn">preventDefault</span>();
+      <span class="fn">toggleAccordion</span>(e.<span class="var">target</span>);
+    }
+  });
+});</pre>
+    </div>
+  </div>
+
+  <!-- SCENARIO PATTERN -->
+  <div class="pattern-panel" id="p-scenario">
+    <div class="p-header">
+      <div>
+        <h2 class="p-title">Branching <em>Scenario</em></h2>
+        <p class="p-desc">Branching scenarios are the most effective format for compliance and behaviour-change training. They put learners inside realistic decisions with real consequences — the only format that tests Apply (Bloom's L3) rather than Remember.</p>
+        <div class="p-meta-label">Best for</div><div class="p-meta-val">Compliance, sales conversations, difficult situations, behaviour change</div>
+        <div class="p-meta-label">Bloom's Level</div><div class="p-meta-val">L3–L4 · Apply / Analyse</div>
+        <div class="p-meta-label">ID Model Note</div><div class="p-meta-val">Pair with Action Mapping — every branch represents a real on-the-job decision. Consequences should be realistic, not cartoon.</div>
+      </div>
+      <div>
+        <div class="p-demo-label">Live Demo — Make a decision</div>
+        <div class="scenario-card" id="scenario-card">
+          <div class="scenario-q" id="s-question">You receive an email from a customer asking you to transfer £45,000 to a new account "urgently" because their usual account has been compromised. The customer's voice sounds different on a follow-up call. What do you do?</div>
+          <div class="scenario-opts" id="s-opts">
+            <button class="s-opt" onclick="scenarioAnswer(0)"><span class="s-opt-key">A</span>Process the transfer — the customer confirmed it verbally on the call</button>
+            <button class="s-opt" onclick="scenarioAnswer(1)"><span class="s-opt-key">B</span>Pause the transfer, contact the customer via their registered number to verify, and escalate to your compliance team</button>
+            <button class="s-opt" onclick="scenarioAnswer(2)"><span class="s-opt-key">C</span>Delay the transfer and send an email asking for written confirmation</button>
+          </div>
+          <div class="s-fb" id="s-fb"></div>
+          <button class="s-retry" id="s-retry" onclick="resetScenario()">← Try again</button>
+        </div>
+      </div>
+    </div>
+    <div class="code-panel">
+      <div class="code-panel-header"><span class="code-lang">JavaScript — Branching Logic</span><button class="code-copy" onclick="copyCode(this,'scen-code')">📋 Copy</button></div>
+      <pre class="code-block" id="scen-code"><span class="cmm">// Branching scenario answer handler</span>
+<span class="kw">var</span> player = GetPlayer();
+<span class="kw">var</span> correctAnswer = <span class="num">1</span>; <span class="cmm">// B is correct</span>
+
+<span class="kw">function</span> <span class="fn">handleAnswer</span>(selectedIndex) {
+  <span class="kw">var</span> correct = selectedIndex === correctAnswer;
+  
+  <span class="cmm">// Record the attempt</span>
+  player.<span class="fn">SetVar</span>(<span class="str">"SelectedAnswer"</span>, selectedIndex);
+  player.<span class="fn">SetVar</span>(<span class="str">"AnswerCorrect"</span>, correct);
+  player.<span class="fn">SetVar</span>(<span class="str">"ShowFeedback"</span>, <span class="kw">true</span>);
+  
+  <span class="kw">if</span> (correct) {
+    player.<span class="fn">SetVar</span>(<span class="str">"Score"</span>, player.<span class="fn">GetVar</span>(<span class="str">"Score"</span>) + <span class="num">1</span>);
+    <span class="cmm">// Route to next scenario or success layer</span>
+    player.<span class="fn">GotoSlide</span>(<span class="str">"Scenario 2"</span>);
+  } <span class="kw">else</span> {
+    <span class="cmm">// Show consequence layer, then allow retry or route forward</span>
+    player.<span class="fn">SetVar</span>(<span class="str">"ShowConsequence"</span>, <span class="kw">true</span>);
+  }
+}
+
+<span class="cmm">// Fire xAPI answered statement</span>
+<span class="kw">function</span> <span class="fn">fireAnswerStatement</span>(selected, correct) {
+  <span class="cmm">// Use xAPI snippet from JS Snippets library</span>
+  <span class="cmm">// Actor + "answered" verb + question object + result</span>
+}</pre>
+    </div>
+  </div>
+
+  <!-- DRAG AND DROP PATTERN -->
+  <div class="pattern-panel" id="p-dnd">
+    <div class="p-header">
+      <div>
+        <h2 class="p-title">Drag &amp; Drop — <em>Accessible Build</em></h2>
+        <p class="p-desc">Drag and drop adds interactivity but is the most accessibility-challenging interaction in eLearning. This implementation includes full keyboard fallback — every action performable with Tab, Enter, and Arrow keys.</p>
+        <div class="p-meta-label">Best for</div><div class="p-meta-val">Categorisation, ordering, matching, sorting tasks</div>
+        <div class="p-meta-label">Bloom's Level</div><div class="p-meta-val">L2–L3 · Understand / Apply</div>
+        <div class="p-meta-label">Accessibility Note</div><div class="p-meta-val">Keyboard mode: Tab to chip, Enter to pick up, Tab to target, Enter to drop. See the JS Snippets library for the full accessible implementation.</div>
+      </div>
+      <div>
+        <div class="p-demo-label">Live Demo — Drag items to the correct category</div>
+        <div class="dnd-wrap">
+          <div>
+            <div class="dnd-area-label">Items to sort</div>
+            <div id="dnd-source">
+              <div class="dnd-chip" draggable="true" data-cat="aml" ondragstart="dndStart(event)" ondragend="dndEnd(event)"><span class="dnd-icon">💰</span>Unusual transaction pattern</div>
+              <div class="dnd-chip" draggable="true" data-cat="gdpr" ondragstart="dndStart(event)" ondragend="dndEnd(event)"><span class="dnd-icon">📄</span>Customer data deletion request</div>
+              <div class="dnd-chip" draggable="true" data-cat="aml" ondragstart="dndStart(event)" ondragend="dndEnd(event)"><span class="dnd-icon">🚩</span>No apparent business purpose</div>
+              <div class="dnd-chip" draggable="true" data-cat="gdpr" ondragstart="dndStart(event)" ondragend="dndEnd(event)"><span class="dnd-icon">🔒</span>Data breach notification</div>
+              <div class="dnd-chip" draggable="true" data-cat="aml" ondragstart="dndStart(event)" ondragend="dndEnd(event)"><span class="dnd-icon">👤</span>PEP identification</div>
+              <div class="dnd-chip" draggable="true" data-cat="gdpr" ondragstart="dndStart(event)" ondragend="dndEnd(event)"><span class="dnd-icon">📊</span>Lawful basis for processing</div>
+            </div>
+          </div>
+          <div>
+            <div class="dnd-area-label" style="color:var(--blue)">AML Compliance</div>
+            <div class="dnd-target" id="drop-aml" ondragover="dndOver(event)" ondragleave="dndLeave(event)" ondrop="dndDrop(event,'aml')"></div>
+            <div class="dnd-area-label" style="color:var(--teal);margin-top:1rem">GDPR Compliance</div>
+            <div class="dnd-target" id="drop-gdpr" ondragover="dndOver(event)" ondragleave="dndLeave(event)" ondrop="dndDrop(event,'gdpr')"></div>
+          </div>
+        </div>
+        <button class="dnd-check-btn" id="dnd-check" onclick="checkDnd()" disabled>Check Answers →</button>
+        <div class="dnd-result" id="dnd-result"></div>
+      </div>
+    </div>
+    <div class="code-panel">
+      <div class="code-panel-header"><span class="code-lang">JavaScript — Accessible Drag & Drop</span><button class="code-copy" onclick="copyCode(this,'dnd-code')">📋 Copy</button></div>
+      <pre class="code-block" id="dnd-code"><span class="cmm">// Accessible drag and drop with keyboard fallback</span>
+<span class="kw">var</span> player = GetPlayer();
+<span class="kw">var</span> dragItem = <span class="kw">null</span>;
+<span class="kw">var</span> keyboardMode = <span class="kw">false</span>;
+<span class="kw">var</span> selectedChip = <span class="kw">null</span>;
+
+<span class="cmm">// Mouse drag events</span>
+<span class="kw">function</span> <span class="fn">onDragStart</span>(e) {
+  dragItem = e.<span class="var">target</span>;
+  e.<span class="var">dataTransfer</span>.<span class="fn">setData</span>(<span class="str">"text/plain"</span>, dragItem.<span class="var">dataset</span>.<span class="var">cat</span>);
+}
+
+<span class="kw">function</span> <span class="fn">onDrop</span>(e, targetZone) {
+  e.<span class="fn">preventDefault</span>();
+  <span class="kw">if</span> (dragItem) {
+    targetZone.<span class="fn">appendChild</span>(dragItem);
+    player.<span class="fn">SetVar</span>(<span class="str">"ItemPlaced"</span>, dragItem.<span class="var">dataset</span>.<span class="var">id</span>);
+    <span class="fn">checkCompletion</span>();
+  }
+}
+
+<span class="cmm">// Keyboard fallback — Tab to navigate, Enter to pick/drop</span>
+document.<span class="fn">querySelectorAll</span>(<span class="str">".dnd-chip"</span>).<span class="fn">forEach</span>(<span class="kw">function</span>(chip) {
+  chip.<span class="var">tabIndex</span> = <span class="num">0</span>;
+  chip.<span class="fn">addEventListener</span>(<span class="str">"keydown"</span>, <span class="kw">function</span>(e) {
+    <span class="kw">if</span> (e.<span class="var">key</span> === <span class="str">"Enter"</span>) {
+      keyboardMode = <span class="kw">true</span>;
+      selectedChip = chip;
+      chip.<span class="fn">setAttribute</span>(<span class="str">"aria-grabbed"</span>, <span class="str">"true"</span>);
+      <span class="cmm">// Move focus to drop targets</span>
+      document.<span class="fn">querySelector</span>(<span class="str">".dnd-target"</span>).<span class="fn">focus</span>();
+    }
+  });
+});</pre>
+    </div>
+  </div>
+</div>
+
+<!-- HOTSPOT PATTERN -->
+<div class="pattern-panel" id="p-hotspot">
+  <div class="p-header">
+    <div>
+      <h2 class="p-title">Click-Reveal <em>Hotspots</em></h2>
+      <p class="p-desc">Learners explore a diagram at their own pace by clicking numbered markers to reveal detail — ideal for equipment walkthroughs, dashboards, or any labelled-diagram content where coverage matters more than sequence.</p>
+      <div class="p-meta-label">Best for</div><div class="p-meta-val">Equipment/UI walkthroughs, labelled diagrams, self-paced exploration</div>
+      <div class="p-meta-label">Bloom's Level</div><div class="p-meta-val">L1–L2 · Remember / Understand</div>
+      <div class="p-meta-label">Accessibility Note</div><div class="p-meta-val">Each hotspot is a real, focusable button with an aria-label — fully operable by keyboard and screen reader, not just mouse hover.</div>
+    </div>
+    <div>
+      <div class="p-demo-label">Live Demo — Click each marker to reveal detail</div>
+      <div class="hs-frame">
+        <div class="hs-diagram">
+          <button class="hs-dot" style="top:24%;left:28%" onclick="hsToggle(this,1)" aria-label="Hotspot 1: Power Switch"><span>1</span></button>
+          <button class="hs-dot" style="top:50%;left:64%" onclick="hsToggle(this,2)" aria-label="Hotspot 2: Status Display"><span>2</span></button>
+          <button class="hs-dot" style="top:74%;left:36%" onclick="hsToggle(this,3)" aria-label="Hotspot 3: Emergency Stop"><span>3</span></button>
+          <button class="hs-dot" style="top:32%;left:82%" onclick="hsToggle(this,4)" aria-label="Hotspot 4: Data Port"><span>4</span></button>
+        </div>
+        <div class="hs-panel" id="hs-panel"><span class="hs-panel-empty">Click a marker to see details here.</span></div>
+      </div>
+      <div class="hs-progress" id="hs-progress">0 of 4 hotspots explored</div>
+    </div>
+  </div>
+  <div class="code-panel">
+    <div class="code-panel-header"><span class="code-lang">JavaScript — Click-Reveal Hotspots</span><button class="code-copy" onclick="copyCode(this,'hs-code')">📋 Copy</button></div>
+    <pre class="code-block" id="hs-code"><span class="cmm">// Click-reveal hotspots with completion tracking</span>
+<span class="kw">var</span> player = GetPlayer();
+<span class="kw">var</span> seen = <span class="kw">new</span> <span class="fn">Set</span>();
+<span class="kw">var</span> TOTAL_HOTSPOTS = <span class="num">4</span>;
+
+<span class="kw">function</span> <span class="fn">onHotspotClick</span>(id, title, body) {
+  seen.<span class="fn">add</span>(id);
+  document.<span class="fn">getElementById</span>(<span class="str">"detail-panel"</span>).<span class="var">innerHTML</span> =
+    <span class="str">"&lt;strong&gt;"</span> + title + <span class="str">"&lt;/strong&gt;&lt;br&gt;"</span> + body;
+  player.<span class="fn">SetVar</span>(<span class="str">"HotspotsSeen"</span>, seen.<span class="var">size</span>);
+  <span class="kw">if</span> (seen.<span class="var">size</span> === TOTAL_HOTSPOTS) {
+    player.<span class="fn">SetVar</span>(<span class="str">"AllHotspotsExplored"</span>, <span class="kw">true</span>);
+  }
+}</pre>
+  </div>
+</div>
+
+<!-- SEQUENCE SORTING PATTERN -->
+<div class="pattern-panel" id="p-sort">
+  <div class="p-header">
+    <div>
+      <h2 class="p-title">Sequence <em>Sorting</em></h2>
+      <p class="p-desc">Learners arrange steps into the correct order — the standard pattern for teaching procedures or workflows, where the sequence itself is what's being assessed, not just the individual steps.</p>
+      <div class="p-meta-label">Best for</div><div class="p-meta-val">Procedures, workflows, step-by-step processes</div>
+      <div class="p-meta-label">Bloom's Level</div><div class="p-meta-val">L3 · Apply</div>
+      <div class="p-meta-label">Accessibility Note</div><div class="p-meta-val">Up/Down buttons reorder items without requiring a drag gesture — fully keyboard and screen-reader operable, with drag available as a shortcut.</div>
+    </div>
+    <div>
+      <div class="p-demo-label">Live Demo — Put the ADDIE model steps in order</div>
+      <div class="sort-frame">
+        <ol class="sort-list" id="sort-list">
+          <li class="sort-item" draggable="true" data-correct="3" ondragstart="sortDragStart(event)" ondragover="sortDragOver(event)" ondrop="sortDrop(event)"><span class="sort-handle">⠿</span><span class="sort-text">Develop — build the course materials</span><span class="sort-arrows"><button onclick="sortMove(this,-1)" aria-label="Move up">↑</button><button onclick="sortMove(this,1)" aria-label="Move down">↓</button></span></li>
+          <li class="sort-item" draggable="true" data-correct="1" ondragstart="sortDragStart(event)" ondragover="sortDragOver(event)" ondrop="sortDrop(event)"><span class="sort-handle">⠿</span><span class="sort-text">Analyze — identify the performance gap</span><span class="sort-arrows"><button onclick="sortMove(this,-1)" aria-label="Move up">↑</button><button onclick="sortMove(this,1)" aria-label="Move down">↓</button></span></li>
+          <li class="sort-item" draggable="true" data-correct="5" ondragstart="sortDragStart(event)" ondragover="sortDragOver(event)" ondrop="sortDrop(event)"><span class="sort-handle">⠿</span><span class="sort-text">Evaluate — measure whether it worked</span><span class="sort-arrows"><button onclick="sortMove(this,-1)" aria-label="Move up">↑</button><button onclick="sortMove(this,1)" aria-label="Move down">↓</button></span></li>
+          <li class="sort-item" draggable="true" data-correct="4" ondragstart="sortDragStart(event)" ondragover="sortDragOver(event)" ondrop="sortDrop(event)"><span class="sort-handle">⠿</span><span class="sort-text">Implement — roll the training out</span><span class="sort-arrows"><button onclick="sortMove(this,-1)" aria-label="Move up">↑</button><button onclick="sortMove(this,1)" aria-label="Move down">↓</button></span></li>
+          <li class="sort-item" draggable="true" data-correct="2" ondragstart="sortDragStart(event)" ondragover="sortDragOver(event)" ondrop="sortDrop(event)"><span class="sort-handle">⠿</span><span class="sort-text">Design — plan the structure and objectives</span><span class="sort-arrows"><button onclick="sortMove(this,-1)" aria-label="Move up">↑</button><button onclick="sortMove(this,1)" aria-label="Move down">↓</button></span></li>
+        </ol>
+        <button class="dnd-check-btn" onclick="checkSort()">Check Order →</button>
+        <div class="dnd-result" id="sort-result"></div>
+      </div>
+    </div>
+  </div>
+  <div class="code-panel">
+    <div class="code-panel-header"><span class="code-lang">JavaScript — Sequence Sorting</span><button class="code-copy" onclick="copyCode(this,'sort-code')">📋 Copy</button></div>
+    <pre class="code-block" id="sort-code"><span class="cmm">// Validate learner-ordered sequence against the correct order</span>
+<span class="kw">var</span> player = GetPlayer();
+<span class="kw">function</span> <span class="fn">checkSequence</span>(items) {
+  <span class="kw">var</span> allCorrect = <span class="kw">true</span>;
+  items.<span class="fn">forEach</span>(<span class="kw">function</span>(item, index) {
+    <span class="kw">var</span> isCorrect = <span class="fn">parseInt</span>(item.<span class="var">dataset</span>.<span class="var">correct</span>, <span class="num">10</span>) === (index + <span class="num">1</span>);
+    item.<span class="var">classList</span>.<span class="fn">toggle</span>(<span class="str">"correct"</span>, isCorrect);
+    item.<span class="var">classList</span>.<span class="fn">toggle</span>(<span class="str">"incorrect"</span>, !isCorrect);
+    <span class="kw">if</span> (!isCorrect) allCorrect = <span class="kw">false</span>;
+  });
+  player.<span class="fn">SetVar</span>(<span class="str">"SequenceCorrect"</span>, allCorrect);
+  <span class="kw">return</span> allCorrect;
+}</pre>
+  </div>
+</div>
+
+<div class="cta-band">
+  <div class="eyebrow">See these patterns in real courses</div>
+  <div class="cta-band-title">Every project uses the right interaction<br><em>for the right cognitive level.</em></div>
+  <a href="work.html" class="btn-dark">See My Work →</a>
+  <a href="sl-snippets.html" class="btn-dark outline">Full JS Library →</a>
+</div>
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-brand"><span class="logo-pulse"></span>MK. Madhu Kumar Sikilammetla</div><div class="footer-desc">Instructional Designer &amp; eLearning Developer. 7+ years building accessible, multilingual, SCORM/xAPI-compliant learning experiences.</div></div>
+    <div class="footer-col"><div class="footer-col-title">Portfolio</div><a href="work.html">All Projects</a><a href="case-study-aml.html">Case Study: AML</a><a href="case-study-bees.html">Case Study: Bees</a><a href="certifications.html">Certifications</a></div>
+    <div class="footer-col"><div class="footer-col-title">Knowledge</div><a href="articles.html">Articles</a><a href="resources.html">Free Templates</a><a href="id-frameworks.html">ID Cheat Sheet</a><a href="sl-snippets.html">JS Snippets</a></div>
+    <div class="footer-col"><div class="footer-col-title">Contact</div><a href="contact.html">Let's Talk</a><a href="process.html">Process</a><a href="services.html">Services</a><a href="https://www.linkedin.com/in/madhu-kumar-sikilammetla-22694598" target="_blank">LinkedIn</a><a href="faq.html">FAQ</a><a href="sitemap.html">Sitemap</a></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2026 Madhu Kumar Sikilammetla</div><div class="footer-social"><a href="https://www.linkedin.com/in/madhu-kumar-sikilammetla-22694598" target="_blank">LinkedIn</a><a href="https://drive.google.com/file/d/1wsBtUEBdSjdLwK7CxFID6ttaW6afTxf6/view" target="_blank">CV</a><a href="mailto:madhukumar5290@gmail.com">Email</a></div></div>
+</footer>
+<script src="main.js?v=6"></script>
+<script>
+function switchPattern(btn){
+  document.querySelectorAll('.pt-btn').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('.pattern-panel').forEach(p=>p.classList.remove('on'));
+  btn.classList.add('on');
+  document.getElementById('p-'+btn.dataset.p).classList.add('on');
+}
+function switchTab(el,id){
+  document.querySelectorAll('.tab-item').forEach(t=>t.classList.remove('on'));
+  document.querySelectorAll('.tab-content-item').forEach(t=>t.classList.remove('on'));
+  el.classList.add('on');
+  document.getElementById(id).classList.add('on');
+}
+function toggleAccordion(item){
+  const wasOpen=item.classList.contains('open');
+  document.querySelectorAll('.accordion-item').forEach(i=>i.classList.remove('open'));
+  if(!wasOpen)item.classList.add('open');
+}
+// Scenario
+let sAnswered=false;
+const correctAnswerIdx=1;
+const feedbacks=[
+  {ok:false,text:'✗ Verbal confirmation alone is not sufficient when there are red flags — the voice sounded different, which is a major warning sign. Processing this transfer would likely constitute a fraud enablement, and you would face personal liability. Always verify via the customer\'s registered contact number for any change of account request.'},
+  {ok:true,text:'✓ Correct. This is a textbook "Authorised Push Payment" fraud scenario. The correct response is always to pause, call the customer back on their registered number (not the one they\'ve given you), and escalate to compliance. Never process a change-of-account instruction without independent verification.'},
+  {ok:false,text:'✗ Written email confirmation from the same compromised channel proves nothing — if the account is hacked, the attacker can respond to emails too. You must call back on the registered number. Email is not a secure verification method for account changes.'}
+];
+function scenarioAnswer(idx){
+  if(sAnswered)return;
+  sAnswered=true;
+  document.querySelectorAll('.s-opt').forEach((o,i)=>{
+    o.disabled=true;
+    if(i===idx)o.classList.add(idx===correctAnswerIdx?'correct':'wrong');
+    if(i===correctAnswerIdx&&idx!==correctAnswerIdx)o.classList.add('correct');
+  });
+  const fb=document.getElementById('s-fb');
+  fb.className='s-fb show '+(feedbacks[idx].ok?'ok':'bad');
+  fb.textContent=feedbacks[idx].text;
+  if(!feedbacks[idx].ok)document.getElementById('s-retry').classList.add('show');
+}
+function resetScenario(){
+  sAnswered=false;
+  document.querySelectorAll('.s-opt').forEach(o=>{o.disabled=false;o.className='s-opt';});
+  document.getElementById('s-fb').className='s-fb';
+  document.getElementById('s-retry').classList.remove('show');
+}
+// DnD
+let dragging=null;
+function dndStart(e){dragging=e.target;e.target.classList.add('dragging');}
+function dndEnd(e){e.target.classList.remove('dragging');}
+function dndOver(e){e.preventDefault();e.currentTarget.classList.add('drag-over');}
+function dndLeave(e){e.currentTarget.classList.remove('drag-over');}
+function dndDrop(e,cat){
+  e.preventDefault();
+  e.currentTarget.classList.remove('drag-over');
+  if(dragging){
+    e.currentTarget.appendChild(dragging);
+    dragging=null;
+    const source=document.getElementById('dnd-source');
+    document.getElementById('dnd-check').disabled=source.querySelectorAll('.dnd-chip').length===0;
+    if(source.querySelectorAll('.dnd-chip').length===0)document.getElementById('dnd-check').disabled=false;
+    else document.getElementById('dnd-check').disabled=true;
+    updateDndCheck();
+  }
+}
+function updateDndCheck(){
+  const src=document.getElementById('dnd-source').querySelectorAll('.dnd-chip').length;
+  document.getElementById('dnd-check').disabled=src>0;
+}
+function checkDnd(){
+  let correct=0,total=0;
+  ['aml','gdpr'].forEach(cat=>{
+    document.getElementById('drop-'+cat).querySelectorAll('.dnd-chip').forEach(chip=>{
+      total++;
+      if(chip.dataset.cat===cat){correct++;chip.style.borderColor='var(--teal)';}
+      else{chip.style.borderColor='var(--red)';}
+    });
+  });
+  document.getElementById('dnd-result').textContent=correct===total?'✓ Perfect! All items correctly categorised.':'✗ '+correct+'/'+total+' correct — incorrect items highlighted in red.';
+  document.getElementById('dnd-result').style.color=correct===total?'var(--teal)':'var(--red)';
+}
+// Copy code
+function copyCode(btn,id){
+  const el=document.getElementById(id);
+  const tmp=document.createElement('div');
+  tmp.innerHTML=el.innerHTML;
+  navigator.clipboard.writeText(tmp.textContent||tmp.innerText||'').then(()=>{
+    btn.textContent='✓ Copied!';btn.classList.add('done');
+    setTimeout(()=>{btn.textContent='📋 Copy';btn.classList.remove('done');},2000);
+  });
+}
+
+/* Click-Reveal Hotspots */
+const hsData={
+  1:{title:'Power Switch',body:'Toggles the unit on/off. Always confirm the status light is green before switching off during an active cycle.'},
+  2:{title:'Status Display',body:'Shows real-time operating temperature and cycle count. Amber means a sensor needs calibration.'},
+  3:{title:'Emergency Stop',body:'Immediately halts all moving parts. Used only in an emergency — resuming requires a supervisor reset.'},
+  4:{title:'Data Port',body:'USB-C export for maintenance logs. Compatible with the diagnostic tablet issued to floor supervisors.'}
+};
+const hsSeen=new Set();
+function hsToggle(btn,id){
+  btn.classList.add('seen');
+  hsSeen.add(id);
+  const d=hsData[id];
+  document.getElementById('hs-panel').innerHTML='<span class="hs-panel-title">'+d.title+'</span>'+d.body;
+  document.getElementById('hs-progress').textContent=hsSeen.size+' of 4 hotspots explored'+(hsSeen.size===4?' — all explored ✓':'');
+}
+
+/* Sequence Sorting */
+let sortDragEl=null;
+function sortDragStart(e){sortDragEl=e.currentTarget;e.currentTarget.classList.add('dragging');e.dataTransfer.setData('text/plain','');}
+function sortDragOver(e){
+  e.preventDefault();
+  if(!sortDragEl||sortDragEl===e.currentTarget)return;
+  const list=document.getElementById('sort-list');
+  const items=Array.from(list.querySelectorAll('.sort-item'));
+  const draggingIdx=items.indexOf(sortDragEl);
+  const targetIdx=items.indexOf(e.currentTarget);
+  if(draggingIdx<targetIdx) e.currentTarget.after(sortDragEl);
+  else e.currentTarget.before(sortDragEl);
+}
+function sortDrop(e){
+  e.preventDefault();
+  if(sortDragEl){sortDragEl.classList.remove('dragging');sortDragEl=null;}
+}
+function sortMove(btn,dir){
+  const item=btn.closest('.sort-item');
+  const list=item.parentElement;
+  if(dir===-1 && item.previousElementSibling) list.insertBefore(item,item.previousElementSibling);
+  else if(dir===1 && item.nextElementSibling) list.insertBefore(item.nextElementSibling,item);
+}
+function checkSort(){
+  const items=Array.from(document.querySelectorAll('#sort-list .sort-item'));
+  let allCorrect=true;
+  items.forEach((item,i)=>{
+    const correct=parseInt(item.dataset.correct,10)===(i+1);
+    item.classList.remove('correct','incorrect');
+    item.classList.add(correct?'correct':'incorrect');
+    if(!correct)allCorrect=false;
+  });
+  const result=document.getElementById('sort-result');
+  result.innerHTML=allCorrect
+    ? '<span style="color:var(--teal)">✓ Correct! That\'s the ADDIE sequence.</span>'
+    : '<span style="color:#E8636F">✗ Not quite — check the highlighted steps and try again.</span>';
+}
+</script>
+</body>
+</html>

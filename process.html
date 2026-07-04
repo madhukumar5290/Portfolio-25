@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Process | Madhu Kumar Sikilammetla</title>
+<link rel="stylesheet" href="style.css?v=6">
+<style>
+.process-hero-bg{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 70% 60% at 80% 40%,rgba(232,169,74,.07) 0%,transparent 60%),radial-gradient(ellipse 50% 50% at 20% 70%,rgba(123,147,240,.06) 0%,transparent 60%)}
+.phase-tabs{display:flex;border-bottom:1px solid var(--border);margin-top:3rem;overflow-x:auto;scrollbar-width:none}
+.phase-tabs::-webkit-scrollbar{display:none}
+.pt-btn{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:none;border:none;border-bottom:2px solid transparent;padding:.9rem 1.4rem;cursor:pointer;white-space:nowrap;transition:all .2s;flex-shrink:0}
+.pt-btn:hover{color:var(--text)}.pt-btn.on{color:var(--gold);border-bottom-color:var(--gold)}
+.phase-panel{display:none;padding:3rem 0;animation:pfade .3s ease}.phase-panel.on{display:block}
+@keyframes pfade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.phase-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.phase-num{font-family:var(--serif);font-size:8rem;font-weight:300;color:var(--border);line-height:.9;margin-bottom:1rem}
+.phase-title{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:400;color:var(--text);line-height:1.15;margin-bottom:1rem}
+.phase-title em{font-style:italic;color:var(--gold)}
+.phase-body{font-family:var(--sans);font-size:.9rem;line-height:1.8;color:var(--text2);margin-bottom:1.5rem}
+.phase-steps{display:flex;flex-direction:column;gap:1px;background:var(--border)}
+.phase-step{background:var(--bg2);padding:1.25rem 1.5rem;display:grid;grid-template-columns:32px 1fr;gap:1rem;align-items:flex-start;transition:background .2s}
+.phase-step:hover{background:var(--bg3)}
+.ps-n{font-family:var(--mono);font-size:.65rem;font-weight:600;color:var(--gold)}
+.ps-title{font-family:var(--sans);font-size:.88rem;font-weight:600;color:var(--text);margin-bottom:.2rem}
+.ps-body{font-family:var(--sans);font-size:.82rem;line-height:1.6;color:var(--text2)}
+.phase-deliverables{background:rgba(47,204,163,.05);border:1px solid rgba(47,204,163,.2);border-left:3px solid var(--teal);padding:1.25rem 1.5rem;margin-top:1.5rem}
+.pd-title{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:.85rem}
+.pd-items{display:flex;flex-wrap:wrap;gap:.5rem}
+.pd-item{font-family:var(--mono);font-size:.6rem;letter-spacing:.07em;color:var(--text2);background:rgba(47,204,163,.08);border:1px solid rgba(47,204,163,.15);padding:.25rem .65rem;border-radius:3px}
+.tools-used{margin-top:1.5rem}
+.tu-title{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blue2);margin-bottom:.75rem}
+.tu-grid{display:flex;flex-wrap:wrap;gap:.4rem}
+.principles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-top:4rem}
+.principle{background:var(--bg2);padding:2.25rem;transition:background .25s}
+.principle:hover{background:var(--bg3)}
+.pr-icon{font-size:2rem;margin-bottom:.85rem;display:block}
+.pr-num{font-family:var(--mono);font-size:.56rem;letter-spacing:.14em;color:var(--muted);margin-bottom:.4rem}
+.pr-title{font-family:var(--serif);font-size:1.2rem;font-weight:400;color:var(--text);margin-bottom:.6rem;line-height:1.2}
+.pr-body{font-family:var(--sans);font-size:.84rem;line-height:1.65;color:var(--text2)}
+.timeline-visual{position:relative;padding:3rem 0}
+.tv-line{position:absolute;left:50%;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,var(--border2),var(--border2),transparent);transform:translateX(-50%)}
+.tv-row{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-bottom:4rem;position:relative}
+.tv-row:nth-child(even) .tv-right{text-align:right}
+.tv-dot{position:absolute;left:50%;top:1.5rem;width:12px;height:12px;background:var(--gold);border-radius:50%;transform:translateX(-50%);box-shadow:0 0 0 4px rgba(232,169,74,.15)}
+.tv-week{font-family:var(--mono);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem}
+.tv-title{font-family:var(--sans);font-size:.9rem;font-weight:600;color:var(--text);margin-bottom:.25rem}
+.tv-body{font-family:var(--sans);font-size:.82rem;color:var(--text2);line-height:1.55}
+@media(max-width:860px){.phase-grid{grid-template-columns:1fr}.principles-grid{grid-template-columns:1fr 1fr}.timeline-visual .tv-row{grid-template-columns:1fr;gap:0;margin-bottom:2.5rem}.tv-line{display:none}.tv-dot{display:none}.tv-row .tv-left:empty,.tv-row .tv-right:empty{display:none}.tv-row .tv-right{text-align:left}}
+@media(max-width:600px){.principles-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="progress-bar"></div>
+<button class="btt" aria-label="Back to top">↑</button>
+<nav>
+  <button class="nav-ham" aria-label="Open menu"><span></span><span></span><span></span></button>
+  <a class="nav-logo" href="index.html"><span class="logo-pulse"></span>MK.</a>
+  <div class="nav-spacer"></div>
+  <ul class="nav-links">
+    <li>
+      <button>Work <span class="nav-chevron">▾</span></button>
+      <div class="nav-dd">
+        <a href="work.html"><span class="dd-icon">🗂️</span>All Projects</a>
+        <a href="case-study-aml.html"><span class="dd-icon">📋</span>Case Study: AML</a>
+        <a href="case-study-bees.html"><span class="dd-icon">🐝</span>Case Study: Bees</a>
+      </div>
+    </li>
+    <li>
+      <button>About <span class="nav-chevron">▾</span></button>
+      <div class="nav-dd">
+        <a href="about.html"><span class="dd-icon">👤</span>About Me</a>
+        <a href="buzz.html"><span class="dd-icon">💬</span>Buzz &amp; Testimonials</a>
+        <a href="certifications.html"><span class="dd-icon">🎓</span>Certifications</a>
+      </div>
+    </li>
+    <li><a href="process.html">Process</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li>
+      <button>Knowledge <span class="nav-chevron">▾</span></button>
+      <div class="nav-dd">
+        <a href="articles.html"><span class="dd-icon">✍️</span>Articles</a>
+        <a href="id-frameworks.html"><span class="dd-icon">🧭</span>ID Cheat Sheet</a>
+        <a href="resources.html"><span class="dd-icon">📦</span>Free Resources</a>
+        <a href="glossary.html"><span class="dd-icon">📖</span>Glossary</a>
+        <a href="sitemap.html"><span class="dd-icon">🗺️</span>Sitemap</a>
+      </div>
+    </li>
+    <li>
+      <button>Tools <span class="nav-chevron">▾</span></button>
+      <div class="nav-mega">
+        <div class="nav-mega-col">
+          <span class="nav-mega-title">AI &amp; Demos</span>
+          <a href="ai-analyzer.html"><span class="dd-icon">🤖</span>AI Course Analyzer<span class="dd-new">New</span></a>
+          <a href="lms-demo.html"><span class="dd-icon">🎓</span>LMS Demo</a>
+          <a href="demo-xapi.html"><span class="dd-icon">📡</span>xAPI Demo</a>
+          <a href="demo-storyboard.html"><span class="dd-icon">🗂️</span>Storyboard Gen</a>
+          <a href="demo-template.html"><span class="dd-icon">🔧</span>Patterns</a>
+        </div>
+        <div class="nav-mega-col">
+          <span class="nav-mega-title">Reference Tools</span>
+          <a href="sl-snippets.html"><span class="dd-icon">⚡</span>JS Snippets</a>
+          <a href="accessibility-guide.html"><span class="dd-icon">♿</span>A11y Guide</a>
+          <a href="effort-estimator.html"><span class="dd-icon">📊</span>Effort Estimator</a>
+          <a href="spot-the-bug.html"><span class="dd-icon">🐛</span>Spot the Bug</a>
+          <a href="id-model-selector.html"><span class="dd-icon">🧭</span>ID Selector</a>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">☀️</button>
+  <a href="contact.html" class="nav-cta">Let's Talk</a>
+</nav>
+<div class="mobile-menu">
+  <span class="mob-section-title">Portfolio</span>
+  <a href="index.html"><span class="dd-icon">🏠</span>Home</a>
+  <a href="work.html"><span class="dd-icon">🗂️</span>All Projects</a>
+  <a href="case-study-aml.html"><span class="dd-icon">📋</span>Case Study: AML</a>
+  <a href="case-study-bees.html"><span class="dd-icon">🐝</span>Case Study: Bees</a>
+  <span class="mob-section-title">About</span>
+  <a href="about.html"><span class="dd-icon">👤</span>About Me</a>
+  <a href="buzz.html"><span class="dd-icon">💬</span>Buzz &amp; Testimonials</a>
+  <a href="certifications.html"><span class="dd-icon">🎓</span>Certifications</a>
+  <span class="mob-section-title">Services</span>
+  <a href="process.html"><span class="dd-icon">⚙️</span>Process</a>
+  <a href="services.html"><span class="dd-icon">📋</span>Services</a>
+  <span class="mob-section-title">Knowledge</span>
+  <a href="articles.html"><span class="dd-icon">✍️</span>Articles</a>
+  <a href="id-frameworks.html"><span class="dd-icon">🧭</span>ID Cheat Sheet</a>
+  <a href="resources.html"><span class="dd-icon">📦</span>Free Resources</a>
+  <a href="glossary.html"><span class="dd-icon">📖</span>Glossary</a>
+  <span class="mob-section-title">Tools &amp; Demos</span>
+  <a href="ai-analyzer.html"><span class="dd-icon">🤖</span>AI Course Analyzer</a>
+  <a href="sl-snippets.html"><span class="dd-icon">⚡</span>JS Snippets</a>
+  <a href="lms-demo.html"><span class="dd-icon">🎓</span>LMS Demo</a>
+  <a href="accessibility-guide.html"><span class="dd-icon">♿</span>A11y Guide</a>
+  <a href="effort-estimator.html"><span class="dd-icon">📊</span>Effort Estimator</a>
+  <a href="spot-the-bug.html"><span class="dd-icon">🐛</span>Spot the Bug</a>
+  <a href="demo-xapi.html"><span class="dd-icon">📡</span>xAPI Demo</a>
+  <a href="demo-storyboard.html"><span class="dd-icon">🗂️</span>Storyboard Gen</a>
+  <a href="id-model-selector.html"><span class="dd-icon">🧭</span>ID Selector</a>
+  <a href="demo-template.html"><span class="dd-icon">🔧</span>Patterns</a>
+  <span class="mob-section-title">Contact</span>
+  <a href="faq.html"><span class="dd-icon">❓</span>FAQ</a>
+  <a href="sitemap.html"><span class="dd-icon">🗺️</span>Sitemap</a>
+  <a href="contact.html"><span class="dd-icon">✉️</span>Let's Talk</a>
+</div>
+
+<div class="page-hero" style="padding-bottom:3rem">
+  <div class="hero-bg-dots"></div>
+  <div class="process-hero-bg"></div>
+  <div class="eyebrow reveal t">How I Work</div>
+  <h1 class="display-xl reveal d1">The process<br>behind every<br><em>project.</em></h1>
+  <p style="font-family:var(--sans);font-size:1.05rem;color:var(--text2);max-width:580px;margin-top:1.1rem;line-height:1.8" class="reveal d2">Every course I deliver follows the same disciplined process — from the first discovery call to post-launch evaluation. No surprises, no scope creep, no "we'll fix it in review." Here's exactly how it works.</p>
+</div>
+
+<section class="section">
+  <!-- DESIGN PRINCIPLES -->
+  <div class="eyebrow reveal">Design Philosophy</div>
+  <h2 class="display reveal d1">Five principles that guide<br><em>every design decision.</em></h2>
+  <div class="principles-grid">
+    <div class="principle reveal d1"><span class="pr-icon">🎯</span><div class="pr-num">01</div><div class="pr-title">Performance over completion</div><div class="pr-body">Every course starts with one question: what do people need to DO differently? Not what do they need to know. Training that changes knowledge but not behaviour is expensive wallpaper.</div></div>
+    <div class="principle reveal d2"><span class="pr-icon">🏗️</span><div class="pr-num">02</div><div class="pr-title">Architecture before content</div><div class="pr-body">Accessibility, tab order, colour contrast, and interaction design are set in the template before a single piece of content is written. You cannot retrofit quality into a finished course.</div></div>
+    <div class="principle reveal d3"><span class="pr-icon">✂️</span><div class="pr-num">03</div><div class="pr-title">Cut ruthlessly</div><div class="pr-body">The client always wants more content than learners need. My job is to identify the minimum information required to practise the right decisions — and cut everything else without apology.</div></div>
+    <div class="principle reveal d1"><span class="pr-icon">🔁</span><div class="pr-num">04</div><div class="pr-title">Review early, not late</div><div class="pr-body">Stakeholder feedback on a 10-slide prototype costs 2 hours to implement. The same feedback on a finished 40-slide course costs 40 hours. I prototype fast and get alignment before building.</div></div>
+    <div class="principle reveal d2"><span class="pr-icon">📏</span><div class="pr-num">05</div><div class="pr-title">Measure what matters</div><div class="pr-body">Completion rates prove training happened. Behaviour change and business results prove training worked. I design for Level 3 and 4 measurement from the start, not as an afterthought.</div></div>
+    <div class="principle reveal d3"><span class="pr-icon">🤝</span><div class="pr-num">06</div><div class="pr-title">Transparent communication</div><div class="pr-body">Weekly status updates. Honest scope conversations. Clear documentation of every decision and its rationale. No surprises at the review stage — ever.</div></div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="eyebrow reveal">Phase by Phase</div>
+  <h2 class="display reveal d1">The five phases<br><em>of every project.</em></h2>
+  <p style="font-family:var(--sans);font-size:.9rem;color:var(--text2);max-width:560px;margin-top:.75rem;line-height:1.7" class="reveal d2">Click each phase to see the steps, deliverables, and tools involved.</p>
+
+  <div class="phase-tabs reveal">
+    <button class="pt-btn on" data-p="discover" onclick="switchPhase(this)">01 · Discover</button>
+    <button class="pt-btn" data-p="design" onclick="switchPhase(this)">02 · Design</button>
+    <button class="pt-btn" data-p="develop" onclick="switchPhase(this)">03 · Develop</button>
+    <button class="pt-btn" data-p="review" onclick="switchPhase(this)">04 · Review</button>
+    <button class="pt-btn" data-p="launch" onclick="switchPhase(this)">05 · Launch</button>
+  </div>
+
+  <!-- PHASE 1 -->
+  <div class="phase-panel on" id="phase-discover">
+    <div class="phase-grid">
+      <div>
+        <div class="phase-num">01</div>
+        <h2 class="phase-title">Discover &amp; <em>Define</em></h2>
+        <p class="phase-body">Before any design decisions are made, I need to understand the actual problem. Not the training request — the underlying performance gap. Most projects start with "we need a course on X" when the real need is "we need people to stop doing Y." Discover phase finds the difference.</p>
+        <p class="phase-body">This phase uses Action Mapping to establish the measurable business goal, identify the specific on-the-job decisions that drive that goal, and set the success criteria that will tell us if training worked — before development starts.</p>
+        <div class="phase-deliverables">
+          <div class="pd-title">Deliverables</div>
+          <div class="pd-items"><span class="pd-item">Needs analysis report</span><span class="pd-item">Performance gap definition</span><span class="pd-item">Audience analysis</span><span class="pd-item">Action map</span><span class="pd-item">Success criteria document</span><span class="pd-item">Project brief</span></div>
+        </div>
+        <div class="tools-used">
+          <div class="tu-title">Tools</div>
+          <div class="tu-grid"><span class="tag">Stakeholder interviews</span><span class="tag">Surveys</span><span class="tag tag-g">Action Mapping</span><span class="tag">LMS data review</span></div>
+        </div>
+      </div>
+      <div class="phase-steps">
+        <div class="phase-step"><div class="ps-n">1.1</div><div><div class="ps-title">Stakeholder interviews</div><div class="ps-body">Structured conversations with the business sponsor, subject matter experts, and ideally 3–5 representative learners. Goal: understand the actual performance problem, not the assumed training solution.</div></div></div>
+        <div class="phase-step"><div class="ps-n">1.2</div><div><div class="ps-title">Audience analysis</div><div class="ps-body">Prior knowledge, learning environment, motivations, barriers, technology access, language needs. This determines every design decision from cognitive load to interaction complexity.</div></div></div>
+        <div class="phase-step"><div class="ps-n">1.3</div><div><div class="ps-title">Content &amp; resource audit</div><div class="ps-body">Review existing materials — policy documents, current courses, job aids, previous training feedback. Identify what can be reused, what needs updating, and what needs creating from scratch.</div></div></div>
+        <div class="phase-step"><div class="ps-n">1.4</div><div><div class="ps-title">Action mapping</div><div class="ps-body">Map the specific on-the-job decisions and behaviours that drive the business goal. This becomes the structural foundation of the entire course — and the primary tool for cutting unnecessary content.</div></div></div>
+        <div class="phase-step"><div class="ps-n">1.5</div><div><div class="ps-title">Project brief sign-off</div><div class="ps-body">Document the agreed scope, timeline, technical specifications, review process, and sign-off criteria. Prevents scope creep and misaligned expectations throughout development.</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 2 -->
+  <div class="phase-panel" id="phase-design">
+    <div class="phase-grid">
+      <div>
+        <div class="phase-num">02</div>
+        <h2 class="phase-title">Design &amp; <em>Architect</em></h2>
+        <p class="phase-body">Design phase translates the action map into a detailed course blueprint. Learning objectives are written using Bloom's verbs at the correct cognitive level. Assessment strategy is designed before content — what will learners be asked to DO to prove they've met the objective? The interaction design is specified for each slide before any authoring tool is opened.</p>
+        <p class="phase-body">For projects with accessibility requirements, the colour palette, tab order convention, and keyboard-operable interaction templates are established here — before any content exists to retrofit them onto.</p>
+        <div class="phase-deliverables">
+          <div class="pd-title">Deliverables</div>
+          <div class="pd-items"><span class="pd-item">Learning objectives</span><span class="pd-item">Assessment blueprint</span><span class="pd-item">Storyboard (full script)</span><span class="pd-item">Interaction design spec</span><span class="pd-item">Visual style guide</span><span class="pd-item">Accessibility template</span></div>
+        </div>
+        <div class="tools-used">
+          <div class="tu-title">Tools</div>
+          <div class="tu-grid"><span class="tag tag-g">Bloom's Taxonomy</span><span class="tag tag-g">Gagné's 9 Events</span><span class="tag">Word / Google Docs</span><span class="tag tag-b">Storyline Master Slides</span></div>
+        </div>
+      </div>
+      <div class="phase-steps">
+        <div class="phase-step"><div class="ps-n">2.1</div><div><div class="ps-title">Learning objective writing</div><div class="ps-body">Every objective uses a Bloom's verb at the target cognitive level. "Learners will identify" (L1) is very different from "learners will apply" (L3). The objective determines every downstream design decision.</div></div></div>
+        <div class="phase-step"><div class="ps-n">2.2</div><div><div class="ps-title">Assessment-first design</div><div class="ps-body">Before writing a single content slide, I design the assessment. What will learners be asked to demonstrate? This prevents the most common design failure: assessments that test what's easy to test rather than what matters.</div></div></div>
+        <div class="phase-step"><div class="ps-n">2.3</div><div><div class="ps-title">Full script storyboard</div><div class="ps-body">Every slide fully scripted — narration word-for-word, on-screen text, visual descriptions, interaction specifications, and branching logic. SME review happens on the storyboard, not the built course.</div></div></div>
+        <div class="phase-step"><div class="ps-n">2.4</div><div><div class="ps-title">Rapid prototype</div><div class="ps-body">A 3–5 slide clickable prototype built in the actual authoring tool and shared for stakeholder review. Confirms visual direction, interaction feel, and navigation before full development begins.</div></div></div>
+        <div class="phase-step"><div class="ps-n">2.5</div><div><div class="ps-title">Accessibility architecture</div><div class="ps-body">Colour palette tested against WCAG 4.5:1 minimum. Tab order convention documented. Keyboard-operable interaction templates built into the master. This is the last easy chance to get accessibility right.</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 3 -->
+  <div class="phase-panel" id="phase-develop">
+    <div class="phase-grid">
+      <div>
+        <div class="phase-num">03</div>
+        <h2 class="phase-title">Develop &amp; <em>Build</em></h2>
+        <p class="phase-body">Development phase builds the course from the approved storyboard. The prototype becomes the Alpha version — all content, all interactions, all media. No decisions are made during development that weren't made in Design phase. If something needs to change, it goes back to the client for sign-off, not silently altered.</p>
+        <p class="phase-body">Media production — Vyond animation, Blender 3D, Camtasia recordings, custom JavaScript interactions — happens in parallel with slide development. SCORM/xAPI packaging is configured and tested against the target LMS before any review.</p>
+        <div class="phase-deliverables">
+          <div class="pd-title">Deliverables</div>
+          <div class="pd-items"><span class="pd-item">Alpha build (.story file)</span><span class="pd-item">SCORM/xAPI package</span><span class="pd-item">Media assets</span><span class="pd-item">LMS test results</span><span class="pd-item">QA checklist</span></div>
+        </div>
+        <div class="tools-used">
+          <div class="tu-title">Tools</div>
+          <div class="tu-grid"><span class="tag tag-b">Storyline 360</span><span class="tag tag-b">Rise 360</span><span class="tag">Vyond</span><span class="tag">Blender 3D</span><span class="tag tag-g">ZapWorks</span><span class="tag">Camtasia</span><span class="tag tag-b">JavaScript</span><span class="tag">SCORM Cloud</span></div>
+        </div>
+      </div>
+      <div class="phase-steps">
+        <div class="phase-step"><div class="ps-n">3.1</div><div><div class="ps-title">Template &amp; master slide build</div><div class="ps-body">All slide masters built before content slides. Fonts, colours, accessible focus indicators, tab order defaults — established once, inherited everywhere. No per-slide accessibility patches.</div></div></div>
+        <div class="phase-step"><div class="ps-n">3.2</div><div><div class="ps-title">Content development</div><div class="ps-body">Slide-by-slide build from the approved storyboard. Text, images, interactive elements. Custom JavaScript where the interaction requires capability beyond Storyline's built-in library.</div></div></div>
+        <div class="phase-step"><div class="ps-n">3.3</div><div><div class="ps-title">Media production</div><div class="ps-body">Vyond animations, Blender 3D sequences, screen recordings, audio narration, and any AR/VR elements produced and integrated. All video content captioned before embedding.</div></div></div>
+        <div class="phase-step"><div class="ps-n">3.4</div><div><div class="ps-title">SCORM/xAPI packaging</div><div class="ps-body">Published to the correct SCORM version for the target LMS. xAPI statements configured if required. Tested in SCORM Cloud and the target LMS before any client review.</div></div></div>
+        <div class="phase-step"><div class="ps-n">3.5</div><div><div class="ps-title">QA &amp; accessibility audit</div><div class="ps-body">Full keyboard-only playthrough. Colour contrast check. Screen reader test. Branching logic verification. All items on the pre-publish accessibility checklist confirmed before Alpha delivery.</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 4 -->
+  <div class="phase-panel" id="phase-review">
+    <div class="phase-grid">
+      <div>
+        <div class="phase-num">04</div>
+        <h2 class="phase-title">Review &amp; <em>Refine</em></h2>
+        <p class="phase-body">Review cycles are structured and time-boxed. Each round has a defined focus: Alpha reviews content accuracy; Beta reviews interactions and flow; Gold review confirms final sign-off. Feedback outside the defined scope of a review round is documented for the next round — not silently absorbed into the current build.</p>
+        <p class="phase-body">Every piece of feedback is acknowledged in writing, with either a confirmation that it has been implemented, a rationale for why it hasn't, or a proposed alternative approach. No feedback disappears.</p>
+        <div class="phase-deliverables">
+          <div class="pd-title">Deliverables</div>
+          <div class="pd-items"><span class="pd-item">Alpha review (content)</span><span class="pd-item">Beta review (interactions)</span><span class="pd-item">Gold master (final)</span><span class="pd-item">Change log</span><span class="pd-item">Sign-off documentation</span></div>
+        </div>
+      </div>
+      <div class="phase-steps">
+        <div class="phase-step"><div class="ps-n">4.1</div><div><div class="ps-title">Alpha review — content accuracy</div><div class="ps-body">SME and stakeholder review focused exclusively on content correctness. Is the information accurate? Are the scenarios realistic? Is anything missing that's essential to the objective?</div></div></div>
+        <div class="phase-step"><div class="ps-n">4.2</div><div><div class="ps-title">Alpha revisions</div><div class="ps-body">All Alpha feedback implemented, documented in the change log. Any feedback that's out of scope, contradictory to the approved storyboard, or would significantly extend timeline is flagged for discussion.</div></div></div>
+        <div class="phase-step"><div class="ps-n">4.3</div><div><div class="ps-title">Beta review — experience &amp; flow</div><div class="ps-body">Full playthrough of the revised build. Focused on: does the course flow logically? Are interactions intuitive? Does navigation work? Are feedback messages clear and instructive?</div></div></div>
+        <div class="phase-step"><div class="ps-n">4.4</div><div><div class="ps-title">Beta revisions &amp; accessibility re-check</div><div class="ps-body">Beta feedback implemented. Full accessibility re-check after any structural changes — moving objects can reset tab order. SCORM/xAPI re-tested if any triggers were modified.</div></div></div>
+        <div class="phase-step"><div class="ps-n">4.5</div><div><div class="ps-title">Gold review &amp; sign-off</div><div class="ps-body">Final review. Minor corrections only — no new content, no structural changes. Formal written sign-off obtained before LMS publishing. This document protects both parties.</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 5 -->
+  <div class="phase-panel" id="phase-launch">
+    <div class="phase-grid">
+      <div>
+        <div class="phase-num">05</div>
+        <h2 class="phase-title">Launch &amp; <em>Evaluate</em></h2>
+        <p class="phase-body">Launch is not the end — it's the beginning of the measurement phase. Kirkpatrick Level 1 (learner reaction) data is designed into the course before publishing. Level 2 (learning) is evidenced by the assessment. Level 3 (behaviour change) requires follow-up observation or performance data — planned before launch, not attempted retroactively.</p>
+        <p class="phase-body">Post-launch, I'm available for technical support, LMS issues, and the minor adjustments that always emerge once real learners encounter the course. Nothing goes to voicemail.</p>
+        <div class="phase-deliverables">
+          <div class="pd-title">Deliverables</div>
+          <div class="pd-items"><span class="pd-item">LMS-ready package</span><span class="pd-item">Facilitator guide</span><span class="pd-item">Evaluation plan</span><span class="pd-item">Post-launch support</span><span class="pd-item">Source files</span></div>
+        </div>
+        <div class="tools-used">
+          <div class="tu-title">Evaluation Framework</div>
+          <div class="tu-grid"><span class="tag tag-g">Kirkpatrick L1–L4</span><span class="tag tag-b">xAPI analytics</span><span class="tag">Power BI</span><span class="tag">LMS reports</span></div>
+        </div>
+      </div>
+      <div class="phase-steps">
+        <div class="phase-step"><div class="ps-n">5.1</div><div><div class="ps-title">LMS publishing &amp; configuration</div><div class="ps-body">Upload to LMS, configure completion rules, reporting settings, and any adaptive learning parameters. Tested with a real learner account before general release.</div></div></div>
+        <div class="phase-step"><div class="ps-n">5.2</div><div><div class="ps-title">Learner communication</div><div class="ps-body">Launch email template provided with course purpose, completion instructions, and expected duration. Clear communication increases completion rates by 20–30% in most deployments.</div></div></div>
+        <div class="phase-step"><div class="ps-n">5.3</div><div><div class="ps-title">Level 1 &amp; 2 evaluation</div><div class="ps-body">Post-course feedback survey results reviewed within 2 weeks of launch. Assessment scores analysed for patterns — questions with very high or very low correct rates indicate design issues worth addressing.</div></div></div>
+        <div class="phase-step"><div class="ps-n">5.4</div><div><div class="ps-title">Level 3 follow-up plan</div><div class="ps-body">30/60/90-day observation or performance measurement plan. Who will observe what behaviour? What performance metric will indicate transfer? This must be planned before launch or it won't happen.</div></div></div>
+        <div class="phase-step"><div class="ps-n">5.5</div><div><div class="ps-title">Post-launch support &amp; handover</div><div class="ps-body">Source files, documentation, and any update procedures handed over. Post-launch technical support window agreed. Minor updates within agreed scope handled without additional charges.</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="eyebrow reveal">Typical Timeline</div>
+  <h2 class="display reveal d1">What a standard project<br><em>actually looks like.</em></h2>
+  <p style="font-family:var(--sans);font-size:.9rem;color:var(--text2);max-width:560px;margin-top:.65rem;margin-bottom:3rem;line-height:1.7" class="reveal d2">A 30-minute Level 2 (standard complexity) Storyline 360 course with one language and standard LMS delivery. Timeline assumes good SME availability.</p>
+  <div class="timeline-visual reveal">
+    <div class="tv-line"></div>
+    <div class="tv-row"><div class="tv-left"><div class="tv-week">Week 1–2</div><div class="tv-title">Discover &amp; Define</div><div class="tv-body">Stakeholder interviews, audience analysis, content audit, action mapping, project brief sign-off.</div></div><div class="tv-right"></div><div class="tv-dot"></div></div>
+    <div class="tv-row"><div class="tv-left"></div><div class="tv-right"><div class="tv-week">Week 3–5</div><div class="tv-title">Design &amp; Architect</div><div class="tv-body">Storyboard writing, rapid prototype, stakeholder review, revised storyboard sign-off, accessibility template.</div></div><div class="tv-dot"></div></div>
+    <div class="tv-row"><div class="tv-left"><div class="tv-week">Week 6–9</div><div class="tv-title">Develop &amp; Build</div><div class="tv-body">Full course build, media production, QA and accessibility audit, SCORM packaging, Alpha delivery.</div></div><div class="tv-right"></div><div class="tv-dot"></div></div>
+    <div class="tv-row"><div class="tv-left"></div><div class="tv-right"><div class="tv-week">Week 10–11</div><div class="tv-title">Review &amp; Refine</div><div class="tv-body">Alpha review, revisions, Beta delivery, Beta review, Gold master sign-off.</div></div><div class="tv-dot"></div></div>
+    <div class="tv-row"><div class="tv-left"><div class="tv-week">Week 12</div><div class="tv-title">Launch &amp; Evaluate</div><div class="tv-body">LMS publishing, learner communication, evaluation plan activation, post-launch support.</div></div><div class="tv-right"></div><div class="tv-dot"></div></div>
+  </div>
+  <div style="background:rgba(232,169,74,.05);border:1px solid rgba(232,169,74,.15);border-left:3px solid var(--gold);padding:1.5rem 2rem;margin-top:2rem">
+    <div style="font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem">Timeline note</div>
+    <div style="font-family:var(--sans);font-size:.87rem;color:var(--text2);line-height:1.65">Timeline assumes good SME availability (2–3 business day review turnaround) and no major scope changes after storyboard sign-off. Complex projects, localisation, AR/VR, or custom JavaScript development extend timelines proportionally. Use the <a href="effort-estimator.html" style="color:var(--gold)">Effort Estimator</a> for a more accurate estimate for your specific project.</div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="eyebrow">Ready to start?</div>
+  <div class="cta-band-title">Let's talk about<br><em>your project.</em></div>
+  <a href="contact.html" class="btn-cta-dark">Start a Project →</a>
+  <a href="services.html" class="btn-cta-dark">View Services →</a>
+  <a href="work.html" class="btn-cta-outline">See Past Work</a>
+</div>
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-brand"><span class="logo-pulse"></span>MK. Madhu Kumar Sikilammetla</div><div class="footer-desc">Instructional Designer &amp; eLearning Developer. 7+ years building accessible, multilingual, SCORM/xAPI-compliant learning experiences.</div></div>
+    <div class="footer-col"><div class="footer-col-title">Portfolio</div><a href="work.html">All Projects</a><a href="case-study-aml.html">Case Study: AML</a><a href="case-study-bees.html">Case Study: Bees</a><a href="certifications.html">Certifications</a></div>
+    <div class="footer-col"><div class="footer-col-title">Knowledge</div><a href="articles.html">Articles</a><a href="resources.html">Free Templates</a><a href="id-frameworks.html">ID Cheat Sheet</a><a href="sl-snippets.html">JS Snippets</a></div>
+    <div class="footer-col"><div class="footer-col-title">Contact</div><a href="contact.html">Let's Talk</a><a href="process.html">Process</a><a href="services.html">Services</a><a href="https://www.linkedin.com/in/madhu-kumar-sikilammetla-22694598" target="_blank">LinkedIn</a><a href="faq.html">FAQ</a><a href="sitemap.html">Sitemap</a></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2026 Madhu Kumar Sikilammetla</div><div class="footer-social"><a href="https://www.linkedin.com/in/madhu-kumar-sikilammetla-22694598" target="_blank">LinkedIn</a><a href="https://drive.google.com/file/d/1wsBtUEBdSjdLwK7CxFID6ttaW6afTxf6/view" target="_blank">CV</a><a href="mailto:madhukumar5290@gmail.com">Email</a></div></div>
+</footer>
+<script src="main.js?v=6"></script>
+<script>
+document.querySelectorAll('.pt-btn').forEach(btn=>{
+  btn.addEventListener('click',function(){
+    document.querySelectorAll('.pt-btn').forEach(b=>b.classList.remove('on'));
+    document.querySelectorAll('.phase-panel').forEach(p=>p.classList.remove('on'));
+    this.classList.add('on');
+    document.getElementById('phase-'+this.dataset.p).classList.add('on');
+  });
+});
+function switchPhase(btn){
+  document.querySelectorAll('.pt-btn').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('.phase-panel').forEach(p=>p.classList.remove('on'));
+  btn.classList.add('on');
+  document.getElementById('phase-'+btn.dataset.p).classList.add('on');
+}
+</script>
+</body>
+</html>

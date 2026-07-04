@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Case Study: Bees and Beehives | Madhu Kumar Sikilammetla</title>
+<link rel="stylesheet" href="style.css?v=6">
+</head>
+<body>
+<div class="progress-bar"></div>
+<button class="btt" aria-label="Back to top">↑</button>
+<nav>
+  <button class="nav-ham" aria-label="Open menu"><span></span><span></span><span></span></button>
+  <a class="nav-logo" href="index.html"><span class="logo-pulse"></span>MK.</a>
+  <div class="nav-spacer"></div>
+  <ul class="nav-links">
+    <li>
+      <button>Work <span class="nav-chevron">▾</span></button>
+      <div class="nav-dd">
+        <a href="work.html"><span class="dd-icon">🗂️</span>All Projects</a>
+        <a href="case-study-aml.html"><span class="dd-icon">📋</span>Case Study: AML</a>
+        <a href="case-study-bees.html"><span class="dd-icon">🐝</span>Case Study: Bees</a>
+      </div>
+    </li>
+    <li>
+      <button>About <span class="nav-chevron">▾</span></button>
+      <div class="nav-dd">
+        <a href="about.html"><span class="dd-icon">👤</span>About Me</a>
+        <a href="buzz.html"><span class="dd-icon">💬</span>Buzz &amp; Testimonials</a>
+        <a href="certifications.html"><span class="dd-icon">🎓</span>Certifications</a>
+      </div>
+    </li>
+    <li><a href="process.html">Process</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li>
+      <button>Knowledge <span class="nav-chevron">▾</span></button>
+      <div class="nav-dd">
+        <a href="articles.html"><span class="dd-icon">✍️</span>Articles</a>
+        <a href="id-frameworks.html"><span class="dd-icon">🧭</span>ID Cheat Sheet</a>
+        <a href="resources.html"><span class="dd-icon">📦</span>Free Resources</a>
+        <a href="glossary.html"><span class="dd-icon">📖</span>Glossary</a>
+        <a href="sitemap.html"><span class="dd-icon">🗺️</span>Sitemap</a>
+      </div>
+    </li>
+    <li>
+      <button>Tools <span class="nav-chevron">▾</span></button>
+      <div class="nav-mega">
+        <div class="nav-mega-col">
+          <span class="nav-mega-title">AI &amp; Demos</span>
+          <a href="ai-analyzer.html"><span class="dd-icon">🤖</span>AI Course Analyzer<span class="dd-new">New</span></a>
+          <a href="lms-demo.html"><span class="dd-icon">🎓</span>LMS Demo</a>
+          <a href="demo-xapi.html"><span class="dd-icon">📡</span>xAPI Demo</a>
+          <a href="demo-storyboard.html"><span class="dd-icon">🗂️</span>Storyboard Gen</a>
+          <a href="demo-template.html"><span class="dd-icon">🔧</span>Patterns</a>
+        </div>
+        <div class="nav-mega-col">
+          <span class="nav-mega-title">Reference Tools</span>
+          <a href="sl-snippets.html"><span class="dd-icon">⚡</span>JS Snippets</a>
+          <a href="accessibility-guide.html"><span class="dd-icon">♿</span>A11y Guide</a>
+          <a href="effort-estimator.html"><span class="dd-icon">📊</span>Effort Estimator</a>
+          <a href="spot-the-bug.html"><span class="dd-icon">🐛</span>Spot the Bug</a>
+          <a href="id-model-selector.html"><span class="dd-icon">🧭</span>ID Selector</a>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">☀️</button>
+  <a href="contact.html" class="nav-cta">Let's Talk</a>
+</nav>
+<div class="mobile-menu">
+  <span class="mob-section-title">Portfolio</span>
+  <a href="index.html"><span class="dd-icon">🏠</span>Home</a>
+  <a href="work.html"><span class="dd-icon">🗂️</span>All Projects</a>
+  <a href="case-study-aml.html"><span class="dd-icon">📋</span>Case Study: AML</a>
+  <a href="case-study-bees.html"><span class="dd-icon">🐝</span>Case Study: Bees</a>
+  <span class="mob-section-title">About</span>
+  <a href="about.html"><span class="dd-icon">👤</span>About Me</a>
+  <a href="buzz.html"><span class="dd-icon">💬</span>Buzz &amp; Testimonials</a>
+  <a href="certifications.html"><span class="dd-icon">🎓</span>Certifications</a>
+  <span class="mob-section-title">Services</span>
+  <a href="process.html"><span class="dd-icon">⚙️</span>Process</a>
+  <a href="services.html"><span class="dd-icon">📋</span>Services</a>
+  <span class="mob-section-title">Knowledge</span>
+  <a href="articles.html"><span class="dd-icon">✍️</span>Articles</a>
+  <a href="id-frameworks.html"><span class="dd-icon">🧭</span>ID Cheat Sheet</a>
+  <a href="resources.html"><span class="dd-icon">📦</span>Free Resources</a>
+  <a href="glossary.html"><span class="dd-icon">📖</span>Glossary</a>
+  <span class="mob-section-title">Tools &amp; Demos</span>
+  <a href="ai-analyzer.html"><span class="dd-icon">🤖</span>AI Course Analyzer</a>
+  <a href="sl-snippets.html"><span class="dd-icon">⚡</span>JS Snippets</a>
+  <a href="lms-demo.html"><span class="dd-icon">🎓</span>LMS Demo</a>
+  <a href="accessibility-guide.html"><span class="dd-icon">♿</span>A11y Guide</a>
+  <a href="effort-estimator.html"><span class="dd-icon">📊</span>Effort Estimator</a>
+  <a href="spot-the-bug.html"><span class="dd-icon">🐛</span>Spot the Bug</a>
+  <a href="demo-xapi.html"><span class="dd-icon">📡</span>xAPI Demo</a>
+  <a href="demo-storyboard.html"><span class="dd-icon">🗂️</span>Storyboard Gen</a>
+  <a href="id-model-selector.html"><span class="dd-icon">🧭</span>ID Selector</a>
+  <a href="demo-template.html"><span class="dd-icon">🔧</span>Patterns</a>
+  <span class="mob-section-title">Contact</span>
+  <a href="faq.html"><span class="dd-icon">❓</span>FAQ</a>
+  <a href="sitemap.html"><span class="dd-icon">🗺️</span>Sitemap</a>
+  <a href="contact.html"><span class="dd-icon">✉️</span>Let's Talk</a>
+</div>
+
+<div class="cs-hero">
+  <img class="cs-hero-bg" src="https://lh3.googleusercontent.com/sitesv/AA5AbUABSWXFa9K5AGNbZ7-Bv5oeT7XYwTbqckamuV7mEcA3cxQb3RCeYAf8NMTxdr73ybc9YbriGyVg3R6PClbG6ZcDHM_DfaphRm4Vd-sjKBq4hvywpxRjmgXcWA4izV1r4IFmqfmsZGipP9Njn2klBDWoYqMiWuGZPjO9Fny7FpILNq5OkVL17k9q-zLjzOQP2-zKqGq-bS4sp3_4VZKogefY6f_8PXFn3wso290=w1280" alt="" onerror="this.style.display='none'">
+  <div class="cs-hero-overlay"></div>
+  <div class="cs-hero-content">
+    <div class="cs-category">Case Study · Game-Based Learning · Science Education</div>
+    <h1 class="cs-title">Bees and<br>Beehives</h1>
+    <p class="cs-subtitle">How Merrill's First Principles of Instruction turned a dry biology topic into a game that learners actually wanted to complete — and how the design decisions made it work.</p>
+    <div class="cs-meta-bar">
+      <div class="cs-meta-item"><div class="cs-meta-label">Industry</div><div class="cs-meta-val">Science Education</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Duration</div><div class="cs-meta-val">35 minutes</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">ID Model</div><div class="cs-meta-val">Merrill's First Principles</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Tool</div><div class="cs-meta-val">Storyline 360</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Audience</div><div class="cs-meta-val">Secondary school / Adult learners</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Format</div><div class="cs-meta-val">SCORM 2004</div></div>
+    </div>
+  </div>
+</div>
+
+<div style="background:var(--bg3);border-bottom:1px solid var(--border)">
+  <div class="cs-results" style="margin:0;max-width:none">
+    <div class="cs-result"><span class="cs-result-n">91%</span><span class="cs-result-l">Voluntary completion rate — learners who started, finished</span></div>
+    <div class="cs-result"><span class="cs-result-n">4.7/5</span><span class="cs-result-l">Average learner satisfaction rating</span></div>
+    <div class="cs-result"><span class="cs-result-n">78%</span><span class="cs-result-l">Knowledge retention at 2-week follow-up assessment</span></div>
+  </div>
+</div>
+
+<div class="cs-section">
+  <div class="eyebrow g">The Brief</div>
+  <h2 class="cs-section-title">A topic most learners tuned out before slide three.</h2>
+  <div class="cs-body">
+    <p>The original brief was straightforward: create an engaging eLearning module about bee biology and beehive structure for a secondary school science curriculum. The target audience was 14–16 year olds. The existing resource was a PDF handout and a 20-minute lecture. Completion of the handout was estimated (generously) at 30%.</p>
+    <p>The challenge wasn't the content — bee biology is genuinely fascinating. The challenge was that the existing presentation format gave learners no reason to engage with it. The information was accurate. The structure was logical. It was just completely disconnected from anything the learner cared about or had experienced.</p>
+    <div class="cs-highlight">The question wasn't "how do we make this more colourful?" It was: <strong>"Why would a 15-year-old care about the structure of a beehive?"</strong> The answer to that question drove every design decision.</div>
+    <p>The answer turned out to be Colony Collapse Disorder — the ongoing global phenomenon where bee colonies are dying at unprecedented rates, threatening food supply chains that depend on pollination. Suddenly the internal structure of a beehive wasn't abstract biology. It was the thing you needed to understand to grasp why millions of colonies were failing and what it meant for the food on your plate.</p>
+  </div>
+
+  <div class="eyebrow g" style="margin-top:3rem">The ID Framework: Merrill's First Principles</div>
+  <h2 class="cs-section-title">Why Merrill, not ADDIE.</h2>
+  <div class="cs-body">
+    <p>Most eLearning projects default to ADDIE — and for most projects, ADDIE is the right choice. But ADDIE is a process framework. It tells you how to structure a project, not how to structure learning. For this particular project, where the core challenge was engagement and knowledge transfer in a topic learners didn't naturally connect with, Merrill's First Principles of Instruction provided a more useful design lens.</p>
+    <p>Merrill's five principles — Problem-centred, Activation, Demonstration, Application, Integration — prescribe a specific learning sequence that starts with a real problem and works backwards. This is the inverse of traditional instruction, which presents content first and attempts relevance later. For a topic where relevance is the primary obstacle, starting with the problem isn't just pedagogically sound — it's the only approach that works.</p>
+
+    <h3>Principle 1: Problem-centred</h3>
+    <p>The course opened with a news report about Colony Collapse Disorder — not an introduction to bee anatomy. Learners were placed inside the problem before being given any of the concepts they'd need to understand it. This created genuine cognitive tension: "I want to understand this, and I currently don't have the tools to." That tension is the motivational engine for everything that follows.</p>
+
+    <h3>Principle 2: Activation</h3>
+    <p>Before introducing new content, the course asked learners what they already knew — or thought they knew — about bees. A brief interactive sorting activity revealed which of their prior beliefs were accurate and which were common misconceptions (most people dramatically underestimate how many bees are in a colony, and how specialised their roles are). This activated prior knowledge structures and created a mental framework onto which new information could attach.</p>
+
+    <h3>Principle 3: Demonstration</h3>
+    <p>New content was demonstrated in the context of the problem — not presented abstractly. "The queen bee lays up to 2,000 eggs per day" isn't inherently interesting. "Here's what happens to a colony's population when the queen's egg-laying rate drops by 40%" — illustrated with an animated population simulation — is directly connected to the Colony Collapse Disorder problem the learner is trying to understand.</p>
+
+    <h3>Principle 4: Application</h3>
+    <p>Learners applied each concept by making decisions within a colony management simulation. They weren't answering quiz questions about definitions — they were managing a virtual colony, making decisions about resource allocation, responding to environmental threats, and observing the consequences of those decisions on colony health over a simulated season. Wrong decisions didn't produce a "Incorrect" screen. They produced a colony in decline, with visible consequences the learner had to diagnose and respond to.</p>
+
+    <h3>Principle 5: Integration</h3>
+    <p>The final activity asked learners to connect the colony biology they'd learned to the Colony Collapse Disorder problem they'd encountered at the start — writing a short explanation of what they now understood about why colonies collapse and what interventions might help. This isn't assessed for correctness (there's no single right answer) but for evidence of integrated understanding.</p>
+
+    <div class="cs-highlight">The structure meant that by the time learners encountered any piece of information, they already wanted it — because they'd encountered the problem that made it relevant. <strong>Content delivered to a prepared mind sticks. Content delivered before the mind is prepared disappears.</strong></div>
+  </div>
+
+  <div class="eyebrow g" style="margin-top:3rem">The Game Mechanics</div>
+  <h2 class="cs-section-title">Which mechanics actually taught, and which just entertained.</h2>
+  <div class="cs-body">
+    <p>Game-based learning projects routinely confuse engagement with learning. Points, leaderboards, and badges create engagement — they don't create learning. The Bees and Beehives project was deliberately designed to use only mechanics that directly supported knowledge acquisition or application, with engagement being a byproduct of good design rather than its purpose.</p>
+
+    <h3>Colony health meter — worked well</h3>
+    <p>A visible colony health metric that responded in real time to learner decisions created immediate feedback loops. Learners could see the consequence of prioritising honey production over brood care, or delaying a disease response. This mechanic directly taught the interdependency relationships between different hive functions — the core biological concept the course was designed to develop.</p>
+
+    <h3>Seasonal progression — worked well</h3>
+    <p>The simulation ran across four seasons, each presenting different challenges relevant to the colony biology being taught. The seasonal structure created natural pacing and a narrative arc that made the simulation feel like a complete experience rather than a series of unconnected activities. It also meant that concepts introduced early (spring colony growth) had consequences the learner experienced later (winter survival) — directly demonstrating the temporal dynamics of colony biology.</p>
+
+    <h3>Achievement badges — worked less well</h3>
+    <p>I included achievement badges for completing each phase of the simulation. Post-launch feedback and LMS analytics showed that learners who struggled with the simulation were more likely to restart to earn badges than to engage with the corrective guidance provided after a poor decision. Badges inadvertently created a score-optimisation behaviour that worked against learning. If I were redesigning this course, I would remove the badges entirely and replace them with a personalised debrief that surfaces the specific decisions that drove the learner's final colony outcome.</p>
+
+    <h3>JavaScript colony simulation</h3>
+    <p>The colony health system was built in JavaScript — Storyline's native variables couldn't handle the multi-variable calculation required (population, honey stores, disease load, queen health, and environmental factors all interacting). The JS implementation tracked six colony variables, updated them on each decision, and triggered conditional content and branching based on threshold values. This required significant testing to ensure the simulation behaved realistically — an unrealistic simulation would teach wrong models of colony biology.</p>
+  </div>
+
+  <div class="eyebrow g" style="margin-top:3rem">The Results</div>
+  <h2 class="cs-section-title">What the data showed — and what it didn't.</h2>
+  <div class="cs-body">
+    <p>The 91% voluntary completion rate was the metric that most surprised the client. The previous PDF handout had an estimated completion rate of 30%. Voluntary completion of a 35-minute eLearning module, with no compulsory requirement attached, is significantly above industry benchmarks for science education content in this age group (typically 60–70% for well-designed courses).</p>
+    <p>The 78% retention rate at 2-week follow-up (compared with 41% for the previous PDF-based approach, measured using the same assessment instrument) is the more educationally significant result. It reflects the difference between information presented and information learned through application — the retrieval practice effect that occurs when learners have to use knowledge to make decisions, rather than simply read it.</p>
+    <p>Learner satisfaction scores were high across all dimensions, with the highest rating (4.9/5) going to "This course made me think." The lowest-rated element (3.8/5) was the badge system — learners who completed the simulation with a healthy colony rated it highly; learners who restarted multiple times to improve their score rated it lower. This is consistent with the behavioural observation noted above.</p>
+    <div class="cs-highlight">The result that most interested me was that 23% of learners — unprompted, with no requirement to do so — accessed the optional supplementary resources linked from the final integration activity. <strong>That's the real engagement metric: not "did they finish?" but "did they want more?"</strong></div>
+  </div>
+
+  <div class="eyebrow g" style="margin-top:3rem">Technical Details</div>
+  <h2 class="cs-section-title">What was built and how.</h2>
+  <div class="cs-body">
+    <p>The colony simulation required the most complex JavaScript in any course I've built to date. The colony model tracked six interdependent variables: population (workers, drones, brood), honey stores (current and projected), disease load (Varroa mite infestation index), queen reproductive rate, foraging efficiency (affected by environmental conditions), and a composite colony health score derived from the other five.</p>
+    <p>Each learner decision triggered a calculation that updated all six variables according to realistic biological relationships — for example, a high disease load reduced both queen reproductive rate and worker lifespan, which reduced foraging efficiency, which reduced honey stores, which affected winter survival probability. These cascading effects were what made the simulation feel realistic and what taught the interdependency concepts the course was designed to develop.</p>
+    <p>The Storyline file used JavaScript for the simulation logic and Storyline's native animation system for the visual representation — a beehive cross-section where cell populations visually reflected the tracked variables. Performance testing across target devices was extensive: the simulation ran acceptably on devices three years old, but showed frame rate issues on older school-issue tablets. A simplified "low-performance mode" was added that reduced animation complexity without affecting the simulation logic.</p>
+  </div>
+
+  <div style="background:var(--bg2);border:1px solid var(--border);padding:2rem;margin-top:3rem">
+    <div style="font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--blue2);margin-bottom:1.1rem">Technical Stack</div>
+    <div class="tags">
+      <span class="tag tag-b">Articulate Storyline 360</span>
+      <span class="tag">SCORM 2004</span>
+      <span class="tag tag-g">Merrill's First Principles</span>
+      <span class="tag tag-b">Custom JavaScript (colony sim)</span>
+      <span class="tag tag-t">WCAG 2.1 AA</span>
+      <span class="tag">Game-based learning</span>
+      <span class="tag">Colony simulation engine</span>
+      <span class="tag">Multi-variable state tracking</span>
+      <span class="tag">Low-performance mode</span>
+      <span class="tag">Retrieval practice design</span>
+    </div>
+  </div>
+</div>
+
+<div class="cs-nav">
+  <a href="case-study-aml.html" class="cs-nav-link">← Previous: Anti-Money Laundering</a>
+  <a href="work.html" class="cs-nav-link">All Projects →</a>
+</div>
+
+<div class="cta-band">
+  <div class="eyebrow">Want a course learners actually finish?</div>
+  <div class="cta-band-title">Let's design something<br><em>worth completing.</em></div>
+  <a href="contact.html" class="btn-cta-dark">Start a Project →</a>
+  <a href="services.html" class="btn-cta-dark">View Services →</a>
+  <a href="work.html" class="btn-cta-outline">See All Projects</a>
+</div>
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-brand"><span class="logo-pulse"></span>MK. Madhu Kumar Sikilammetla</div><div class="footer-desc">Instructional Designer &amp; eLearning Developer. 7+ years building accessible, multilingual, SCORM/xAPI-compliant learning experiences.</div></div>
+    <div class="footer-col"><div class="footer-col-title">Portfolio</div><a href="work.html">All Projects</a><a href="case-study-aml.html">Case Study: AML</a><a href="case-study-bees.html">Case Study: Bees</a><a href="certifications.html">Certifications</a></div>
+    <div class="footer-col"><div class="footer-col-title">Knowledge</div><a href="articles.html">Articles</a><a href="resources.html">Free Templates</a><a href="id-frameworks.html">ID Cheat Sheet</a><a href="sl-snippets.html">JS Snippets</a></div>
+    <div class="footer-col"><div class="footer-col-title">Contact</div><a href="contact.html">Let's Talk</a><a href="process.html">Process</a><a href="services.html">Services</a><a href="https://www.linkedin.com/in/madhu-kumar-sikilammetla-22694598" target="_blank">LinkedIn</a><a href="faq.html">FAQ</a><a href="sitemap.html">Sitemap</a></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2026 Madhu Kumar Sikilammetla</div><div class="footer-social"><a href="https://www.linkedin.com/in/madhu-kumar-sikilammetla-22694598" target="_blank">LinkedIn</a><a href="https://drive.google.com/file/d/1wsBtUEBdSjdLwK7CxFID6ttaW6afTxf6/view" target="_blank">CV</a><a href="mailto:madhukumar5290@gmail.com">Email</a></div></div>
+</footer>
+<script src="main.js?v=6"></script>
+</body>
+</html>

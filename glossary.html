@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>L&D Glossary | Madhu Kumar Sikilammetla</title>
+<link rel="stylesheet" href="style.css?v=6">
+<style>
+.gl-wrap{max-width:900px;margin:0 auto;padding:0 var(--ph)}
+.gl-search{display:flex;align-items:center;gap:1rem;background:var(--surface);border:1px solid var(--border2);padding:.85rem 1.25rem;margin:2.5rem 0;border-radius:4px}
+.gl-search input{flex:1;background:none;border:none;color:var(--text);font-family:var(--sans);font-size:.92rem;outline:none}
+.gl-search input::placeholder{color:var(--muted)}
+.gl-letters{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.gl-letter{font-family:var(--mono);font-size:.62rem;font-weight:600;width:30px;height:30px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);color:var(--text2);transition:all .2s;cursor:pointer;border-radius:3px}
+.gl-letter:hover,.gl-letter.active{border-color:var(--gold);color:var(--gold);background:var(--gold-dim)}
+.gl-letter.disabled{opacity:.25;cursor:default;pointer-events:none}
+.gl-section{margin-bottom:2.5rem}
+.gl-section-letter{font-family:var(--serif);font-size:2.5rem;font-weight:300;color:var(--gold);margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)}
+.gl-term{padding:1.5rem 0;border-bottom:1px solid var(--border)}
+.gl-term-name{font-family:var(--sans);font-size:1rem;font-weight:600;color:var(--text);margin-bottom:.5rem;display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+.gl-term-abbr{font-family:var(--mono);font-size:.6rem;letter-spacing:.06em;color:var(--blue2);background:var(--blue-dim);border:1px solid rgba(123,147,240,.2);padding:.15rem .55rem;border-radius:3px}
+.gl-term-def{font-family:var(--sans);font-size:.87rem;line-height:1.75;color:var(--text2)}
+.gl-term-related{margin-top:.6rem;display:flex;gap:.4rem;flex-wrap:wrap}
+.gl-term-related a{font-family:var(--mono);font-size:.56rem;letter-spacing:.06em;color:var(--gold);border:1px solid rgba(232,169,74,.25);padding:.18rem .55rem;border-radius:3px;transition:all .2s}
+.gl-term-related a:hover{background:var(--gold-dim)}
+.gl-empty{text-align:center;padding:4rem 1rem;color:var(--muted);display:none}
+.gl-empty.show{display:block}
+@media(max-width:600px){.gl-letters{gap:.3rem}.gl-letter{width:26px;height:26px;font-size:.56rem}}
+</style>
+</head>
+<body>
+<div class="progress-bar"></div>
+<button class="btt" aria-label="Back to top">↑</button>
+<nav>
+  <button class="nav-ham" aria-label="Open menu"><span></span><span></span><span></span></button>
+  <a class="nav-logo" href="index.html"><span class="logo-pulse"></span>MK.</a>
+  <div class="nav-spacer"></div>
+  <ul class="nav-links">
+    <li>
+      <button>Work <span class="nav-chevron">▾</span></button>
+      <div class="nav-dd">
+        <a href="work.html"><span class="dd-icon">🗂️</span>All Projects</a>
+        <a href="case-study-aml.html"><span class="dd-icon">📋</span>Case Study: AML</a>
+        <a href="case-study-bees.html"><span class="dd-icon">🐝</span>Case Study: Bees</a>
+      </div>
+    </li>
+    <li>
+      <button>About <span class="nav-chevron">▾</span></button>
+      <div class="nav-dd">
+        <a href="about.html"><span class="dd-icon">👤</span>About Me</a>
+        <a href="buzz.html"><span class="dd-icon">💬</span>Buzz &amp; Testimonials</a>
+        <a href="certifications.html"><span class="dd-icon">🎓</span>Certifications</a>
+      </div>
+    </li>
+    <li><a href="process.html">Process</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li>
+      <button>Knowledge <span class="nav-chevron">▾</span></button>
+      <div class="nav-dd">
+        <a href="articles.html"><span class="dd-icon">✍️</span>Articles</a>
+        <a href="id-frameworks.html"><span class="dd-icon">🧭</span>ID Cheat Sheet</a>
+        <a href="resources.html"><span class="dd-icon">📦</span>Free Resources</a>
+        <a href="glossary.html" class="active"><span class="dd-icon">📖</span>Glossary</a>
+        <a href="sitemap.html"><span class="dd-icon">🗺️</span>Sitemap</a>
+      </div>
+    </li>
+    <li>
+      <button>Tools <span class="nav-chevron">▾</span></button>
+      <div class="nav-mega">
+        <div class="nav-mega-col">
+          <span class="nav-mega-title">AI &amp; Demos</span>
+          <a href="ai-analyzer.html"><span class="dd-icon">🤖</span>AI Course Analyzer<span class="dd-new">New</span></a>
+          <a href="lms-demo.html"><span class="dd-icon">🎓</span>LMS Demo</a>
+          <a href="demo-xapi.html"><span class="dd-icon">📡</span>xAPI Demo</a>
+          <a href="demo-storyboard.html"><span class="dd-icon">🗂️</span>Storyboard Gen</a>
+          <a href="demo-template.html"><span class="dd-icon">🔧</span>Patterns</a>
+        </div>
+        <div class="nav-mega-col">
+          <span class="nav-mega-title">Reference Tools</span>
+          <a href="sl-snippets.html"><span class="dd-icon">⚡</span>JS Snippets</a>
+          <a href="accessibility-guide.html"><span class="dd-icon">♿</span>A11y Guide</a>
+          <a href="effort-estimator.html"><span class="dd-icon">📊</span>Effort Estimator</a>
+          <a href="spot-the-bug.html"><span class="dd-icon">🐛</span>Spot the Bug</a>
+          <a href="id-model-selector.html"><span class="dd-icon">🧭</span>ID Selector</a>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">☀️</button>
+  <a href="contact.html" class="nav-cta">Let's Talk</a>
+</nav>
+<div class="mobile-menu">
+  <span class="mob-section-title">Portfolio</span>
+  <a href="index.html"><span class="dd-icon">🏠</span>Home</a>
+  <a href="work.html"><span class="dd-icon">🗂️</span>All Projects</a>
+  <a href="case-study-aml.html"><span class="dd-icon">📋</span>Case Study: AML</a>
+  <a href="case-study-bees.html"><span class="dd-icon">🐝</span>Case Study: Bees</a>
+  <span class="mob-section-title">About</span>
+  <a href="about.html"><span class="dd-icon">👤</span>About Me</a>
+  <a href="buzz.html"><span class="dd-icon">💬</span>Buzz &amp; Testimonials</a>
+  <a href="certifications.html"><span class="dd-icon">🎓</span>Certifications</a>
+  <span class="mob-section-title">Services</span>
+  <a href="process.html"><span class="dd-icon">⚙️</span>Process</a>
+  <a href="services.html"><span class="dd-icon">📋</span>Services</a>
+  <span class="mob-section-title">Knowledge</span>
+  <a href="articles.html"><span class="dd-icon">✍️</span>Articles</a>
+  <a href="id-frameworks.html"><span class="dd-icon">🧭</span>ID Cheat Sheet</a>
+  <a href="resources.html"><span class="dd-icon">📦</span>Free Resources</a>
+  <a href="glossary.html" class="active"><span class="dd-icon">📖</span>Glossary</a>
+  <span class="mob-section-title">Tools &amp; Demos</span>
+  <a href="ai-analyzer.html"><span class="dd-icon">🤖</span>AI Course Analyzer</a>
+  <a href="sl-snippets.html"><span class="dd-icon">⚡</span>JS Snippets</a>
+  <a href="lms-demo.html"><span class="dd-icon">🎓</span>LMS Demo</a>
+  <a href="accessibility-guide.html"><span class="dd-icon">♿</span>A11y Guide</a>
+  <a href="effort-estimator.html"><span class="dd-icon">📊</span>Effort Estimator</a>
+  <a href="spot-the-bug.html"><span class="dd-icon">🐛</span>Spot the Bug</a>
+  <a href="demo-xapi.html"><span class="dd-icon">📡</span>xAPI Demo</a>
+  <a href="demo-storyboard.html"><span class="dd-icon">🗂️</span>Storyboard Gen</a>
+  <a href="id-model-selector.html"><span class="dd-icon">🧭</span>ID Selector</a>
+  <a href="demo-template.html"><span class="dd-icon">🔧</span>Patterns</a>
+  <span class="mob-section-title">Contact</span>
+  <a href="faq.html"><span class="dd-icon">❓</span>FAQ</a>
+  <a href="sitemap.html"><span class="dd-icon">🗺️</span>Sitemap</a>
+  <a href="contact.html"><span class="dd-icon">✉️</span>Let's Talk</a>
+</div>
+
+<div class="page-hero" style="padding-bottom:3rem">
+  <div class="hero-bg-grid"></div>
+  <div class="eyebrow reveal">Reference</div>
+  <h1 class="display-xl reveal d1">L&amp;D<br><em>Glossary.</em></h1>
+  <p style="font-family:var(--sans);font-size:1.05rem;color:var(--text2);max-width:580px;margin-top:1.1rem;line-height:1.8" class="reveal d2">40+ terms from Learning &amp; Development and Instructional Design — defined plainly, without circular jargon. Search or browse alphabetically.</p>
+</div>
+
+<section class="section">
+  <div class="gl-wrap">
+    <div class="gl-search reveal">
+      <span style="color:var(--muted)">🔍</span>
+      <input type="text" id="gl-search" placeholder="Search terms... e.g. 'SCORM' or 'scaffolding'" oninput="filterGlossary()">
+    </div>
+    <div class="gl-letters reveal" id="gl-letters"></div>
+    <div id="gl-content"></div>
+    <div class="gl-empty" id="gl-empty"><p style="font-family:var(--sans);font-size:.9rem">No terms match your search.</p></div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="eyebrow">Term not here?</div>
+  <div class="cta-band-title">Ask me directly.<br><em>I'll add it.</em></div>
+  <a href="contact.html" class="btn-cta-dark">Suggest a Term →</a>
+  <a href="id-frameworks.html" class="btn-cta-outline">ID Cheat Sheet →</a>
+</div>
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-brand"><span class="logo-pulse"></span>MK. Madhu Kumar Sikilammetla</div><div class="footer-desc">Instructional Designer &amp; eLearning Developer. 7+ years building accessible, multilingual, SCORM/xAPI-compliant learning experiences.</div></div>
+    <div class="footer-col"><div class="footer-col-title">Portfolio</div><a href="work.html">All Projects</a><a href="case-study-aml.html">Case Study: AML</a><a href="case-study-bees.html">Case Study: Bees</a><a href="certifications.html">Certifications</a></div>
+    <div class="footer-col"><div class="footer-col-title">Knowledge</div><a href="articles.html">Articles</a><a href="resources.html">Free Templates</a><a href="id-frameworks.html">ID Cheat Sheet</a><a href="sl-snippets.html">JS Snippets</a><a href="glossary.html">Glossary</a></div>
+    <div class="footer-col"><div class="footer-col-title">Contact</div><a href="contact.html">Let's Talk</a><a href="process.html">Process</a><a href="services.html">Services</a><a href="faq.html">FAQ</a><a href="sitemap.html">Sitemap</a></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2026 Madhu Kumar Sikilammetla</div><div class="footer-social"><a href="https://www.linkedin.com/in/madhu-kumar-sikilammetla-22694598" target="_blank">LinkedIn</a><a href="https://drive.google.com/file/d/1wsBtUEBdSjdLwK7CxFID6ttaW6afTxf6/view" target="_blank">CV</a><a href="mailto:madhukumar5290@gmail.com">Email</a></div></div>
+</footer>
+<script src="main.js?v=6"></script>
+<script>
+const terms = [
+{t:"ADDIE",abbr:"Model",def:"Analysis, Design, Development, Implementation, Evaluation — the foundational five-phase instructional design process model. Most other ID frameworks are variations or refinements of ADDIE's basic structure.",rel:["ID Cheat Sheet"]},
+{t:"Action Mapping",def:"Cathy Moore's instructional design approach that starts with the business goal, identifies the specific on-the-job actions that drive it, and designs practice activities around those actions — deliberately minimising information dumps.",rel:["ID Cheat Sheet","Case Study: AML"]},
+{t:"Andragogy",def:"The theory and practice of adult learning, as distinct from pedagogy (child learning). Malcolm Knowles' principles include self-direction, relevance to real problems, and drawing on prior experience.",rel:[]},
+{t:"Asynchronous Learning",def:"Learning that does not require learners and instructors to be present at the same time — eLearning modules, recorded videos, and discussion boards completed on the learner's own schedule.",rel:[]},
+{t:"Authoring Tool",def:"Software used to build eLearning content — Articulate Storyline 360, Rise 360, Adobe Captivate, Lectora, and iSpring are the most common. Outputs typically package as SCORM or xAPI for LMS delivery.",rel:["JS Snippets"]},
+{t:"Blended Learning",def:"A learning design that deliberately combines multiple modalities — eLearning, live sessions, on-the-job practice — sequenced so each modality does what it does best.",rel:["Articles"]},
+{t:"Bloom's Taxonomy",def:"A hierarchical classification of cognitive learning objectives: Remember, Understand, Apply, Analyse, Evaluate, Create. Used to write learning objectives at the appropriate cognitive level and to ensure assessments test the right level.",rel:["ID Cheat Sheet"]},
+{t:"Branching Scenario",def:"An interactive learning format where learners make decisions that lead to different paths and consequences — the primary format for practising judgement and decision-making rather than recall.",rel:["Interaction Patterns","Case Study: AML"]},
+{t:"Cognitive Load Theory",def:"John Sweller's theory describing the limited capacity of working memory. Instructional design should minimise extraneous cognitive load (poor design, irrelevant decoration) to leave capacity for the load required to actually learn the content.",rel:[]},
+{t:"Completion Rate",def:"The percentage of learners who start a course who go on to finish it. A commonly tracked LMS metric — but one that measures engagement, not learning or behaviour change.",rel:["LMS Demo"]},
+{t:"Constructivism",def:"A learning theory holding that learners construct their own understanding through experience and reflection, rather than passively receiving information. Underpins scenario-based and problem-based learning design.",rel:[]},
+{t:"Curation",def:"The practice of selecting, organising, and presenting existing content (articles, videos, resources) rather than creating new content from scratch — increasingly used for just-in-time and informal learning support.",rel:[]},
+{t:"Cognitive Walkthrough",def:"A usability evaluation method where a reviewer steps through a course or interface as if they were a learner, checking each interaction for clarity, feedback, and ease of use.",rel:["Accessibility Guide"]},
+{t:"Formative Assessment",def:"Low-stakes assessment used during learning to check understanding and guide instruction — as distinct from summative assessment, which evaluates learning at the end.",rel:[]},
+{t:"Gagné's Nine Events",def:"Robert Gagné's sequential model of instruction: gain attention, inform objectives, stimulate recall, present content, provide guidance, elicit performance, provide feedback, assess performance, enhance retention/transfer.",rel:["ID Cheat Sheet"]},
+{t:"Gamification",def:"Applying game design elements (points, badges, leaderboards, levels) to non-game contexts like training. Distinct from game-based learning, where the entire experience is structured as a game with mechanics tied to learning objectives.",rel:["Articles"]},
+{t:"ID",abbr:"Abbr.",def:"Instructional Design / Instructional Designer. The professional discipline (or professional) responsible for designing learning experiences using systematic methods grounded in learning theory.",rel:[]},
+{t:"Kirkpatrick Model",def:"A four-level training evaluation framework: Level 1 Reaction (did learners like it), Level 2 Learning (did they learn it), Level 3 Behaviour (do they apply it on the job), Level 4 Results (did it impact business outcomes).",rel:["ID Cheat Sheet","Process"]},
+{t:"Learning Object",def:"A self-contained, reusable unit of instructional content — small enough to be combined with other learning objects into larger courses or curricula.",rel:[]},
+{t:"LMS",abbr:"Abbr.",def:"Learning Management System — the software platform that delivers, tracks, and reports on training. Mindtickle, Docebo, Cornerstone, and Moodle are common examples.",rel:["LMS Demo"]},
+{t:"LRS",abbr:"Abbr.",def:"Learning Record Store — a system that stores and provides access to xAPI learning records. Distinct from an LMS in that an LRS can record any learning experience, not just formal course completions.",rel:["xAPI Demo"]},
+{t:"Merrill's First Principles",def:"M. David Merrill's five principles of effective instruction: problem-centred, activation, demonstration, application, integration. Particularly effective for topics learners don't naturally find relevant.",rel:["ID Cheat Sheet","Case Study: Bees"]},
+{t:"Microlearning",def:"Short, focused learning content — typically under 5–10 minutes — designed to address a single learning objective or performance need, often delivered just-in-time.",rel:[]},
+{t:"Needs Analysis",def:"The discovery process that identifies the actual performance gap a training intervention should address, distinguishing genuine knowledge/skill gaps from other causes like unclear expectations, poor processes, or lack of resources.",rel:["Process"]},
+{t:"Performance Support",def:"Tools and resources (job aids, quick reference guides, checklists) that support task completion at the moment of need, as an alternative or supplement to formal training.",rel:["Free Resources"]},
+{t:"Rapid Prototyping",def:"Building a small, clickable sample of a course early in development to validate design direction with stakeholders before committing to full production — central to the SAM model.",rel:["Process"]},
+{t:"Retrieval Practice",def:"A learning technique where learners actively recall information from memory, rather than simply re-reading or recognising it. One of the most evidence-backed techniques for long-term retention.",rel:["Articles"]},
+{t:"SAM",abbr:"Model",def:"Successive Approximation Model — an agile, iterative alternative to ADDIE that uses rapid prototyping and continuous stakeholder feedback rather than extensive upfront design documentation.",rel:["ID Cheat Sheet"]},
+{t:"Scaffolding",def:"Instructional support provided to learners that is gradually withdrawn as competence increases — for example, providing a worked example, then a partially-completed problem, then an unaided problem.",rel:[]},
+{t:"SCORM",abbr:"Abbr.",def:"Sharable Content Object Reference Model — a technical standard governing how eLearning content communicates with an LMS, primarily completion status and assessment score. SCORM 1.2 and SCORM 2004 are the two major versions in use.",rel:["JS Snippets","Articles"]},
+{t:"Scenario-Based Learning",def:"An instructional approach that places learners inside realistic, contextualised situations requiring decisions — used to develop and assess judgement rather than recall.",rel:["Interaction Patterns"]},
+{t:"Storyboard",def:"A detailed planning document for an eLearning course specifying narration, on-screen text, visuals, and interactions slide-by-slide — reviewed and approved before development begins.",rel:["Storyboard Generator","Free Resources"]},
+{t:"Summative Assessment",def:"Assessment that evaluates learning at the conclusion of an instructional unit, typically used to certify competence or determine a grade — as distinct from formative assessment used during learning.",rel:[]},
+{t:"Synchronous Learning",def:"Learning that happens in real time with learners and instructor present simultaneously — live virtual classrooms, webinars, in-person training.",rel:[]},
+{t:"TPACK",abbr:"Model",def:"Technological Pedagogical Content Knowledge — a framework describing the knowledge teachers need at the intersection of technology, pedagogy, and subject content to teach effectively with technology.",rel:["ID Cheat Sheet"]},
+{t:"Transfer of Training",def:"The degree to which skills and knowledge learned in training are applied on the job. The ultimate measure of training effectiveness — and the focus of Kirkpatrick Level 3.",rel:["Kirkpatrick Model"]},
+{t:"UDL",abbr:"Abbr.",def:"Universal Design for Learning — a framework for designing instruction that is accessible to the widest possible range of learners from the outset, addressing variability in how people perceive, engage with, and express learning.",rel:["ID Cheat Sheet","Accessibility Guide"]},
+{t:"Usability Testing",def:"Observing real users interacting with a course or product to identify points of confusion, friction, or failure — distinct from accessibility testing, though the two often overlap.",rel:["Accessibility Guide"]},
+{t:"WCAG",abbr:"Abbr.",def:"Web Content Accessibility Guidelines — the internationally recognised standard for digital accessibility, with conformance levels A, AA, and AAA. WCAG 2.1 AA is the most commonly required standard for corporate and government content.",rel:["Accessibility Guide"]},
+{t:"xAPI",abbr:"Abbr. / Tin Can",def:"Experience API — a data specification that allows tracking of a much wider range of learning experiences than SCORM, sending Actor-Verb-Object statements to a Learning Record Store.",rel:["xAPI Demo","JS Snippets"]},
+{t:"Zone of Proximal Development",def:"Lev Vygotsky's concept describing the gap between what a learner can do unaided and what they can do with guidance — the optimal zone for instruction, neither too easy nor unreachable.",rel:[]}
+];
+
+const linkMap = {
+  "ID Cheat Sheet":"id-frameworks.html","Case Study: AML":"case-study-aml.html","Case Study: Bees":"case-study-bees.html",
+  "JS Snippets":"sl-snippets.html","Articles":"articles.html","Interaction Patterns":"demo-template.html",
+  "LMS Demo":"lms-demo.html","xAPI Demo":"demo-xapi.html","Free Resources":"resources.html",
+  "Process":"process.html","Storyboard Generator":"demo-storyboard.html","Accessibility Guide":"accessibility-guide.html",
+  "Kirkpatrick Model":"#kirkpatrick-model"
+};
+
+function renderGlossary(filtered){
+  const sorted = [...filtered].sort((a,b)=>a.t.localeCompare(b.t));
+  const grouped = {};
+  sorted.forEach(term=>{
+    const letter = term.t[0].toUpperCase();
+    if(!grouped[letter]) grouped[letter]=[];
+    grouped[letter].push(term);
+  });
+  const content = document.getElementById('gl-content');
+  if(sorted.length===0){
+    content.innerHTML='';
+    document.getElementById('gl-empty').classList.add('show');
+    return;
+  }
+  document.getElementById('gl-empty').classList.remove('show');
+  content.innerHTML = Object.keys(grouped).sort().map(letter=>`
+    <div class="gl-section" id="letter-${letter}">
+      <div class="gl-section-letter">${letter}</div>
+      ${grouped[letter].map(term=>`
+        <div class="gl-term">
+          <div class="gl-term-name">${term.t}${term.abbr?`<span class="gl-term-abbr">${term.abbr}</span>`:''}</div>
+          <div class="gl-term-def">${term.def}</div>
+          ${term.rel && term.rel.length?`<div class="gl-term-related">${term.rel.map(r=>`<a href="${linkMap[r]||'#'}">${r} →</a>`).join('')}</div>`:''}
+        </div>
+      `).join('')}
+    </div>
+  `).join('');
+}
+
+function renderLetterNav(){
+  const allLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+  const present = new Set(terms.map(t=>t.t[0].toUpperCase()));
+  document.getElementById('gl-letters').innerHTML = allLetters.map(l=>
+    `<span class="gl-letter${present.has(l)?'':' disabled'}" onclick="scrollToLetter('${l}')">${l}</span>`
+  ).join('');
+}
+function scrollToLetter(l){
+  document.getElementById('letter-'+l)?.scrollIntoView({behavior:'smooth',block:'start'});
+}
+function filterGlossary(){
+  const q = document.getElementById('gl-search').value.toLowerCase().trim();
+  const filtered = !q ? terms : terms.filter(t=>t.t.toLowerCase().includes(q)||t.def.toLowerCase().includes(q));
+  renderGlossary(filtered);
+}
+renderLetterNav();
+renderGlossary(terms);
+</script>
+</body>
+</html>

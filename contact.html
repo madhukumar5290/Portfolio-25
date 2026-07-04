@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Let's Talk | Madhu Kumar Sikilammetla</title>
+<link rel="stylesheet" href="style.css?v=6">
+<style>
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;padding:5rem var(--ph);align-items:start}
+.contact-info-section{font-family:var(--mono);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--blue);padding-bottom:.5rem;border-bottom:1px solid var(--border);margin-bottom:1.1rem;margin-top:2.5rem}
+.contact-info-section:first-child{margin-top:0}
+.contact-p{font-family:var(--sans);font-size:.9rem;line-height:1.75;color:var(--text2);margin-bottom:.85rem}
+.clinks{display:flex;flex-direction:column;gap:.6rem}
+.clink{display:flex;align-items:center;gap:.9rem;padding:.9rem 1.1rem;background:var(--surface);border:1px solid var(--border);text-decoration:none;transition:border-color .2s,background .2s}
+.clink:hover{border-color:var(--gold);background:var(--bg3)}
+.clink-icon{font-size:1rem;width:22px;text-align:center;flex-shrink:0}
+.clink-label{font-family:var(--mono);font-size:.54rem;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:.1rem}
+.clink-val{font-family:var(--sans);font-size:.85rem;color:var(--text)}
+.avail-box{background:rgba(47,204,163,.06);border:1px solid rgba(47,204,163,.2);border-left:3px solid var(--teal);padding:1.1rem 1.25rem;margin-top:1.5rem}
+.avail-label{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);display:flex;align-items:center;gap:.45rem;margin-bottom:.4rem}
+.avail-text{font-family:var(--sans);font-size:.85rem;color:var(--text2);line-height:1.55}
+.services-list{display:flex;flex-direction:column;gap:.45rem}
+.service-item{font-family:var(--sans);font-size:.88rem;color:var(--text);display:flex;align-items:flex-start;gap:.65rem;line-height:1.5}
+.service-item::before{content:'→';color:var(--gold);flex-shrink:0;font-family:var(--mono)}
+.form-wrap{background:var(--bg2);border:1px solid var(--border);padding:2.5rem}
+@media(max-width:900px){.contact-grid{grid-template-columns:1fr;padding:3rem var(--ph);gap:3rem}}
+</style>
+</head>
+<body>
+<div class="progress-bar"></div>
+<button class="btt" aria-label="Back to top">↑</button>
+<nav>
+  <button class="nav-ham" aria-label="Open menu"><span></span><span></span><span></span></button>
+  <a class="nav-logo" href="index.html"><span class="logo-pulse"></span>MK.</a>
+  <div class="nav-spacer"></div>
+  <ul class="nav-links">
+    <li>
+      <button>Work <span class="nav-chevron">▾</span></button>
+      <div class="nav-dd">
+        <a href="work.html"><span class="dd-icon">🗂️</span>All Projects</a>
+        <a href="case-study-aml.html"><span class="dd-icon">📋</span>Case Study: AML</a>
+        <a href="case-study-bees.html"><span class="dd-icon">🐝</span>Case Study: Bees</a>
+      </div>
+    </li>
+    <li>
+      <button>About <span class="nav-chevron">▾</span></button>
+      <div class="nav-dd">
+        <a href="about.html"><span class="dd-icon">👤</span>About Me</a>
+        <a href="buzz.html"><span class="dd-icon">💬</span>Buzz &amp; Testimonials</a>
+        <a href="certifications.html"><span class="dd-icon">🎓</span>Certifications</a>
+      </div>
+    </li>
+    <li><a href="process.html">Process</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li>
+      <button>Knowledge <span class="nav-chevron">▾</span></button>
+      <div class="nav-dd">
+        <a href="articles.html"><span class="dd-icon">✍️</span>Articles</a>
+        <a href="id-frameworks.html"><span class="dd-icon">🧭</span>ID Cheat Sheet</a>
+        <a href="resources.html"><span class="dd-icon">📦</span>Free Resources</a>
+        <a href="glossary.html"><span class="dd-icon">📖</span>Glossary</a>
+        <a href="sitemap.html"><span class="dd-icon">🗺️</span>Sitemap</a>
+      </div>
+    </li>
+    <li>
+      <button>Tools <span class="nav-chevron">▾</span></button>
+      <div class="nav-mega">
+        <div class="nav-mega-col">
+          <span class="nav-mega-title">AI &amp; Demos</span>
+          <a href="ai-analyzer.html"><span class="dd-icon">🤖</span>AI Course Analyzer<span class="dd-new">New</span></a>
+          <a href="lms-demo.html"><span class="dd-icon">🎓</span>LMS Demo</a>
+          <a href="demo-xapi.html"><span class="dd-icon">📡</span>xAPI Demo</a>
+          <a href="demo-storyboard.html"><span class="dd-icon">🗂️</span>Storyboard Gen</a>
+          <a href="demo-template.html"><span class="dd-icon">🔧</span>Patterns</a>
+        </div>
+        <div class="nav-mega-col">
+          <span class="nav-mega-title">Reference Tools</span>
+          <a href="sl-snippets.html"><span class="dd-icon">⚡</span>JS Snippets</a>
+          <a href="accessibility-guide.html"><span class="dd-icon">♿</span>A11y Guide</a>
+          <a href="effort-estimator.html"><span class="dd-icon">📊</span>Effort Estimator</a>
+          <a href="spot-the-bug.html"><span class="dd-icon">🐛</span>Spot the Bug</a>
+          <a href="id-model-selector.html"><span class="dd-icon">🧭</span>ID Selector</a>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">☀️</button>
+  <a href="contact.html" class="nav-cta">Let's Talk</a>
+</nav>
+<div class="mobile-menu">
+  <span class="mob-section-title">Portfolio</span>
+  <a href="index.html"><span class="dd-icon">🏠</span>Home</a>
+  <a href="work.html"><span class="dd-icon">🗂️</span>All Projects</a>
+  <a href="case-study-aml.html"><span class="dd-icon">📋</span>Case Study: AML</a>
+  <a href="case-study-bees.html"><span class="dd-icon">🐝</span>Case Study: Bees</a>
+  <span class="mob-section-title">About</span>
+  <a href="about.html"><span class="dd-icon">👤</span>About Me</a>
+  <a href="buzz.html"><span class="dd-icon">💬</span>Buzz &amp; Testimonials</a>
+  <a href="certifications.html"><span class="dd-icon">🎓</span>Certifications</a>
+  <span class="mob-section-title">Services</span>
+  <a href="process.html"><span class="dd-icon">⚙️</span>Process</a>
+  <a href="services.html"><span class="dd-icon">📋</span>Services</a>
+  <span class="mob-section-title">Knowledge</span>
+  <a href="articles.html"><span class="dd-icon">✍️</span>Articles</a>
+  <a href="id-frameworks.html"><span class="dd-icon">🧭</span>ID Cheat Sheet</a>
+  <a href="resources.html"><span class="dd-icon">📦</span>Free Resources</a>
+  <a href="glossary.html"><span class="dd-icon">📖</span>Glossary</a>
+  <span class="mob-section-title">Tools &amp; Demos</span>
+  <a href="ai-analyzer.html"><span class="dd-icon">🤖</span>AI Course Analyzer</a>
+  <a href="sl-snippets.html"><span class="dd-icon">⚡</span>JS Snippets</a>
+  <a href="lms-demo.html"><span class="dd-icon">🎓</span>LMS Demo</a>
+  <a href="accessibility-guide.html"><span class="dd-icon">♿</span>A11y Guide</a>
+  <a href="effort-estimator.html"><span class="dd-icon">📊</span>Effort Estimator</a>
+  <a href="spot-the-bug.html"><span class="dd-icon">🐛</span>Spot the Bug</a>
+  <a href="demo-xapi.html"><span class="dd-icon">📡</span>xAPI Demo</a>
+  <a href="demo-storyboard.html"><span class="dd-icon">🗂️</span>Storyboard Gen</a>
+  <a href="id-model-selector.html"><span class="dd-icon">🧭</span>ID Selector</a>
+  <a href="demo-template.html"><span class="dd-icon">🔧</span>Patterns</a>
+  <span class="mob-section-title">Contact</span>
+  <a href="faq.html"><span class="dd-icon">❓</span>FAQ</a>
+  <a href="sitemap.html"><span class="dd-icon">🗺️</span>Sitemap</a>
+  <a href="contact.html"><span class="dd-icon">✉️</span>Let's Talk</a>
+</div>
+
+<div class="page-hero">
+  <div class="hero-bg"></div><div class="hero-grid"></div>
+  <div class="eyebrow reveal">Let's Talk</div>
+  <h1 class="display reveal d1">Got a project?<br><em>Let's build it.</em></h1>
+  <p style="font-family:var(--sans);font-size:1.05rem;color:var(--text2);max-width:560px;margin-top:.85rem;line-height:1.7" class="reveal d2">Whether it's a single course, a full curriculum, an LMS migration, or an accessibility audit — I'm open to hearing about it. I respond within 24 hours.</p>
+</div>
+
+<div class="contact-grid">
+  <div class="reveal">
+    <div class="contact-info-section">Get in Touch</div>
+    <p class="contact-p">The fastest way to reach me is email or WhatsApp. I'm based in India and work with clients and teams globally — timezone flexibility is not a problem.</p>
+    <div class="clinks">
+      <a href="mailto:madhukumar5290@gmail.com" class="clink"><span class="clink-icon">✉️</span><div><div class="clink-label">Email</div><div class="clink-val">madhukumar5290@gmail.com</div></div></a>
+      <a href="https://wa.me/918688228517" target="_blank" class="clink"><span class="clink-icon">💬</span><div><div class="clink-label">WhatsApp</div><div class="clink-val">+91 868 822 8517</div></div></a>
+      <a href="https://www.linkedin.com/in/madhu-kumar-sikilammetla-22694598" target="_blank" class="clink"><span class="clink-icon">💼</span><div><div class="clink-label">LinkedIn</div><div class="clink-val">Madhu Kumar Sikilammetla</div></div></a>
+      <a href="https://join.skype.com/invite/azlPdkwXWSUL" target="_blank" class="clink"><span class="clink-icon">📹</span><div><div class="clink-label">Skype</div><div class="clink-val">Join via invite link</div></div></a>
+      <a href="https://drive.google.com/file/d/1wsBtUEBdSjdLwK7CxFID6ttaW6afTxf6/view" target="_blank" class="clink"><span class="clink-icon">📄</span><div><div class="clink-label">Resume / CV</div><div class="clink-val">Download PDF ↗</div></div></a>
+    </div>
+    <div class="avail-box">
+      <div class="avail-label"><span class="dot-avail"></span>Currently Available</div>
+      <div class="avail-text">Open to freelance projects, full-time roles, and contract engagements in Instructional Design, eLearning Development, and Learning Technology. Immediate start available.</div>
+    </div>
+    <div class="contact-info-section" style="margin-top:2rem">What I Can Help With</div>
+    <div class="services-list">
+      <div class="service-item">End-to-end eLearning course design and development</div>
+      <div class="service-item">ADA/508 accessibility audits and remediation</div>
+      <div class="service-item">Flash-to-HTML5 conversion projects</div>
+      <div class="service-item">Multi-language localisation (16–22 languages including Arabic RTL)</div>
+      <div class="service-item">LMS administration and SCORM/xAPI troubleshooting</div>
+      <div class="service-item">AR/VR learning experiences with ZapWorks</div>
+      <div class="service-item">Game-based and interactive learning design</div>
+      <div class="service-item">Custom JavaScript interactions in Storyline 360</div>
+    </div>
+  </div>
+
+  <div class="reveal d1">
+    <div class="form-wrap">
+      <div class="eyebrow" style="margin-bottom:1.5rem">Send a Message</div>
+      <div id="contact-form">
+        <div class="form-row" style="margin-bottom:1.5rem">
+          <div><label class="form-label">Your Name</label><input class="form-input" type="text" id="f-name" placeholder="Jane Smith"></div>
+          <div><label class="form-label">Your Email</label><input class="form-input" type="email" id="f-email" placeholder="jane@company.com"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Project Type</label>
+          <select class="form-select" id="f-type">
+            <option value="">Select a project type...</option>
+            <option>eLearning Course Design & Development</option>
+            <option>Accessibility Audit / ADA Remediation</option>
+            <option>Flash-to-HTML5 Conversion</option>
+            <option>Localisation Project</option>
+            <option>LMS Administration / SCORM Troubleshooting</option>
+            <option>AR/VR Learning Experience</option>
+            <option>Game-Based / Interactive Learning</option>
+            <option>Full-Time or Contract Role</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Tell me about your project</label>
+          <textarea class="form-textarea" id="f-msg" placeholder="Describe your project, timeline, audience, any technical requirements or constraints..."></textarea>
+        </div>
+        <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="submitForm()">Send Message →</button>
+      </div>
+      <div class="form-success" id="form-success">
+        <p>✓ Message received! I'll respond within 24 hours.</p>
+        <p style="margin-top:.5rem;opacity:.7">For faster response: WhatsApp +91 868 822 8517 or connect on LinkedIn.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-brand"><span class="logo-pulse"></span>MK. Madhu Kumar Sikilammetla</div><div class="footer-desc">Instructional Designer &amp; eLearning Developer. 7+ years building accessible, multilingual, SCORM/xAPI-compliant learning experiences.</div></div>
+    <div class="footer-col"><div class="footer-col-title">Portfolio</div><a href="work.html">All Projects</a><a href="case-study-aml.html">Case Study: AML</a><a href="case-study-bees.html">Case Study: Bees</a><a href="certifications.html">Certifications</a></div>
+    <div class="footer-col"><div class="footer-col-title">Knowledge</div><a href="articles.html">Articles</a><a href="resources.html">Free Templates</a><a href="id-frameworks.html">ID Cheat Sheet</a><a href="sl-snippets.html">JS Snippets</a></div>
+    <div class="footer-col"><div class="footer-col-title">Contact</div><a href="contact.html">Let's Talk</a><a href="process.html">Process</a><a href="services.html">Services</a><a href="https://www.linkedin.com/in/madhu-kumar-sikilammetla-22694598" target="_blank">LinkedIn</a><a href="faq.html">FAQ</a><a href="sitemap.html">Sitemap</a></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2026 Madhu Kumar Sikilammetla</div><div class="footer-social"><a href="https://www.linkedin.com/in/madhu-kumar-sikilammetla-22694598" target="_blank">LinkedIn</a><a href="https://drive.google.com/file/d/1wsBtUEBdSjdLwK7CxFID6ttaW6afTxf6/view" target="_blank">CV</a><a href="mailto:madhukumar5290@gmail.com">Email</a></div></div>
+</footer>
+<script src="main.js?v=6"></script>
+<script>
+/* ============================================================
+   EMAIL DELIVERY SETUP — READ THIS
+   ============================================================
+   Right now this form works via a "mailto" fallback: clicking
+   Send opens the visitor's own email app with everything
+   pre-filled, addressed to madhukumar5290@gmail.com. No signup
+   needed — it works immediately, in every browser.
+
+   OPTIONAL UPGRADE — silent in-page submission (5 minutes):
+   1. Go to https://formspree.io and sign up free with your email
+      (madhukumar5290@gmail.com)
+   2. Create a new form — Formspree gives you an endpoint URL like:
+      https://formspree.io/f/abcd1234
+   3. Replace FORMSPREE_ENDPOINT below with YOUR real endpoint URL
+   4. Done. Once set, submissions go straight to your inbox via
+      fetch() without opening the visitor's mail app at all, and
+      the mailto fallback above is skipped automatically.
+   ============================================================ */
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+const CONTACT_EMAIL = 'madhukumar5290@gmail.com';
+
+async function submitForm(){
+  const n=document.getElementById('f-name').value.trim();
+  const e=document.getElementById('f-email').value.trim();
+  const t=document.getElementById('f-type').value;
+  const m=document.getElementById('f-msg').value.trim();
+  if(!n||!e||!m){alert('Please fill in your name, email, and message.');return;}
+  if(!/\S+@\S+\.\S+/.test(e)){alert('Please enter a valid email address.');return;}
+
+  const btn = document.querySelector('#contact-form button');
+  const originalText = btn.textContent;
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  if(FORMSPREE_ENDPOINT.includes('YOUR_FORM_ID')){
+    // Formspree isn't configured yet — fall back to a pre-filled
+    // mailto link so the message still reaches the inbox directly.
+    const subject = encodeURIComponent('Portfolio enquiry: '+(t||'New project')+' — from '+n);
+    const bodyLines = ['Name: '+n,'Email: '+e,'Project type: '+(t||'Not specified'),'','Message:',m];
+    const body = encodeURIComponent(bodyLines.join('\n'));
+    window.location.href = 'mailto:'+CONTACT_EMAIL+'?subject='+subject+'&body='+body;
+    btn.textContent = originalText;
+    btn.disabled = false;
+    document.getElementById('contact-form').style.display='none';
+    document.getElementById('form-success').classList.add('show');
+    document.getElementById('form-success').querySelector('p').textContent = '✓ Opening your email app with the message ready to send...';
+    return;
+  }
+
+  try{
+    const res = await fetch(FORMSPREE_ENDPOINT, {
+      method: 'POST',
+      headers: {'Accept':'application/json','Content-Type':'application/json'},
+      body: JSON.stringify({name:n, email:e, projectType:t, message:m})
+    });
+    if(res.ok){
+      document.getElementById('contact-form').style.display='none';
+      document.getElementById('form-success').classList.add('show');
+    } else {
+      throw new Error('Submission failed');
+    }
+  } catch(err){
+    btn.textContent = originalText;
+    btn.disabled = false;
+    alert('Something went wrong sending this. Please try again, or email madhukumar5290@gmail.com directly.');
+  }
+}
+</script>
+</body>
+</html>

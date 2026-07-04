@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Services | Madhu Kumar Sikilammetla</title>
+<link rel="stylesheet" href="style.css?v=6">
+<style>
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.srv-card{background:var(--bg2);border:1px solid var(--border);padding:2.5rem;position:relative;transition:all .3s var(--ease);display:flex;flex-direction:column}
+.srv-card:hover{border-color:var(--border2);transform:translateY(-4px);box-shadow:var(--shadow)}
+.srv-card.featured{border-color:var(--gold);background:linear-gradient(135deg,rgba(232,169,74,.05) 0%,var(--bg2) 60%)}
+.srv-card.featured::before{content:'MOST POPULAR';position:absolute;top:-1px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:.46rem;letter-spacing:.15em;background:var(--gold);color:var(--bg);padding:.2rem .75rem;white-space:nowrap}
+.srv-icon{font-size:2.5rem;margin-bottom:1rem;display:block}
+.srv-name{font-family:var(--serif);font-size:1.5rem;font-weight:400;color:var(--text);margin-bottom:.35rem}
+.srv-sub{font-family:var(--mono);font-size:.56rem;letter-spacing:.08em;color:var(--muted);margin-bottom:1.25rem}
+.srv-desc{font-family:var(--sans);font-size:.86rem;line-height:1.7;color:var(--text2);margin-bottom:1.5rem;flex:1}
+.srv-features{list-style:none;display:flex;flex-direction:column;gap:.45rem;margin-bottom:2rem}
+.srv-features li{font-family:var(--sans);font-size:.83rem;color:var(--text2);display:flex;align-items:flex-start;gap:.55rem;line-height:1.5}
+.srv-features li::before{content:'✓';color:var(--teal);font-family:var(--mono);font-size:.62rem;flex-shrink:0;margin-top:.1rem}
+.srv-cta{margin-top:auto;display:flex;gap:.65rem;flex-wrap:wrap}
+.srv-divider{display:flex;align-items:center;gap:1.5rem;margin:4rem 0}
+.srv-divider::before,.srv-divider::after{content:'';flex:1;height:1px;background:var(--border)}
+.srv-divider-text{font-family:var(--mono);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.addon-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border)}
+.addon{background:var(--bg2);padding:1.75rem;transition:background .25s}
+.addon:hover{background:var(--bg3)}
+.addon-icon{font-size:1.5rem;margin-bottom:.65rem;display:block}
+.addon-name{font-family:var(--sans);font-size:.9rem;font-weight:600;color:var(--text);margin-bottom:.35rem}
+.addon-desc{font-family:var(--sans);font-size:.82rem;color:var(--text2);line-height:1.55}
+.process-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border);margin-top:4rem}
+.ps-item{background:var(--bg2);padding:1.5rem;text-align:center;position:relative}
+.ps-item::after{content:'→';position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.7rem;color:var(--muted);z-index:1}
+.ps-item:last-child::after{display:none}
+.ps-n{font-family:var(--mono);font-size:.54rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blue2);margin-bottom:.4rem;display:block}
+.ps-title{font-family:var(--sans);font-size:.82rem;font-weight:600;color:var(--text)}
+.faq-list{display:flex;flex-direction:column;gap:2px;margin-top:3rem}
+.faq-item{background:var(--bg2);border:1px solid var(--border)}
+.faq-q{padding:1.25rem 1.5rem;font-family:var(--sans);font-size:.9rem;font-weight:600;color:var(--text);display:flex;justify-content:space-between;align-items:center;cursor:pointer;transition:background .2s}
+.faq-q:hover{background:var(--bg3)}
+.faq-q-icon{color:var(--muted);font-size:.75rem;transition:transform .3s;flex-shrink:0}
+.faq-item.open .faq-q-icon{transform:rotate(45deg)}
+.faq-a{font-family:var(--sans);font-size:.87rem;line-height:1.75;color:var(--text2);padding:0 1.5rem;max-height:0;overflow:hidden;transition:max-height .35s,padding .35s}
+.faq-item.open .faq-a{max-height:300px;padding:.75rem 1.5rem 1.25rem}
+.guarantee-box{background:linear-gradient(135deg,rgba(47,204,163,.07) 0%,rgba(123,147,240,.05) 100%);border:1px solid rgba(47,204,163,.2);border-left:4px solid var(--teal);padding:2.5rem;margin-top:4rem;display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:start}
+.g-icon{font-size:3rem}
+.g-title{font-family:var(--serif);font-size:1.4rem;font-weight:400;color:var(--text);margin-bottom:.5rem}
+.g-body{font-family:var(--sans);font-size:.87rem;line-height:1.7;color:var(--text2)}
+@media(max-width:960px){.services-grid{grid-template-columns:1fr 1fr}.addon-grid{grid-template-columns:1fr 1fr}.process-strip{grid-template-columns:1fr 1fr}.ps-item::after{display:none}}
+@media(max-width:650px){.services-grid{grid-template-columns:1fr}.guarantee-box{grid-template-columns:1fr}}
+@media(max-width:480px){.addon-grid{grid-template-columns:1fr}.process-strip{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="progress-bar"></div>
+<button class="btt" aria-label="Back to top">↑</button>
+<nav>
+  <button class="nav-ham" aria-label="Open menu"><span></span><span></span><span></span></button>
+  <a class="nav-logo" href="index.html"><span class="logo-pulse"></span>MK.</a>
+  <div class="nav-spacer"></div>
+  <ul class="nav-links">
+    <li>
+      <button>Work <span class="nav-chevron">▾</span></button>
+      <div class="nav-dd">
+        <a href="work.html"><span class="dd-icon">🗂️</span>All Projects</a>
+        <a href="case-study-aml.html"><span class="dd-icon">📋</span>Case Study: AML</a>
+        <a href="case-study-bees.html"><span class="dd-icon">🐝</span>Case Study: Bees</a>
+      </div>
+    </li>
+    <li>
+      <button>About <span class="nav-chevron">▾</span></button>
+      <div class="nav-dd">
+        <a href="about.html"><span class="dd-icon">👤</span>About Me</a>
+        <a href="buzz.html"><span class="dd-icon">💬</span>Buzz &amp; Testimonials</a>
+        <a href="certifications.html"><span class="dd-icon">🎓</span>Certifications</a>
+      </div>
+    </li>
+    <li><a href="process.html">Process</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li>
+      <button>Knowledge <span class="nav-chevron">▾</span></button>
+      <div class="nav-dd">
+        <a href="articles.html"><span class="dd-icon">✍️</span>Articles</a>
+        <a href="id-frameworks.html"><span class="dd-icon">🧭</span>ID Cheat Sheet</a>
+        <a href="resources.html"><span class="dd-icon">📦</span>Free Resources</a>
+        <a href="glossary.html"><span class="dd-icon">📖</span>Glossary</a>
+        <a href="sitemap.html"><span class="dd-icon">🗺️</span>Sitemap</a>
+      </div>
+    </li>
+    <li>
+      <button>Tools <span class="nav-chevron">▾</span></button>
+      <div class="nav-mega">
+        <div class="nav-mega-col">
+          <span class="nav-mega-title">AI &amp; Demos</span>
+          <a href="ai-analyzer.html"><span class="dd-icon">🤖</span>AI Course Analyzer<span class="dd-new">New</span></a>
+          <a href="lms-demo.html"><span class="dd-icon">🎓</span>LMS Demo</a>
+          <a href="demo-xapi.html"><span class="dd-icon">📡</span>xAPI Demo</a>
+          <a href="demo-storyboard.html"><span class="dd-icon">🗂️</span>Storyboard Gen</a>
+          <a href="demo-template.html"><span class="dd-icon">🔧</span>Patterns</a>
+        </div>
+        <div class="nav-mega-col">
+          <span class="nav-mega-title">Reference Tools</span>
+          <a href="sl-snippets.html"><span class="dd-icon">⚡</span>JS Snippets</a>
+          <a href="accessibility-guide.html"><span class="dd-icon">♿</span>A11y Guide</a>
+          <a href="effort-estimator.html"><span class="dd-icon">📊</span>Effort Estimator</a>
+          <a href="spot-the-bug.html"><span class="dd-icon">🐛</span>Spot the Bug</a>
+          <a href="id-model-selector.html"><span class="dd-icon">🧭</span>ID Selector</a>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">☀️</button>
+  <a href="contact.html" class="nav-cta">Let's Talk</a>
+</nav>
+<div class="mobile-menu">
+  <span class="mob-section-title">Portfolio</span>
+  <a href="index.html"><span class="dd-icon">🏠</span>Home</a>
+  <a href="work.html"><span class="dd-icon">🗂️</span>All Projects</a>
+  <a href="case-study-aml.html"><span class="dd-icon">📋</span>Case Study: AML</a>
+  <a href="case-study-bees.html"><span class="dd-icon">🐝</span>Case Study: Bees</a>
+  <span class="mob-section-title">About</span>
+  <a href="about.html"><span class="dd-icon">👤</span>About Me</a>
+  <a href="buzz.html"><span class="dd-icon">💬</span>Buzz &amp; Testimonials</a>
+  <a href="certifications.html"><span class="dd-icon">🎓</span>Certifications</a>
+  <span class="mob-section-title">Services</span>
+  <a href="process.html"><span class="dd-icon">⚙️</span>Process</a>
+  <a href="services.html"><span class="dd-icon">📋</span>Services</a>
+  <span class="mob-section-title">Knowledge</span>
+  <a href="articles.html"><span class="dd-icon">✍️</span>Articles</a>
+  <a href="id-frameworks.html"><span class="dd-icon">🧭</span>ID Cheat Sheet</a>
+  <a href="resources.html"><span class="dd-icon">📦</span>Free Resources</a>
+  <a href="glossary.html"><span class="dd-icon">📖</span>Glossary</a>
+  <span class="mob-section-title">Tools &amp; Demos</span>
+  <a href="ai-analyzer.html"><span class="dd-icon">🤖</span>AI Course Analyzer</a>
+  <a href="sl-snippets.html"><span class="dd-icon">⚡</span>JS Snippets</a>
+  <a href="lms-demo.html"><span class="dd-icon">🎓</span>LMS Demo</a>
+  <a href="accessibility-guide.html"><span class="dd-icon">♿</span>A11y Guide</a>
+  <a href="effort-estimator.html"><span class="dd-icon">📊</span>Effort Estimator</a>
+  <a href="spot-the-bug.html"><span class="dd-icon">🐛</span>Spot the Bug</a>
+  <a href="demo-xapi.html"><span class="dd-icon">📡</span>xAPI Demo</a>
+  <a href="demo-storyboard.html"><span class="dd-icon">🗂️</span>Storyboard Gen</a>
+  <a href="id-model-selector.html"><span class="dd-icon">🧭</span>ID Selector</a>
+  <a href="demo-template.html"><span class="dd-icon">🔧</span>Patterns</a>
+  <span class="mob-section-title">Contact</span>
+  <a href="faq.html"><span class="dd-icon">❓</span>FAQ</a>
+  <a href="sitemap.html"><span class="dd-icon">🗺️</span>Sitemap</a>
+  <a href="contact.html"><span class="dd-icon">✉️</span>Let's Talk</a>
+</div>
+
+<div class="page-hero">
+  <div class="hero-bg-dots"></div>
+  <div class="hero-glow" style="top:-20%;right:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(232,169,74,.08) 0%,transparent 65%)"></div>
+  <div class="eyebrow reveal g">Services &amp; Packages</div>
+  <h1 class="display-xl reveal d1">What I can build<br><em>for you.</em></h1>
+  <p style="font-family:var(--sans);font-size:1.05rem;color:var(--text2);max-width:580px;margin-top:1.1rem;line-height:1.8" class="reveal d2">From a single accessible module to a full multilingual curriculum with custom AR/VR interactions. Every engagement includes end-to-end management, full documentation, and post-launch support.</p>
+</div>
+
+<section class="section">
+  <div class="eyebrow reveal">Core Services</div>
+  <h2 class="display reveal d1">Three ways to engage.</h2>
+  <div class="services-grid">
+    <!-- Service 1 -->
+    <div class="srv-card reveal d1">
+      <span class="srv-icon">📋</span>
+      <div class="srv-name">Instructional Design</div>
+      <div class="srv-sub">Analysis · Storyboarding · Assessment design</div>
+      <div class="srv-desc">End-to-end instructional design from needs analysis to approved storyboard — ready for your internal development team to build. Grounded in Action Mapping, Bloom's Taxonomy, and the ID model best suited to your project.</div>
+      <ul class="srv-features">
+        <li>Needs analysis &amp; performance gap definition</li>
+        <li>Action mapping &amp; learning objective writing</li>
+        <li>Full script storyboard (narration, visuals, interactions)</li>
+        <li>Assessment blueprint (Bloom's-aligned)</li>
+        <li>Rapid prototype for stakeholder alignment</li>
+        <li>Up to 2 storyboard review cycles</li>
+      </ul>
+      <div class="srv-cta">
+        <a href="contact.html" class="btn btn-outline">Get a Quote →</a>
+        <a href="effort-estimator.html" class="btn btn-ghost btn-sm">Estimate Hours</a>
+      </div>
+    </div>
+    <!-- Service 2 - FEATURED -->
+    <div class="srv-card featured reveal d2">
+      <span class="srv-icon">⚡</span>
+      <div class="srv-name">Full Development</div>
+      <div class="srv-sub">Design + Build + QA + LMS delivery</div>
+      <div class="srv-desc">Complete end-to-end — from discovery call to LMS-published SCORM package. I handle everything: needs analysis, storyboarding, Storyline 360 development, media production, accessibility audit, SCORM/xAPI packaging, and LMS deployment.</div>
+      <ul class="srv-features">
+        <li>Everything in Instructional Design service</li>
+        <li>Full Storyline 360 / Rise 360 development</li>
+        <li>Custom JavaScript interactions</li>
+        <li>Media production (Vyond, Camtasia, Blender)</li>
+        <li>WCAG 2.1 AA accessibility compliance</li>
+        <li>SCORM/xAPI packaging &amp; LMS testing</li>
+        <li>Post-launch support (30 days)</li>
+      </ul>
+      <div class="srv-cta">
+        <a href="contact.html" class="btn btn-gold">Get a Quote →</a>
+        <a href="process.html" class="btn btn-ghost btn-sm">How It Works</a>
+      </div>
+    </div>
+    <!-- Service 3 -->
+    <div class="srv-card reveal d3">
+      <span class="srv-icon">🔧</span>
+      <div class="srv-name">Specialist Work</div>
+      <div class="srv-sub">Accessibility · Localisation · AR/VR</div>
+      <div class="srv-desc">Specialist services for specific technical requirements — accessibility audits and remediation, multi-language localisation including Arabic RTL, AR/VR learning experiences with ZapWorks, or JavaScript rescue for courses that aren't working as expected.</div>
+      <ul class="srv-features">
+        <li>Accessibility audit (ADA/Section 508/WCAG 2.1)</li>
+        <li>Accessibility remediation of existing courses</li>
+        <li>Localisation to 16–22 languages incl. Arabic RTL</li>
+        <li>AR/VR learning design &amp; development (ZapWorks)</li>
+        <li>Custom JavaScript for Storyline 360</li>
+        <li>Flash-to-HTML5 conversion</li>
+        <li>LMS administration &amp; SCORM troubleshooting</li>
+      </ul>
+      <div class="srv-cta">
+        <a href="contact.html" class="btn btn-outline">Get a Quote →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADD-ONS -->
+  <div class="srv-divider"><span class="srv-divider-text">Available as add-ons to any service</span></div>
+  <div class="addon-grid reveal">
+    <div class="addon"><span class="addon-icon">🌍</span><div class="addon-name">Localisation</div><div class="addon-desc">Translation project management, audio coordination, LMS packaging for 2–22 additional languages. Arabic RTL expertise included.</div></div>
+    <div class="addon"><span class="addon-icon">🎬</span><div class="addon-name">Custom Animation</div><div class="addon-desc">Vyond character animation, Blender 3D sequences, or screen-recording Camtasia production. Captions included.</div></div>
+    <div class="addon"><span class="addon-icon">📡</span><div class="addon-name">xAPI Implementation</div><div class="addon-desc">Custom xAPI statement design, LRS configuration, and Power BI analytics dashboard for courses requiring detailed learner tracking.</div></div>
+    <div class="addon"><span class="addon-icon">🔮</span><div class="addon-name">AR/VR Experience</div><div class="addon-desc">ZapWorks augmented reality or virtual reality learning experience — marker-based or world-tracking. iOS and Android compatible.</div></div>
+  </div>
+
+  <!-- PROCESS STRIP -->
+  <div style="margin-top:4rem"><div class="eyebrow reveal">How every project starts</div></div>
+  <div class="process-strip reveal">
+    <div class="ps-item"><span class="ps-n">Step 01</span><div class="ps-title">Brief &amp; Discovery Call</div></div>
+    <div class="ps-item"><span class="ps-n">Step 02</span><div class="ps-title">Proposal &amp; Quote</div></div>
+    <div class="ps-item"><span class="ps-n">Step 03</span><div class="ps-title">Project Kickoff</div></div>
+    <div class="ps-item"><span class="ps-n">Step 04</span><div class="ps-title">Design &amp; Build</div></div>
+    <div class="ps-item"><span class="ps-n">Step 05</span><div class="ps-title">Launch &amp; Support</div></div>
+  </div>
+
+  <!-- GUARANTEE -->
+  <div class="guarantee-box reveal">
+    <div class="g-icon">🛡️</div>
+    <div>
+      <div class="g-title">What every project includes — without asking</div>
+      <div class="g-body">Weekly written status updates. Clear documentation of every design decision and its rationale. Explicit written sign-off before any phase advances. Full source files delivered at project close. Post-launch support window. No hidden costs, no retrospective scope additions, and no going silent when something is difficult to resolve. If a deliverable doesn't meet the agreed specification, I fix it — no additional charge.</div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="eyebrow reveal" style="margin-top:5rem">Frequently Asked Questions</div>
+  <h2 class="display reveal d1">Questions clients<br><em>actually ask.</em></h2>
+  <div class="faq-list reveal">
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How do you handle projects where requirements aren't fully defined yet? <span class="faq-q-icon">+</span></div><div class="faq-a">This is actually the norm, not the exception. My Discovery phase is specifically designed for this situation — the needs analysis and action mapping process helps define requirements collaboratively. For projects where requirements will likely evolve during development, I'll recommend a SAM (Successive Approximation Model) approach: rapid prototype, stakeholder feedback, iterate. This prevents the classic situation of a 40-slide course being rejected because the brief was misunderstood.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do you work with a client's existing Storyline templates or brand guidelines? <span class="faq-q-icon">+</span></div><div class="faq-a">Yes — this is the most common working arrangement. I'll work within your existing templates, brand guidelines, and component library. If I identify accessibility issues with the existing template (which is common), I'll flag them and recommend fixes — but the decision to address them is yours. What I won't do is build new courses that inherit those issues without documenting them explicitly.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What's your policy on rush projects? <span class="faq-q-icon">+</span></div><div class="faq-a">I can accommodate compressed timelines with advance notice. Rush work means abbreviating some phases of the process — typically prototype review and iterative feedback cycles — which increases the risk of rework. I'll always tell you honestly what's achievable in a given timeframe and what we'd need to cut to get there. What I won't do is promise a timeline that requires skipping QA or accessibility testing.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do you provide ongoing LMS administration or is it project-by-project? <span class="faq-q-icon">+</span></div><div class="faq-a">Both. Most engagements are project-based with a 30-day post-launch support period included. For clients who need ongoing LMS administration (Mindtickle, Docebo, SCORM Cloud), catalogue management, and regular course updates, retainer arrangements are available. These work well for organisations with a continuous pipeline of training content who need a dedicated L&D resource without a full-time hire.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can you work with our subject matter experts who aren't familiar with eLearning? <span class="faq-q-icon">+</span></div><div class="faq-a">Yes — this is the standard situation. I prepare SMEs with a brief onboarding document that explains their role in the process, what to look for during reviews, and what they don't need to worry about. The storyboard is written in plain language so technical SMEs can focus on content accuracy without needing to understand instructional design principles. I manage the translation of their expertise into effective learning design — that's my job, not theirs.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What does accessibility compliance actually cost in time and budget? <span class="faq-q-icon">+</span></div><div class="faq-a">When built in from the start (the correct approach), accessibility adds approximately 15–20% to development time on a standard Storyline project. When retrofitted to a finished course (the expensive approach), it typically costs 40–60% of the original development time plus the risk of requiring structural changes. The calculation is straightforward: build it right the first time. All my Full Development projects include WCAG 2.1 AA compliance as standard — it's not an add-on.</div></div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="eyebrow">Ready to talk scope?</div>
+  <div class="cta-band-title">Describe your project.<br><em>I'll tell you exactly what it needs.</em></div>
+  <a href="contact.html" class="btn-cta-dark">Start a Conversation →</a>
+  <a href="effort-estimator.html" class="btn-cta-dark">Estimate the Work →</a>
+  <a href="process.html" class="btn-cta-outline">How I Work</a>
+</div>
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-brand"><span class="logo-pulse"></span>MK. Madhu Kumar Sikilammetla</div><div class="footer-desc">Instructional Designer &amp; eLearning Developer. 7+ years building accessible, multilingual, SCORM/xAPI-compliant learning experiences.</div></div>
+    <div class="footer-col"><div class="footer-col-title">Portfolio</div><a href="work.html">All Projects</a><a href="case-study-aml.html">Case Study: AML</a><a href="case-study-bees.html">Case Study: Bees</a><a href="certifications.html">Certifications</a></div>
+    <div class="footer-col"><div class="footer-col-title">Knowledge</div><a href="articles.html">Articles</a><a href="resources.html">Free Templates</a><a href="id-frameworks.html">ID Cheat Sheet</a><a href="sl-snippets.html">JS Snippets</a></div>
+    <div class="footer-col"><div class="footer-col-title">Contact</div><a href="contact.html">Let's Talk</a><a href="process.html">Process</a><a href="services.html">Services</a><a href="https://www.linkedin.com/in/madhu-kumar-sikilammetla-22694598" target="_blank">LinkedIn</a><a href="faq.html">FAQ</a><a href="sitemap.html">Sitemap</a></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2026 Madhu Kumar Sikilammetla</div><div class="footer-social"><a href="https://www.linkedin.com/in/madhu-kumar-sikilammetla-22694598" target="_blank">LinkedIn</a><a href="https://drive.google.com/file/d/1wsBtUEBdSjdLwK7CxFID6ttaW6afTxf6/view" target="_blank">CV</a><a href="mailto:madhukumar5290@gmail.com">Email</a></div></div>
+</footer>
+<script src="main.js?v=6"></script>
+<script>
+function toggleFaq(q){
+  const item=q.parentElement;
+  const wasOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+  if(!wasOpen)item.classList.add('open');
+}
+</script>
+</body>
+</html>

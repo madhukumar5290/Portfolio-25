@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sitemap — All Pages | Madhu Kumar Sikilammetla</title>
+<link rel="stylesheet" href="style.css?v=6">
+<style>
+.sm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-top:3rem}
+.sm-col{background:var(--bg2);padding:2.25rem}
+.sm-col-title{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;padding-bottom:.75rem;border-bottom:1px solid var(--border)}
+.sm-link{display:flex;align-items:flex-start;gap:.75rem;padding:.7rem 0;border-bottom:1px solid var(--border);transition:all .2s}
+.sm-link:last-child{border-bottom:none}
+.sm-link:hover{padding-left:.4rem}
+.sm-icon{font-size:.95rem;width:20px;text-align:center;flex-shrink:0;margin-top:.1rem}
+.sm-text{flex:1}
+.sm-name{font-family:var(--sans);font-size:.88rem;font-weight:600;color:var(--text);transition:color .2s}
+.sm-link:hover .sm-name{color:var(--gold)}
+.sm-desc{font-family:var(--sans);font-size:.76rem;color:var(--text2);line-height:1.5;margin-top:.15rem}
+.sm-count{font-family:var(--mono);font-size:.56rem;letter-spacing:.08em;color:var(--muted);margin-left:auto;flex-shrink:0;margin-top:.1rem}
+.sm-total-band{background:var(--bg3);border:1px solid var(--border2);padding:2rem;margin-top:3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem}
+.sm-total-n{font-family:var(--serif);font-size:2.5rem;color:var(--gold);font-weight:300;line-height:1}
+.sm-total-lbl{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+@media(max-width:960px){.sm-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.sm-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="progress-bar"></div>
+<button class="btt" aria-label="Back to top">↑</button>
+<nav>
+  <button class="nav-ham" aria-label="Open menu"><span></span><span></span><span></span></button>
+  <a class="nav-logo" href="index.html"><span class="logo-pulse"></span>MK.</a>
+  <div class="nav-spacer"></div>
+  <ul class="nav-links">
+    <li>
+      <button>Work <span class="nav-chevron">▾</span></button>
+      <div class="nav-dd">
+        <a href="work.html"><span class="dd-icon">🗂️</span>All Projects</a>
+        <a href="case-study-aml.html"><span class="dd-icon">📋</span>Case Study: AML</a>
+        <a href="case-study-bees.html"><span class="dd-icon">🐝</span>Case Study: Bees</a>
+      </div>
+    </li>
+    <li>
+      <button>About <span class="nav-chevron">▾</span></button>
+      <div class="nav-dd">
+        <a href="about.html"><span class="dd-icon">👤</span>About Me</a>
+        <a href="buzz.html"><span class="dd-icon">💬</span>Buzz &amp; Testimonials</a>
+        <a href="certifications.html"><span class="dd-icon">🎓</span>Certifications</a>
+      </div>
+    </li>
+    <li><a href="process.html">Process</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li>
+      <button>Knowledge <span class="nav-chevron">▾</span></button>
+      <div class="nav-dd">
+        <a href="articles.html"><span class="dd-icon">✍️</span>Articles</a>
+        <a href="id-frameworks.html"><span class="dd-icon">🧭</span>ID Cheat Sheet</a>
+        <a href="resources.html"><span class="dd-icon">📦</span>Free Resources</a>
+        <a href="glossary.html"><span class="dd-icon">📖</span>Glossary</a>
+      </div>
+    </li>
+    <li>
+      <button>Tools <span class="nav-chevron">▾</span></button>
+      <div class="nav-mega">
+        <div class="nav-mega-col">
+          <span class="nav-mega-title">AI &amp; Demos</span>
+          <a href="ai-analyzer.html"><span class="dd-icon">🤖</span>AI Course Analyzer<span class="dd-new">New</span></a>
+          <a href="lms-demo.html"><span class="dd-icon">🎓</span>LMS Demo</a>
+          <a href="demo-xapi.html"><span class="dd-icon">📡</span>xAPI Demo</a>
+          <a href="demo-storyboard.html"><span class="dd-icon">🗂️</span>Storyboard Gen</a>
+          <a href="demo-template.html"><span class="dd-icon">🔧</span>Patterns</a>
+        </div>
+        <div class="nav-mega-col">
+          <span class="nav-mega-title">Reference Tools</span>
+          <a href="sl-snippets.html"><span class="dd-icon">⚡</span>JS Snippets</a>
+          <a href="accessibility-guide.html"><span class="dd-icon">♿</span>A11y Guide</a>
+          <a href="effort-estimator.html"><span class="dd-icon">📊</span>Effort Estimator</a>
+          <a href="spot-the-bug.html"><span class="dd-icon">🐛</span>Spot the Bug</a>
+          <a href="id-model-selector.html"><span class="dd-icon">🧭</span>ID Selector</a>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">☀️</button>
+  <a href="contact.html" class="nav-cta">Let's Talk</a>
+</nav>
+<div class="mobile-menu">
+  <span class="mob-section-title">Portfolio</span>
+  <a href="index.html"><span class="dd-icon">🏠</span>Home</a>
+  <a href="work.html"><span class="dd-icon">🗂️</span>All Projects</a>
+  <a href="case-study-aml.html"><span class="dd-icon">📋</span>Case Study: AML</a>
+  <a href="case-study-bees.html"><span class="dd-icon">🐝</span>Case Study: Bees</a>
+  <span class="mob-section-title">About</span>
+  <a href="about.html"><span class="dd-icon">👤</span>About Me</a>
+  <a href="buzz.html"><span class="dd-icon">💬</span>Buzz &amp; Testimonials</a>
+  <a href="certifications.html"><span class="dd-icon">🎓</span>Certifications</a>
+  <span class="mob-section-title">Services</span>
+  <a href="process.html"><span class="dd-icon">⚙️</span>Process</a>
+  <a href="services.html"><span class="dd-icon">📋</span>Services</a>
+  <span class="mob-section-title">Knowledge</span>
+  <a href="articles.html"><span class="dd-icon">✍️</span>Articles</a>
+  <a href="id-frameworks.html"><span class="dd-icon">🧭</span>ID Cheat Sheet</a>
+  <a href="resources.html"><span class="dd-icon">📦</span>Free Resources</a>
+  <a href="glossary.html"><span class="dd-icon">📖</span>Glossary</a>
+  <span class="mob-section-title">Tools &amp; Demos</span>
+  <a href="ai-analyzer.html"><span class="dd-icon">🤖</span>AI Course Analyzer</a>
+  <a href="sl-snippets.html"><span class="dd-icon">⚡</span>JS Snippets</a>
+  <a href="lms-demo.html"><span class="dd-icon">🎓</span>LMS Demo</a>
+  <a href="accessibility-guide.html"><span class="dd-icon">♿</span>A11y Guide</a>
+  <a href="effort-estimator.html"><span class="dd-icon">📊</span>Effort Estimator</a>
+  <a href="spot-the-bug.html"><span class="dd-icon">🐛</span>Spot the Bug</a>
+  <a href="demo-xapi.html"><span class="dd-icon">📡</span>xAPI Demo</a>
+  <a href="demo-storyboard.html"><span class="dd-icon">🗂️</span>Storyboard Gen</a>
+  <a href="id-model-selector.html"><span class="dd-icon">🧭</span>ID Selector</a>
+  <a href="demo-template.html"><span class="dd-icon">🔧</span>Patterns</a>
+  <span class="mob-section-title">Contact</span>
+  <a href="faq.html"><span class="dd-icon">❓</span>FAQ</a>
+  <a href="contact.html"><span class="dd-icon">✉️</span>Let's Talk</a>
+</div>
+
+<div class="page-hero" style="padding-bottom:3rem">
+  <div class="hero-bg-grid"></div>
+  <div class="eyebrow reveal">Site Navigation</div>
+  <h1 class="display-xl reveal d1">Every page,<br><em>in one place.</em></h1>
+  <p style="font-family:var(--sans);font-size:1.05rem;color:var(--text2);max-width:580px;margin-top:1.1rem;line-height:1.8" class="reveal d2">The full site map — portfolio, knowledge base, and interactive tools. If you can't find something through the navigation, it's here.</p>
+</div>
+
+<section class="section">
+  <div class="sm-grid reveal">
+    <div class="sm-col">
+      <div class="sm-col-title">Portfolio &amp; About</div>
+      <a href="index.html" class="sm-link"><span class="sm-icon">🏠</span><div class="sm-text"><div class="sm-name">Home</div><div class="sm-desc">Hero, selected work, accessibility demos, tools</div></div></a>
+      <a href="work.html" class="sm-link"><span class="sm-icon">🗂️</span><div class="sm-text"><div class="sm-name">All Projects</div><div class="sm-desc">20+ projects with filters and ID methodology</div></div></a>
+      <a href="case-study-aml.html" class="sm-link"><span class="sm-icon">📋</span><div class="sm-text"><div class="sm-name">Case Study: AML</div><div class="sm-desc">Deep dive — Action Mapping, 34% violation reduction</div></div></a>
+      <a href="case-study-bees.html" class="sm-link"><span class="sm-icon">🐝</span><div class="sm-text"><div class="sm-name">Case Study: Bees &amp; Beehives</div><div class="sm-desc">Deep dive — Merrill's First Principles, game design</div></div></a>
+      <a href="about.html" class="sm-link"><span class="sm-icon">👤</span><div class="sm-text"><div class="sm-name">About Me</div><div class="sm-desc">Profile, experience timeline, skills, tools</div></div></a>
+      <a href="buzz.html" class="sm-link"><span class="sm-icon">💬</span><div class="sm-text"><div class="sm-name">Buzz &amp; Testimonials</div><div class="sm-desc">Client testimonials and logos</div></div></a>
+      <a href="certifications.html" class="sm-link"><span class="sm-icon">🎓</span><div class="sm-text"><div class="sm-name">Certifications</div><div class="sm-desc">Credentials and learning path</div></div></a>
+    </div>
+    <div class="sm-col">
+      <div class="sm-col-title">Services &amp; Knowledge</div>
+      <a href="process.html" class="sm-link"><span class="sm-icon">⚙️</span><div class="sm-text"><div class="sm-name">Process</div><div class="sm-desc">5-phase methodology, principles, timeline</div></div></a>
+      <a href="services.html" class="sm-link"><span class="sm-icon">📋</span><div class="sm-text"><div class="sm-name">Services</div><div class="sm-desc">Packages, add-ons, FAQ, guarantee</div></div></a>
+      <a href="articles.html" class="sm-link"><span class="sm-icon">✍️</span><div class="sm-text"><div class="sm-name">Articles</div><div class="sm-desc">20 in-depth articles on L&D practice</div></div></a>
+      <a href="id-frameworks.html" class="sm-link"><span class="sm-icon">🧭</span><div class="sm-text"><div class="sm-name">ID Cheat Sheet</div><div class="sm-desc">10 instructional design frameworks explained</div></div></a>
+      <a href="resources.html" class="sm-link"><span class="sm-icon">📦</span><div class="sm-text"><div class="sm-name">Free Resources</div><div class="sm-desc">9 downloadable templates and checklists</div></div></a>
+      <a href="glossary.html" class="sm-link"><span class="sm-icon">📖</span><div class="sm-text"><div class="sm-name">Glossary</div><div class="sm-desc">L&D and instructional design terminology</div></div></a>
+      <a href="faq.html" class="sm-link"><span class="sm-icon">❓</span><div class="sm-text"><div class="sm-name">FAQ</div><div class="sm-desc">Common questions about working together</div></div></a>
+      <a href="contact.html" class="sm-link"><span class="sm-icon">✉️</span><div class="sm-text"><div class="sm-name">Contact</div><div class="sm-desc">Get in touch, working contact form</div></div></a>
+    </div>
+    <div class="sm-col">
+      <div class="sm-col-title">Tools &amp; Interactive Demos</div>
+      <a href="ai-analyzer.html" class="sm-link"><span class="sm-icon">🤖</span><div class="sm-text"><div class="sm-name">AI Course Analyzer</div><div class="sm-desc">AI-powered course quality feedback</div></div></a>
+      <a href="sl-snippets.html" class="sm-link"><span class="sm-icon">⚡</span><div class="sm-text"><div class="sm-name">JS Snippets Library</div><div class="sm-desc">24+ searchable Storyline JavaScript snippets</div></div></a>
+      <a href="accessibility-guide.html" class="sm-link"><span class="sm-icon">♿</span><div class="sm-text"><div class="sm-name">Accessibility Guide</div><div class="sm-desc">WCAG 2.1 guide with interactive checklist</div></div></a>
+      <a href="effort-estimator.html" class="sm-link"><span class="sm-icon">📊</span><div class="sm-text"><div class="sm-name">Effort Estimator</div><div class="sm-desc">Project hours, cost and timeline calculator</div></div></a>
+      <a href="lms-demo.html" class="sm-link"><span class="sm-icon">🎓</span><div class="sm-text"><div class="sm-name">LMS Demo</div><div class="sm-desc">Working LMS with live xAPI logging</div></div></a>
+      <a href="demo-xapi.html" class="sm-link"><span class="sm-icon">📡</span><div class="sm-text"><div class="sm-name">xAPI Demo</div><div class="sm-desc">The Invisible Student — live xAPI stream</div></div></a>
+      <a href="demo-storyboard.html" class="sm-link"><span class="sm-icon">🗂️</span><div class="sm-text"><div class="sm-name">Storyboard Generator</div><div class="sm-desc">Generate a full storyboard from your inputs</div></div></a>
+      <a href="demo-template.html" class="sm-link"><span class="sm-icon">🔧</span><div class="sm-text"><div class="sm-name">Interaction Patterns</div><div class="sm-desc">Tabs, accordion, scenario, drag &amp; drop, hotspots, sequencing</div></div></a>
+      <a href="spot-the-bug.html" class="sm-link"><span class="sm-icon">🐛</span><div class="sm-text"><div class="sm-name">Spot the Bug</div><div class="sm-desc">5-round accessibility bug-finding game</div></div></a>
+      <a href="id-model-selector.html" class="sm-link"><span class="sm-icon">🧭</span><div class="sm-text"><div class="sm-name">ID Model Selector</div><div class="sm-desc">5 questions → personalised recommendation</div></div></a>
+    </div>
+  </div>
+
+  <div class="sm-total-band reveal">
+    <div><span class="sm-total-n">29</span></div>
+    <div class="sm-total-lbl">Total pages on this site<br>— portfolio, knowledge base, and interactive tools combined</div>
+    <a href="contact.html" class="btn btn-outline">Can't find something? →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-brand"><span class="logo-pulse"></span>MK. Madhu Kumar Sikilammetla</div><div class="footer-desc">Instructional Designer &amp; eLearning Developer. 7+ years building accessible, multilingual, SCORM/xAPI-compliant learning experiences.</div></div>
+    <div class="footer-col"><div class="footer-col-title">Portfolio</div><a href="work.html">All Projects</a><a href="case-study-aml.html">Case Study: AML</a><a href="case-study-bees.html">Case Study: Bees</a><a href="certifications.html">Certifications</a></div>
+    <div class="footer-col"><div class="footer-col-title">Knowledge</div><a href="articles.html">Articles</a><a href="resources.html">Free Templates</a><a href="id-frameworks.html">ID Cheat Sheet</a><a href="sl-snippets.html">JS Snippets</a><a href="glossary.html">Glossary</a></div>
+    <div class="footer-col"><div class="footer-col-title">Contact</div><a href="contact.html">Let's Talk</a><a href="process.html">Process</a><a href="services.html">Services</a><a href="faq.html">FAQ</a><a href="sitemap.html">Sitemap</a></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2026 Madhu Kumar Sikilammetla</div><div class="footer-social"><a href="https://www.linkedin.com/in/madhu-kumar-sikilammetla-22694598" target="_blank">LinkedIn</a><a href="https://drive.google.com/file/d/1wsBtUEBdSjdLwK7CxFID6ttaW6afTxf6/view" target="_blank">CV</a><a href="mailto:madhukumar5290@gmail.com">Email</a></div></div>
+</footer>
+<script src="main.js?v=6"></script>
+</body>
+</html>
